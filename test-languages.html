@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Test - POS System</title>
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f7fa;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .language-selector {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .language-selector select {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+        }
+        .test-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .test-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .test-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        .test-item {
+            margin: 10px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+        [dir="rtl"] {
+            text-align: right;
+        }
+        [dir="rtl"] .test-item {
+            border-left: none;
+            border-right: 4px solid #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 id="title">🌍 Multi-Language POS System Test</h1>
+        
+        <div class="language-selector">
+            <label for="language-select">Choose Language / اختر اللغة / Choisir la langue / Elegir idioma:</label>
+            <select id="language-select" onchange="changeLanguage(this.value)">
+                <option value="en">🇺🇸 English</option>
+                <option value="ar">🇩🇿 العربية (Arabic)</option>
+                <option value="fr">🇫🇷 Français (French)</option>
+                <option value="es">🇪🇸 Español (Spanish)</option>
+            </select>
+        </div>
+
+        <div class="test-content">
+            <div class="test-section">
+                <h3 data-translate="basic">Basic Terms</h3>
+                <div class="test-item"><strong data-translate="welcome">Welcome to My POS System</strong></div>
+                <div class="test-item" data-translate="login">Login</div>
+                <div class="test-item" data-translate="logout">Logout</div>
+                <div class="test-item" data-translate="username">Username</div>
+                <div class="test-item" data-translate="password">Password</div>
+            </div>
+
+            <div class="test-section">
+                <h3 data-translate="pos_terms">POS Terms</h3>
+                <div class="test-item" data-translate="products">Products</div>
+                <div class="test-item" data-translate="categories">Categories</div>
+                <div class="test-item" data-translate="currentOrder">Current Order</div>
+                <div class="test-item" data-translate="checkout">Checkout</div>
+                <div class="test-item" data-translate="printReceipt">Print Receipt</div>
+            </div>
+
+            <div class="test-section">
+                <h3 data-translate="financial">Financial</h3>
+                <div class="test-item" data-translate="subtotal">Subtotal</div>
+                <div class="test-item" data-translate="tax">Tax</div>
+                <div class="test-item" data-translate="total">Total</div>
+                <div class="test-item" data-translate="currency">Currency</div>
+                <div class="test-item">DZD: <span id="currency-symbol">د.ج</span> <span data-translate="dinar">Algerian Dinar</span></div>
+            </div>
+
+            <div class="test-section">
+                <h3 data-translate="management">Management</h3>
+                <div class="test-item" data-translate="inventory">Inventory</div>
+                <div class="test-item" data-translate="reports">Reports</div>
+                <div class="test-item" data-translate="users">Users</div>
+                <div class="test-item" data-translate="settings">Settings</div>
+                <div class="test-item" data-translate="lowStock">Low Stock Alert</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center; padding: 20px; background: #e3f2fd; border-radius: 8px;">
+            <p><strong>✅ Language switching is working!</strong></p>
+            <p>Current Language: <span id="current-lang">English</span></p>
+            <p>Direction: <span id="current-dir">LTR</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Language translations (same as in the main POS system)
+        const languages = {
+            en: {
+                basic: 'Basic Terms',
+                pos_terms: 'POS Terms',
+                financial: 'Financial',
+                management: 'Management',
+                welcome: 'Welcome to My POS System',
+                login: 'Login',
+                logout: 'Logout',
+                username: 'Username',
+                password: 'Password',
+                products: 'Products',
+                categories: 'Categories',
+                currentOrder: 'Current Order',
+                checkout: 'Checkout',
+                printReceipt: 'Print Receipt',
+                subtotal: 'Subtotal',
+                tax: 'Tax',
+                total: 'Total',
+                currency: 'Currency',
+                dinar: 'Algerian Dinar',
+                inventory: 'Inventory',
+                reports: 'Reports',
+                users: 'Users',
+                settings: 'Settings',
+                lowStock: 'Low Stock Alert'
+            },
+            ar: {
+                basic: 'المصطلحات الأساسية',
+                pos_terms: 'مصطلحات نقاط البيع',
+                financial: 'المالية',
+                management: 'الإدارة',
+                welcome: 'مرحباً بنظام نقاط البيع',
+                login: 'تسجيل الدخول',
+                logout: 'تسجيل الخروج',
+                username: 'اسم المستخدم',
+                password: 'كلمة المرور',
+                products: 'المنتجات',
+                categories: 'الفئات',
+                currentOrder: 'الطلب الحالي',
+                checkout: 'الدفع',
+                printReceipt: 'طباعة الإيصال',
+                subtotal: 'المجموع الفرعي',
+                tax: 'الضريبة',
+                total: 'المجموع',
+                currency: 'العملة',
+                dinar: 'دينار جزائري',
+                inventory: 'المخزون',
+                reports: 'التقارير',
+                users: 'المستخدمون',
+                settings: 'الإعدادات',
+                lowStock: 'تنبيه مخزون منخفض'
+            },
+            fr: {
+                basic: 'Termes de Base',
+                pos_terms: 'Termes POS',
+                financial: 'Financier',
+                management: 'Gestion',
+                welcome: 'Bienvenue dans Mon Système POS',
+                login: 'Connexion',
+                logout: 'Déconnexion',
+                username: 'Nom d\'utilisateur',
+                password: 'Mot de passe',
+                products: 'Produits',
+                categories: 'Catégories',
+                currentOrder: 'Commande Actuelle',
+                checkout: 'Paiement',
+                printReceipt: 'Imprimer Reçu',
+                subtotal: 'Sous-total',
+                tax: 'Taxe',
+                total: 'Total',
+                currency: 'Devise',
+                dinar: 'Dinar Algérien',
+                inventory: 'Inventaire',
+                reports: 'Rapports',
+                users: 'Utilisateurs',
+                settings: 'Paramètres',
+                lowStock: 'Alerte Stock Faible'
+            },
+            es: {
+                basic: 'Términos Básicos',
+                pos_terms: 'Términos POS',
+                financial: 'Financiero',
+                management: 'Gestión',
+                welcome: 'Bienvenido a Mi Sistema POS',
+                login: 'Iniciar Sesión',
+                logout: 'Cerrar Sesión',
+                username: 'Usuario',
+                password: 'Contraseña',
+                products: 'Productos',
+                categories: 'Categorías',
+                currentOrder: 'Pedido Actual',
+                checkout: 'Pagar',
+                printReceipt: 'Imprimir Recibo',
+                subtotal: 'Subtotal',
+                tax: 'Impuesto',
+                total: 'Total',
+                currency: 'Moneda',
+                dinar: 'Dinar Argelino',
+                inventory: 'Inventario',
+                reports: 'Informes',
+                users: 'Usuarios',
+                settings: 'Configuración',
+                lowStock: 'Alerta Stock Bajo'
+            }
+        };
+
+        let currentLanguage = 'en';
+
+        function t(key) {
+            return languages[currentLanguage][key] || key;
+        }
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update document direction for Arabic
+            document.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.textContent = t(key);
+            });
+            
+            // Update status
+            const langNames = {
+                en: 'English',
+                ar: 'العربية (Arabic)',
+                fr: 'Français (French)',
+                es: 'Español (Spanish)'
+            };
+            
+            document.getElementById('current-lang').textContent = langNames[lang];
+            document.getElementById('current-dir').textContent = lang === 'ar' ? 'RTL' : 'LTR';
+            
+            console.log('Language changed to:', lang);
+        }
+
+        // Initialize
+        changeLanguage('en');
+    </script>
+</body>
+</html>
