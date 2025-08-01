@@ -14,9 +14,10 @@ const languages = {
         checkout: 'Checkout',
         emptyCart: 'No items in cart',
         allItems: 'All Items',
-        food: 'Food',
-        drinks: 'Drinks',
-        snacks: 'Snacks',
+        tools: 'Tools',
+        hardware: 'Hardware',
+        electrical: 'Electrical',
+        plumbing: 'Plumbing',
         cashier: 'Cashier',
         admin: 'Admin',
         manager: 'Manager',
@@ -42,9 +43,10 @@ const languages = {
         checkout: 'الدفع',
         emptyCart: 'لا توجد عناصر في السلة',
         allItems: 'جميع العناصر',
-        food: 'طعام',
-        drinks: 'مشروبات',
-        snacks: 'وجبات خفيفة',
+        tools: 'أدوات',
+        hardware: 'أجهزة',
+        electrical: 'كهربائيات',
+        plumbing: 'سباكة',
         cashier: 'أمين الصندوق',
         admin: 'مدير',
         manager: 'مدير',
@@ -73,9 +75,10 @@ const languages = {
         checkout: 'Paiement',
         emptyCart: 'Aucun article dans le panier',
         allItems: 'Tous les Articles',
-        food: 'Nourriture',
-        drinks: 'Boissons',
-        snacks: 'Collations',
+        tools: 'Outils',
+        hardware: 'Quincaillerie',
+        electrical: 'Électrique',
+        plumbing: 'Plomberie',
         cashier: 'Caissier',
         admin: 'Administrateur',
         manager: 'Gestionnaire',
@@ -101,9 +104,10 @@ const languages = {
         checkout: 'Pagar',
         emptyCart: 'No hay artículos en el carrito',
         allItems: 'Todos los Artículos',
-        food: 'Comida',
-        drinks: 'Bebidas',
-        snacks: 'Aperitivos',
+        tools: 'Herramientas',
+        hardware: 'Ferretería',
+        electrical: 'Eléctrico',
+        plumbing: 'Fontanería',
         cashier: 'Cajero',
         admin: 'Administrador',
         manager: 'Gerente',
@@ -149,26 +153,26 @@ const userRoles = {
 const users = [
     { id: 1, username: 'admin', password: 'admin123', role: 'admin', name: 'Administrator' },
     { id: 2, username: 'manager', password: 'manager123', role: 'manager', name: 'Store Manager' },
-    { id: 3, username: 'cashier1', password: 'cashier123', role: 'cashier', name: 'John Doe' },
-    { id: 4, username: 'cashier2', password: 'cashier123', role: 'cashier', name: 'Jane Smith' }
+    { id: 3, username: 'cashier1', password: 'cashier123', role: 'cashier', name: 'Cashier 1' }
 ];
 
 // Enhanced product data with inventory
 const products = [
-    { id: 1, name: 'Hamburger', price: 8.99, category: 'food', stock: 25, minStock: 5, barcode: '1234567890123' },
-    { id: 2, name: 'Cheeseburger', price: 9.99, category: 'food', stock: 20, minStock: 5, barcode: '1234567890124' },
-    { id: 3, name: 'French Fries', price: 3.99, category: 'food', stock: 50, minStock: 10, barcode: '1234567890125' },
-    { id: 4, name: 'Chicken Wings', price: 12.99, category: 'food', stock: 15, minStock: 5, barcode: '1234567890126' },
-    { id: 5, name: 'Caesar Salad', price: 7.99, category: 'food', stock: 12, minStock: 5, barcode: '1234567890127' },
-    { id: 6, name: 'Coca Cola', price: 2.99, category: 'drinks', stock: 100, minStock: 20, barcode: '1234567890128' },
-    { id: 7, name: 'Orange Juice', price: 3.49, category: 'drinks', stock: 30, minStock: 10, barcode: '1234567890129' },
-    { id: 8, name: 'Coffee', price: 2.49, category: 'drinks', stock: 80, minStock: 15, barcode: '1234567890130' },
-    { id: 9, name: 'Water Bottle', price: 1.99, category: 'drinks', stock: 200, minStock: 50, barcode: '1234567890131' },
-    { id: 10, name: 'Potato Chips', price: 2.99, category: 'snacks', stock: 3, minStock: 10, barcode: '1234567890132' }, // Low stock
-    { id: 11, name: 'Chocolate Bar', price: 1.99, category: 'snacks', stock: 45, minStock: 15, barcode: '1234567890133' },
-    { id: 12, name: 'Cookies', price: 3.49, category: 'snacks', stock: 2, minStock: 8, barcode: '1234567890134' } // Low stock
+    // Tools
+    { id: 1, name: 'Hammer', price: 15.99, category: 'tools', stock: 30, minStock: 10, barcode: 'HW001' },
+    { id: 2, name: 'Screwdriver Set', price: 25.50, category: 'tools', stock: 20, minStock: 5, barcode: 'HW002' },
+    { id: 14, name: 'Pliers', price: 10.00, category: 'hardware', stock: 35, minStock: 12, barcode: 'HW003' },
+    { id: 15, name: 'Measuring Tape', price: 8.50, category: 'hardware', stock: 45, minStock: 18, barcode: 'HW004' },
+    { id: 16, name: 'Level', price: 20.00, category: 'hardware', stock: 28, minStock: 10, barcode: 'HW005' },
+    // Electrical
+    { id: 17, name: 'Extension Cord', price: 18.00, category: 'electrical', stock: 30, minStock: 10, barcode: 'EL001' },
+    { id: 18, name: 'Light Bulb LED', price: 5.00, category: 'electrical', stock: 100, minStock: 40, barcode: 'EL002' },
+    { id: 19, name: 'Outlet Cover', price: 2.00, category: 'electrical', stock: 80, minStock: 30, barcode: 'EL003' },
+    // Plumbing
+    { id: 20, name: 'Pipe Wrench', price: 22.00, category: 'plumbing', stock: 20, minStock: 7, barcode: 'PL001' },
+    { id: 21, name: 'Teflon Tape', price: 3.00, category: 'plumbing', stock: 60, minStock: 20, barcode: 'PL002' },
+    { id: 22, name: 'Faucet Repair Kit', price: 14.00, category: 'plumbing', stock: 25, minStock: 8, barcode: 'PL003' }
 ];
-
 // ===== GLOBAL STATE =====
 let cart = [];
 let currentCategory = 'all';
@@ -198,7 +202,7 @@ const checkoutModal = document.getElementById('checkout-modal');
 const currentTimeEl = document.getElementById('current-time');
 
 // ===== SYSTEM INITIALIZATION =====
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeSystem();
 });
 
@@ -232,30 +236,30 @@ function initializeSystem() {
 function setupEventListeners() {
     // Category buttons
     document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentCategory = this.dataset.category;
             displayProducts();
         });
     });
-    
+
     // Cart actions
     document.getElementById('clear-cart').addEventListener('click', clearCart);
     document.getElementById('checkout').addEventListener('click', openCheckout);
     document.getElementById('cancel-checkout').addEventListener('click', closeCheckout);
     document.getElementById('complete-sale').addEventListener('click', completeSale);
-    
+
     // Payment method buttons
     document.querySelectorAll('.payment-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             document.querySelectorAll('.payment-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
         });
     });
-    
+
     // Close modal when clicking outside
-    checkoutModal.addEventListener('click', function(e) {
+    checkoutModal.addEventListener('click', function (e) {
         if (e.target === checkoutModal) {
             closeCheckout();
         }
@@ -263,12 +267,12 @@ function setupEventListeners() {
 }
 
 function displayProducts() {
-    const filteredProducts = currentCategory === 'all' 
-        ? products 
+    const filteredProducts = currentCategory === 'all'
+        ? products
         : products.filter(product => product.category === currentCategory);
-    
+
     productsGrid.innerHTML = '';
-    
+
     filteredProducts.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
@@ -276,7 +280,7 @@ function displayProducts() {
             <h3>${product.name}</h3>
             <div class="price">$${product.price.toFixed(2)}</div>
         `;
-        
+
         productCard.addEventListener('click', () => addToCart(product));
         productsGrid.appendChild(productCard);
     });
@@ -284,7 +288,7 @@ function displayProducts() {
 
 function addToCart(product) {
     const existingItem = cart.find(item => item.id === product.id);
-    
+
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
@@ -293,7 +297,7 @@ function addToCart(product) {
             quantity: 1
         });
     }
-    
+
     updateCartDisplay();
 }
 
@@ -332,7 +336,7 @@ function updateCartDisplay() {
             </div>
         `).join('');
     }
-    
+
     updateTotals();
 }
 
@@ -340,7 +344,7 @@ function updateTotals() {
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const tax = subtotal * 0.08; // 8% tax
     const total = subtotal + tax;
-    
+
     subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
     taxEl.textContent = `$${tax.toFixed(2)}`;
     totalEl.textContent = `$${total.toFixed(2)}`;
@@ -368,18 +372,18 @@ function closeCheckout() {
 
 function completeSale() {
     const selectedPayment = document.querySelector('.payment-btn.active');
-    
+
     if (!selectedPayment) {
         alert('Please select a payment method');
         return;
     }
-    
+
     const paymentMethod = selectedPayment.dataset.method;
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) * 1.08;
-    
+
     // Simulate sale completion
     alert(`Sale completed!\nPayment Method: ${paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)}\nTotal: $${total.toFixed(2)}\nThank you for your purchase!`);
-    
+
     // Clear cart and close modal
     cart = [];
     updateCartDisplay();
