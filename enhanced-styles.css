@@ -1,31 +1,21 @@
 /* ===== PROFESSIONAL POS SYSTEM STYLES ===== */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 :root {
-    --primary-color: #667eea;
-    --primary-dark: #5a6fd8;
-    --secondary-color: #764ba2;
-    --success-color: #28a745;
-    --warning-color: #ffc107;
-    --danger-color: #dc3545;
-    --info-color: #17a2b8;
-    --light-color: #f8f9fa;
-    --dark-color: #343a40;
-    --border-color: #dee2e6;
-    --shadow: 0 2px 4px rgba(0,0,0,0.1);
-    --shadow-lg: 0 4px 8px rgba(0,0,0,0.15);
-    --border-radius: 8px;
-    --transition: all 0.3s ease;
+	--primary-color: #3A5A40; /* Dark Green */
+	--primary-dark: #2F4833; /* Darker Green */
+	--secondary-color: #588157; /* Lighter Green */
+	--
 }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #f5f7fa;
+    background-color: #FBF9F1;
     color: var(--dark-color);
     line-height: 1.6;
 }
@@ -162,7 +152,7 @@ body {
 .form-group input:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(56, 102, 65, 0.1);
 }
 
 /* ===== BUTTONS ===== */
@@ -331,7 +321,7 @@ body {
 .controls select:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(56, 102, 65, 0.1);
 }
 
 .user-info {
@@ -753,6 +743,28 @@ body {
     font-weight: 500;
 }
 
+/* ===== CLIENT SELECTOR ON MAIN SCREEN ===== */
+.current-client-section {
+    margin-bottom: 15px;
+}
+
+.current-client-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.current-client-section select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+}
+
 /* ===== MODAL ===== */
 .modal {
     display: none;
@@ -818,7 +830,7 @@ body {
 
 .payment-btn:hover {
     border-color: var(--primary-color);
-    background: #f8f9ff;
+    background: #F7F2E7;
 }
 
 .payment-btn.active {
@@ -1177,17 +1189,17 @@ body {
 }
 
 .role-admin {
-    background: #dc3545;
+    background: #dc3545; /* Keep red for distinction */
     color: white;
 }
 
 .role-manager {
-    background: #fd7e14;
+    background: var(--secondary-color);
     color: white;
 }
 
 .role-cashier {
-    background: #20c997;
+    background: var(--primary-color);
     color: white;
 }
 
@@ -1287,7 +1299,7 @@ body {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(56, 102, 65, 0.1);
 }
 
 .form-group textarea {
@@ -1498,7 +1510,7 @@ body {
 .category-btn.active {
     background: var(--primary-color);
     color: white;
-    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 8px rgba(56, 102, 65, 0.3);
 }
 
 /* ===== CATEGORIES MANAGEMENT ===== */

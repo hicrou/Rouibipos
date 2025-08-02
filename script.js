@@ -150,11 +150,7 @@ const userRoles = {
 };
 
 // Sample users (in real app, this would be in a database)
-const users = [
-    { id: 1, username: 'admin', password: 'admin123', role: 'admin', name: 'Administrator' },
-    { id: 2, username: 'manager', password: 'manager123', role: 'manager', name: 'Store Manager' },
-    { id: 3, username: 'cashier1', password: 'cashier123', role: 'cashier', name: 'Cashier 1' }
-];
+const users = [];
 
 // Enhanced product data with inventory
 const products = [
@@ -217,7 +213,7 @@ function initializeSystem() {
 
     // Initialize main system
     loadSettings();
-    updateLanguage();
+    generateCategoryButtons();
     displayProducts();
     updateCartDisplay();
     updateTime();
@@ -235,15 +231,7 @@ function initializeSystem() {
 
 function setupEventListeners() {
     // Category buttons
-    document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.addEventListener('click', function () {
-            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentCategory = this.dataset.category;
-            displayProducts();
-        });
-    });
-
+     
     // Cart actions
     document.getElementById('clear-cart').addEventListener('click', clearCart);
     document.getElementById('checkout').addEventListener('click', openCheckout);

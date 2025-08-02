@@ -226,7 +226,23 @@ const languages = {
         englishName: 'English Name',
         arabicName: 'Arabic Name',
         frenchName: 'French Name',
-        spanishName: 'Spanish Name'
+        spanishName: 'Spanish Name',
+        clients: 'Clients',
+        addClient: 'Add Client',
+        editClient: 'Edit Client',
+        clientName: 'Client Name',
+        clientPhone: 'Client Phone',
+        clientAddress: 'Client Address',
+        selectClient: 'Select Client (Optional)',
+        noClient: 'No Client',
+        payLater: 'Pay Later (Unpaid)',
+        completePaidSale: 'Complete (Paid)',
+        unpaid: 'Unpaid',
+        paid: 'Paid',
+        paymentStatus: 'Payment Status',
+        clientDebt: 'Client Debt',
+        viewDebts: 'View Debts',
+        markAsPaid: 'Mark as Paid'
     },
     ar: {
         welcome: 'مرحباً بـ MyPOS',
@@ -450,7 +466,23 @@ const languages = {
         englishName: 'الاسم الإنجليزي',
         arabicName: 'الاسم العربي',
         frenchName: 'الاسم الفرنسي',
-        spanishName: 'الاسم الإسباني'
+        spanishName: 'الاسم الإسباني',
+        clients: 'العملاء',
+        addClient: 'إضافة عميل',
+        editClient: 'تعديل عميل',
+        clientName: 'اسم العميل',
+        clientPhone: 'هاتف العميل',
+        clientAddress: 'عنوان العميل',
+        selectClient: 'اختر عميل (اختياري)',
+        noClient: 'بدون عميل',
+        payLater: 'الدفع لاحقاً (غير مدفوع)',
+        completePaidSale: 'إتمام (مدفوع)',
+        unpaid: 'غير مدفوع',
+        paid: 'مدفوع',
+        paymentStatus: 'حالة الدفع',
+        clientDebt: 'ديون العميل',
+        viewDebts: 'عرض الديون',
+        markAsPaid: 'تحديد كمدفوع'
     },
     fr: {
         welcome: 'Bienvenue à MyPOS',
@@ -662,7 +694,23 @@ const languages = {
         englishName: 'Nom Anglais',
         arabicName: 'Nom Arabe',
         frenchName: 'Nom Français',
-        spanishName: 'Nom Espagnol'
+        spanishName: 'Nom Espagnol',
+        clients: 'Clients',
+        addClient: 'Ajouter Client',
+        editClient: 'Modifier Client',
+        clientName: 'Nom du Client',
+        clientPhone: 'Téléphone Client',
+        clientAddress: 'Adresse Client',
+        selectClient: 'Sélectionner Client (Optionnel)',
+        noClient: 'Aucun Client',
+        payLater: 'Payer Plus Tard (Impayé)',
+        completePaidSale: 'Terminer (Payé)',
+        unpaid: 'Impayé',
+        paid: 'Payé',
+        paymentStatus: 'Statut de Paiement',
+        clientDebt: 'Dette Client',
+        viewDebts: 'Voir Dettes',
+        markAsPaid: 'Marquer comme Payé'
     },
     es: {
         welcome: 'Bienvenido a MyPOS',
@@ -874,7 +922,23 @@ const languages = {
         englishName: 'Nombre en Inglés',
         arabicName: 'Nombre en Árabe',
         frenchName: 'Nombre en Francés',
-        spanishName: 'Nombre en Español'
+        spanishName: 'Nombre en Español',
+        clients: 'Clientes',
+        addClient: 'Agregar Cliente',
+        editClient: 'Editar Cliente',
+        clientName: 'Nombre del Cliente',
+        clientPhone: 'Teléfono del Cliente',
+        clientAddress: 'Dirección del Cliente',
+        selectClient: 'Seleccionar Cliente (Opcional)',
+        noClient: 'Sin Cliente',
+        payLater: 'Pagar Después (No Pagado)',
+        completePaidSale: 'Completar (Pagado)',
+        unpaid: 'No Pagado',
+        paid: 'Pagado',
+        paymentStatus: 'Estado de Pago',
+        clientDebt: 'Deuda del Cliente',
+        viewDebts: 'Ver Deudas',
+        markAsPaid: 'Marcar como Pagado'
     }
 };
 
@@ -987,6 +1051,12 @@ const users = [
     { id: 5, username: 'cashier3', password: 'cashier123', role: 'cashier', name: 'Omar Benali', active: true, cardNumber: '1005', cardAccess: false }
 ];
 
+// Client data
+let clients = loadFromStorage('clients', [
+    { id: 1, name: 'Walk-in Customer', phone: 'N/A', address: 'N/A' },
+    { id: 2, name: 'John Doe', phone: '555-1234', address: '123 Main St' }
+]);
+
 // Categories management - Enhanced for hardware store
 let categories = JSON.parse(localStorage.getItem('categories')) || [
     { id: 1, name: 'Food', nameAr: 'طعام', nameFr: 'Nourriture', nameEs: 'Comida', active: true },
@@ -1000,125 +1070,37 @@ let categories = JSON.parse(localStorage.getItem('categories')) || [
 ];
 
 // Enhanced product data with full inventory management, images, and expiry dates
-const products = [
+let products = [
     {
-        id: 1, name: 'Hamburger', nameAr: 'همبرغر', nameFr: 'Hamburger', nameEs: 'Hamburguesa',
-        price: 8.99, category: 'food', stock: 25, minStock: 5, maxStock: 100,
-        barcode: '1234567890123', supplier: 'Food Corp', cost: 5.50, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRkY2QjM1Ii8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🍔</dGV4dD4KPC9zdmc+',
-        expiryDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 7 days from now
-    },
-    {
-        id: 2, name: 'Cheeseburger', nameAr: 'تشيز برغر', nameFr: 'Cheeseburger', nameEs: 'Hamburguesa con Queso',
-        price: 9.99, category: 'food', stock: 20, minStock: 5, maxStock: 80,
-        barcode: '1234567890124', supplier: 'Food Corp', cost: 6.20, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRkZENzAwIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🧀🍔</dGV4dD4KPC9zdmc+',
-        expiryDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 5 days from now
-    },
-    {
-        id: 3, name: 'French Fries', nameAr: 'بطاطس مقلية', nameFr: 'Frites', nameEs: 'Papas Fritas',
-        price: 3.99, category: 'food', stock: 50, minStock: 10, maxStock: 200,
-        barcode: '1234567890125', supplier: 'Food Corp', cost: 1.80, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRkZBNTAwIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🍟</dGV4dD4KPC9zdmc+',
-        expiryDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 3 days from now
-    },
-    {
-        id: 4, name: 'Chicken Wings', nameAr: 'أجنحة دجاج', nameFr: 'Ailes de Poulet', nameEs: 'Alitas de Pollo',
-        price: 12.99, category: 'food', stock: 15, minStock: 5, maxStock: 60,
-        barcode: '1234567890126', supplier: 'Poultry Plus', cost: 8.50, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjOEI0NTEzIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🍗</dGV4dD4KPC9zdmc+',
-        expiryDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 2 days from now (near expiry)
-    },
-    {
-        id: 5, name: 'Caesar Salad', nameAr: 'سلطة قيصر', nameFr: 'Salade César', nameEs: 'Ensalada César',
-        price: 7.99, category: 'food', stock: 12, minStock: 5, maxStock: 40,
-        barcode: '1234567890127', supplier: 'Fresh Greens', cost: 4.20, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMzJDRDMyIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🥗</dGV4dD4KPC9zdmc+',
-        expiryDate: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 1 day from now (near expiry)
-    },
-    {
-        id: 6, name: 'Coca Cola', nameAr: 'كوكا كولا', nameFr: 'Coca Cola', nameEs: 'Coca Cola',
-        price: 2.99, category: 'drinks', stock: 100, minStock: 20, maxStock: 500,
-        barcode: '1234567890128', supplier: 'Beverage Co', cost: 1.50, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjREMyNjI2Ii8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🥤</dGV4dD4KPC9zdmc+',
-        expiryDate: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 1 year from now
-    },
-    {
-        id: 7, name: 'Orange Juice', nameAr: 'عصير برتقال', nameFr: 'Jus d\'Orange', nameEs: 'Jugo de Naranja',
-        price: 3.49, category: 'drinks', stock: 30, minStock: 10, maxStock: 150,
-        barcode: '1234567890129', supplier: 'Juice Factory', cost: 2.10, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRkZBNTAwIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🍊</dGV4dD4KPC9zdmc+',
-        expiryDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 14 days from now
-    },
-    {
-        id: 8, name: 'Coffee', nameAr: 'قهوة', nameFr: 'Café', nameEs: 'Café',
-        price: 2.49, category: 'drinks', stock: 80, minStock: 15, maxStock: 300,
-        barcode: '1234567890130', supplier: 'Coffee Roasters', cost: 1.20, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjNkY0RTM3Ii8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+☕</dGV4dD4KPC9zdmc+',
-        expiryDate: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 6 months from now
-    },
-    {
-        id: 9, name: 'Water Bottle', nameAr: 'زجاجة ماء', nameFr: 'Bouteille d\'Eau', nameEs: 'Botella de Agua',
-        price: 1.99, category: 'drinks', stock: 200, minStock: 50, maxStock: 1000,
-        barcode: '1234567890131', supplier: 'Pure Water', cost: 0.80, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMDA5NkZGIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+💧</dGV4dD4KPC9zdmc+',
-        expiryDate: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 2 years from now
-    },
-    {
-        id: 10, name: 'Potato Chips', nameAr: 'رقائق البطاطس', nameFr: 'Chips de Pomme de Terre', nameEs: 'Papas Fritas',
-        price: 2.99, category: 'snacks', stock: 3, minStock: 10, maxStock: 200,
-        barcode: '1234567890132', supplier: 'Snack Foods', cost: 1.50, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRkZENzAwIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🥔</dGV4dD4KPC9zdmc+',
-        expiryDate: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 3 months from now
-    },
-    {
-        id: 11, name: 'Chocolate Bar', nameAr: 'لوح شوكولاتة', nameFr: 'Barre de Chocolat', nameEs: 'Barra de Chocolate',
-        price: 1.99, category: 'snacks', stock: 45, minStock: 15, maxStock: 150,
-        barcode: '1234567890133', supplier: 'Sweet Treats', cost: 1.10, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjOEI0NTEzIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🍫</dGV4dD4KPC9zdmc+',
-        expiryDate: new Date(Date.now() + 120 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 4 months from now
-    },
-    {
-        id: 12, name: 'Cookies', nameAr: 'كوكيز', nameFr: 'Biscuits', nameEs: 'Galletas',
-        price: 3.49, category: 'snacks', stock: 2, minStock: 8, maxStock: 100,
-        barcode: '1234567890134', supplier: 'Bakery Plus', cost: 2.00, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRDI2OTFFIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🍪</dGV4dD4KPC9zdmc+',
-        expiryDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] // 1 day ago (expired)
-    },
-
-    // ===== HARDWARE PRODUCTS - ALGERIA MARKET =====
-
-    // TOOLS CATEGORY
-    {
-        id: 13, name: 'Hammer', nameAr: 'مطرقة', nameFr: 'Marteau', nameEs: 'Martillo',
+        id: 1, name: 'Hammer', nameAr: 'مطرقة', nameFr: 'Marteau', nameEs: 'Martillo',
         price: 1250, category: 'tools', stock: 25, minStock: 5, maxStock: 100,
         barcode: '2001001001', supplier: 'Algeria Tools Co', cost: 850, active: true,
         image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjOEI0NTEzIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🔨</dGV4dD4KPC9zdmc+',
         expiryDate: null
     },
     {
-        id: 14, name: 'Screwdriver Set', nameAr: 'مجموعة مفكات', nameFr: 'Jeu de Tournevis', nameEs: 'Juego de Destornilladores',
+        id: 2, name: 'Screwdriver Set', nameAr: 'مجموعة مفكات', nameFr: 'Jeu de Tournevis', nameEs: 'Juego de Destornilladores',
         price: 850, category: 'tools', stock: 40, minStock: 10, maxStock: 150,
         barcode: '2001001002', supplier: 'Algeria Tools Co', cost: 580, active: true,
         image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjNDY5MEU3Ii8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🪛</dGV4dD4KPC9zdmc+',
         expiryDate: null
     },
     {
-        id: 15, name: 'Wrench Set', nameAr: 'مجموعة مفاتيح ربط', nameFr: 'Jeu de Clés', nameEs: 'Juego de Llaves',
+        id: 3, name: 'Wrench Set', nameAr: 'مجموعة مفاتيح ربط', nameFr: 'Jeu de Clés', nameEs: 'Juego de Llaves',
         price: 1450, category: 'tools', stock: 30, minStock: 8, maxStock: 120,
         barcode: '2001001003', supplier: 'Algeria Tools Co', cost: 980, active: true,
         image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjNkM3NTdEIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🔧</dGV4dD4KPC9zdmc+',
         expiryDate: null
     },
     {
-        id: 16, name: 'Drill Bits Set', nameAr: 'مجموعة لقم الحفر', nameFr: 'Jeu de Forets', nameEs: 'Juego de Brocas',
+        id: 4, name: 'Drill Bits Set', nameAr: 'مجموعة لقم الحفر', nameFr: 'Jeu de Forets', nameEs: 'Juego de Brocas',
         price: 750, category: 'tools', stock: 50, minStock: 15, maxStock: 200,
         barcode: '2001001004', supplier: 'Algeria Tools Co', cost: 480, active: true,
         image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMzQ0OTVFIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🪚</dGV4dD4KPC9zdmc+',
         expiryDate: null
     },
     {
-        id: 17, name: 'Measuring Tape', nameAr: 'شريط قياس', nameFr: 'Mètre Ruban', nameEs: 'Cinta Métrica',
+        id: 5, name: 'Measuring Tape', nameAr: 'شريط قياس', nameFr: 'Mètre Ruban', nameEs: 'Cinta Métrica',
         price: 450, category: 'tools', stock: 60, minStock: 20, maxStock: 250,
         barcode: '2001001005', supplier: 'Algeria Tools Co', cost: 280, active: true,
         image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRkZENzAwIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+📏</dGV4dD4KPC9zdmc+',
@@ -1127,35 +1109,35 @@ const products = [
 
     // HARDWARE CATEGORY
     {
-        id: 18, name: 'Wood Screws 4x50mm (100pcs)', nameAr: 'براغي خشب 4×50مم (100 قطعة)', nameFr: 'Vis à Bois 4x50mm (100pcs)', nameEs: 'Tornillos para Madera 4x50mm (100pcs)',
+        id: 6, name: 'Wood Screws 4x50mm (100pcs)', nameAr: 'براغي خشب 4×50مم (100 قطعة)', nameFr: 'Vis à Bois 4x50mm (100pcs)', nameEs: 'Tornillos para Madera 4x50mm (100pcs)',
         price: 320, category: 'hardware', stock: 200, minStock: 50, maxStock: 1000,
         barcode: '2002001001', supplier: 'Algerian Hardware Supply', cost: 180, active: true,
         image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjNkM3NTdEIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🔩</dGV4dD4KPC9zdmc+',
         expiryDate: null
     },
     {
-        id: 19, name: 'Metal Bolts M8x40mm (50pcs)', nameAr: 'براغي معدنية M8×40مم (50 قطعة)', nameFr: 'Boulons Métal M8x40mm (50pcs)', nameEs: 'Pernos de Metal M8x40mm (50pcs)',
+        id: 7, name: 'Metal Bolts M8x40mm (50pcs)', nameAr: 'براغي معدنية M8×40مم (50 قطعة)', nameFr: 'Boulons Métal M8x40mm (50pcs)', nameEs: 'Pernos de Metal M8x40mm (50pcs)',
         price: 580, category: 'hardware', stock: 150, minStock: 30, maxStock: 800,
         barcode: '2002001002', supplier: 'Algerian Hardware Supply', cost: 350, active: true,
         image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjNDk1MDU3Ii8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+⚙️</dGV4dD4KPC9zdmc+',
         expiryDate: null
     },
     {
-        id: 20, name: 'Nails 3 inch (1kg)', nameAr: 'مسامير 3 بوصة (1 كيلو)', nameFr: 'Clous 3 pouces (1kg)', nameEs: 'Clavos 3 pulgadas (1kg)',
+        id: 8, name: 'Nails 3 inch (1kg)', nameAr: 'مسامير 3 بوصة (1 كيلو)', nameFr: 'Clous 3 pouces (1kg)', nameEs: 'Clavos 3 pulgadas (1kg)',
         price: 420, category: 'hardware', stock: 80, minStock: 20, maxStock: 400,
         barcode: '2002001003', supplier: 'Algerian Hardware Supply', cost: 250, active: true,
         image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjOEI0NTEzIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+📌</dGV4dD4KPC9zdmc+',
         expiryDate: null
     },
     {
-        id: 21, name: 'Washers Assorted (200pcs)', nameAr: 'حلقات معدنية متنوعة (200 قطعة)', nameFr: 'Rondelles Assorties (200pcs)', nameEs: 'Arandelas Surtidas (200pcs)',
+        id: 9, name: 'Washers Assorted (200pcs)', nameAr: 'حلقات معدنية متنوعة (200 قطعة)', nameFr: 'Rondelles Assorties (200pcs)', nameEs: 'Arandelas Surtidas (200pcs)',
         price: 280, category: 'hardware', stock: 120, minStock: 25, maxStock: 600,
         barcode: '2002001004', supplier: 'Algerian Hardware Supply', cost: 160, active: true,
         image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjNkM3NTdEIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+⭕</dGV4dD4KPC9zdmc+',
         expiryDate: null
     },
     {
-        id: 22, name: 'Hinges 3 inch (pair)', nameAr: 'مفصلات 3 بوصة (زوج)', nameFr: 'Charnières 3 pouces (paire)', nameEs: 'Bisagras 3 pulgadas (par)',
+        id: 10, name: 'Hinges 3 inch (pair)', nameAr: 'مفصلات 3 بوصة (زوج)', nameFr: 'Charnières 3 pouces (paire)', nameEs: 'Bisagras 3 pulgadas (par)',
         price: 650, category: 'hardware', stock: 45, minStock: 10, maxStock: 200,
         barcode: '2002001005', supplier: 'Algerian Hardware Supply', cost: 420, active: true,
         image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjNDk1MDU3Ii8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI">🚪</dGV4dD4KPC9zdmc+',
@@ -1366,12 +1348,7 @@ function showLoginScreen() {
                     </div>
                     <button type="submit" class="btn btn-primary">${t('login')}</button>
                 </form>
-                <div class="demo-users">
-                    <h3>Demo Users:</h3>
-                    <p><strong>Admin:</strong> admin / admin123</p>
-                    <p><strong>Manager:</strong> manager / manager123</p>
-                    <p><strong>Cashier:</strong> cashier1 / cashier123</p>
-                </div>
+               
             </div>
         </div>
     `;
@@ -1623,9 +1600,22 @@ function initializeSystem() {
         return;
     }
 
+    // Load products from storage. If not present, the default array is used.
+    const savedProducts = loadFromStorage('products');
+    if (savedProducts && savedProducts.length > 0) {
+        // If we have saved products, use them instead of the hardcoded defaults.
+        products = savedProducts;
+    } else {
+        // This is likely the first run, so we save the default product list to storage.
+        // This ensures that the initial product data is available.
+        saveToStorage('products', products);
+    }
+
     // Initialize main system
     loadSettings();
     createMainInterface();
+    populateClientSelectors();
+    renderCategoryButtons();
     updateLanguage();
     displayProducts();
     updateCartDisplay();
@@ -1636,11 +1626,26 @@ function initializeSystem() {
     setInterval(updateTime, 1000);
     setInterval(checkLowStock, 60000); // Check every minute
     setInterval(autoSave, 30000); // Auto-save every 30 seconds
+    loadCart();
 
     // Event listeners
     setupEventListeners();
 
     console.log('Professional POS System initialized successfully');
+}
+
+function populateClientSelectors() {
+    const mainClientSelector = document.getElementById('main-client-selector');
+    const checkoutClientSelector = document.getElementById('client-selector');
+
+    const clientOptions = clients.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+
+    if (mainClientSelector) {
+        mainClientSelector.innerHTML = clientOptions;
+    }
+    if (checkoutClientSelector) {
+        checkoutClientSelector.innerHTML = clientOptions;
+    }
 }
 
 function createMainInterface() {
@@ -1661,6 +1666,7 @@ function createMainInterface() {
                         ${hasPermission('inventory') ? `<button class="nav-tab" onclick="switchView('inventory')" data-translate="inventory">${t('inventory')}</button>` : ''}
                         ${hasPermission('inventory') ? `<button class="nav-tab" onclick="switchView('categories')" data-translate="categories">${t('categories')}</button>` : ''}
                         ${hasPermission('reports') ? `<button class="nav-tab" onclick="switchView('reports')" data-translate="reports">${t('reports')}</button>` : ''}
+                        ${hasPermission('users') ? `<button class="nav-tab" onclick="switchView('clients')" data-translate="clients">${t('clients')}</button>` : ''}
                         ${hasPermission('users') ? `<button class="nav-tab" onclick="switchView('users')" data-translate="users">${t('users')}</button>` : ''}
                         ${hasPermission('settings') ? `<button class="nav-tab" onclick="switchView('settings')" data-translate="settings">${t('settings')}</button>` : ''}
                     </div>
@@ -1706,15 +1712,7 @@ function createMainInterface() {
                             </div>
                             <h2 data-translate="categories">${t('categories')}</h2>
                             <div class="category-buttons">
-                                <button class="category-btn active" data-category="all" data-translate="allItems">${t('allItems')}</button>
-                                <button class="category-btn" data-category="food" data-translate="food">${t('food')}</button>
-                                <button class="category-btn" data-category="drinks" data-translate="drinks">${t('drinks')}</button>
-                                <button class="category-btn" data-category="snacks" data-translate="snacks">${t('snacks')}</button>
-                                <button class="category-btn" data-category="tools" data-translate="tools">${t('tools')}</button>
-                                <button class="category-btn" data-category="hardware" data-translate="hardware">${t('hardware')}</button>
-                                <button class="category-btn" data-category="construction" data-translate="construction">${t('construction')}</button>
-                                <button class="category-btn" data-category="electrical" data-translate="electrical">${t('electrical')}</button>
-                                <button class="category-btn" data-category="plumbing" data-translate="plumbing">${t('plumbing')}</button>
+                                <!-- Buttons are now generated dynamically -->
                             </div>
                             <div class="low-stock-alert" id="low-stock-alert" style="display: none;">
                                 <h3 data-translate="lowStock">${t('lowStock')}</h3>
@@ -1732,6 +1730,12 @@ function createMainInterface() {
 
                         <!-- Shopping Cart -->
                         <section class="cart-section">
+                            <div class="current-client-section">
+                                <label for="main-client-selector" data-translate="selectClient">${t('selectClient')}</label>
+                                <select id="main-client-selector">
+                                    <!-- Client options populated by JS -->
+                                </select>
+                            </div>
                             <h2 data-translate="currentOrder">${t('currentOrder')}</h2>
                             <div class="cart-items" id="cart-items">
                                 <p class="empty-cart" data-translate="emptyCart">${t('emptyCart')}</p>
@@ -1772,6 +1776,13 @@ function createMainInterface() {
                     </div>
                 </div>
 
+                <div id="clients-view" class="view" style="display: none;">
+                    <h2 data-translate="clients">${t('clients')}</h2>
+                    <div class="clients-content">
+                        <!-- Client management will be loaded here -->
+                    </div>
+                </div>
+
                 <div id="categories-view" class="view" style="display: none;">
                     <h2 data-translate="categoryManagement">${t('categoryManagement')}</h2>
                     <div class="categories-content">
@@ -1806,6 +1817,13 @@ function createMainInterface() {
         <div class="modal" id="checkout-modal">
             <div class="modal-content">
                 <h2 data-translate="checkout">${t('checkout')}</h2>
+                <div class="form-group">
+                    <label for="client-selector" data-translate="selectClient">${t('selectClient')}</label>
+                    <select id="client-selector">
+                        <option value="0" data-translate="noClient">${t('noClient')}</option>
+                        ${clients.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}
+                    </select>
+                </div>
                 <div class="checkout-summary">
                     <div class="checkout-items" id="checkout-items"></div>
                     <div class="checkout-total">
@@ -1823,7 +1841,8 @@ function createMainInterface() {
                 </div>
                 <div class="modal-actions">
                     <button class="btn btn-secondary" id="cancel-checkout" data-translate="cancel">${t('cancel')}</button>
-                    <button class="btn btn-primary" id="complete-sale">Complete Sale</button>
+                    <button class="btn btn-warning" id="complete-unpaid-sale" data-translate="payLater">${t('payLater')}</button>
+                    <button class="btn btn-primary" id="complete-paid-sale" data-translate="completePaidSale">${t('completePaidSale')}</button>
                 </div>
             </div>
         </div>
@@ -1867,6 +1886,9 @@ function switchView(viewName) {
     switch(viewName) {
         case 'inventory':
             loadInventoryView();
+            break;
+        case 'clients':
+            loadClientsView();
             break;
         case 'categories':
             loadCategoriesView();
@@ -2195,6 +2217,196 @@ function updateProduct(event, productId) {
     alert(`Product "${product.name}" updated successfully!`);
 }
 
+function calculateClientDebt(clientId) {
+    return salesHistory
+        .filter(sale => sale.clientId === clientId && sale.paymentStatus === 'unpaid')
+        .reduce((sum, sale) => sum + sale.total, 0);
+}
+
+function markSaleAsPaid(saleId) {
+    const sale = salesHistory.find(s => s.id === saleId);
+    if (sale) {
+        sale.paymentStatus = 'paid';
+        saveToStorage('salesHistory', salesHistory);
+        alert(`Sale #${sale.id} marked as paid.`);
+        // Refresh the view
+        loadClientsView();
+        // Close any open modals
+        closeModal();
+    }
+}
+
+function showClientDebts(clientId) {
+    const client = clients.find(c => c.id === clientId);
+    const unpaidSales = salesHistory.filter(s => s.clientId === clientId && s.paymentStatus === 'unpaid');
+
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.display = 'block';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <h2>${t('unpaid')} ${t('sales')} for ${client.name}</h2>
+            <div class="sales-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>${t('date')}</th>
+                            <th>${t('receipt')} #</th>
+                            <th>${t('total')}</th>
+                            <th>${t('actions')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${unpaidSales.length > 0 ? unpaidSales.map(sale => `
+                            <tr>
+                                <td>${new Date(sale.date).toLocaleDateString()}</td>
+                                <td>${sale.id}</td>
+                                <td>${formatCurrency(sale.total)}</td>
+                                <td><button class="btn btn-success btn-small" onclick="markSaleAsPaid('${sale.id}')">${t('markAsPaid')}</button></td>
+                            </tr>
+                        `).join('') : `<tr><td colspan="4">No unpaid sales.</td></tr>`}
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeModal()">${t('cancel')}</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function loadClientsView() {
+    const clientsView = document.getElementById('clients-view');
+    clientsView.innerHTML = `
+        <div class="users-header">
+            <h2 data-translate="clients">${t('clients')}</h2>
+            <div class="users-actions">
+                <button class="btn btn-primary" onclick="showAddClientModal()" data-translate="addClient">${t('addClient')}</button>
+            </div>
+        </div>
+        <div class="users-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>${t('name')}</th>
+                        <th>${t('phone')}</th>
+                        <th>${t('address')}</th>
+                        <th>${t('clientDebt')}</th>
+                        <th>${t('actions')}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${generateClientsRows()}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function generateClientsRows() {
+    return clients.map(client => {
+        const debt = calculateClientDebt(client.id);
+        return `
+            <tr>
+                <td>${client.name}</td>
+                <td>${client.phone}</td>
+                <td>${client.address}</td>
+                <td>${formatCurrency(debt)}</td>
+                <td class="actions">
+                    <button class="btn-small btn-primary" onclick="editClient(${client.id})">${t('edit')}</button>
+                    ${debt > 0 ? `<button class="btn-small btn-warning" onclick="showClientDebts(${client.id})">${t('viewDebts')}</button>` : ''}
+                </td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function showAddClientModal() {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.display = 'block';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <h2>${t('addClient')}</h2>
+            <form onsubmit="addNewClient(event)">
+                <div class="form-group">
+                    <label>${t('clientName')}:</label>
+                    <input type="text" id="client-name" required>
+                </div>
+                <div class="form-group">
+                    <label>${t('clientPhone')}:</label>
+                    <input type="text" id="client-phone">
+                </div>
+                <div class="form-group">
+                    <label>${t('clientAddress')}:</label>
+                    <input type="text" id="client-address">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">${t('cancel')}</button>
+                    <button type="submit" class="btn btn-primary">${t('save')}</button>
+                </div>
+            </form>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function addNewClient(event) {
+    event.preventDefault();
+    const newClient = {
+        id: generateId(),
+        name: document.getElementById('client-name').value,
+        phone: document.getElementById('client-phone').value,
+        address: document.getElementById('client-address').value,
+    };
+    clients.push(newClient);
+    saveToStorage('clients', clients);
+    closeModal();
+    loadClientsView();
+    alert(`Client "${newClient.name}" added.`);
+}
+
+function editClient(clientId) {
+    const client = clients.find(c => c.id === clientId);
+    if (!client) return;
+
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.display = 'block';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <h2>${t('editClient')}</h2>
+            <form onsubmit="updateClient(event, ${clientId})">
+                <div class="form-group">
+                    <label>${t('clientName')}:</label>
+                    <input type="text" id="edit-client-name" value="${client.name}" required>
+                </div>
+                <div class="form-group">
+                    <label>${t('clientPhone')}:</label>
+                    <input type="text" id="edit-client-phone" value="${client.phone}">
+                </div>
+                <div class="form-group">
+                    <label>${t('clientAddress')}:</label>
+                    <input type="text" id="edit-client-address" value="${client.address}">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">${t('cancel')}</button>
+                    <button type="submit" class="btn btn-primary">${t('save')}</button>
+                </div>
+            </form>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function updateClient(event, clientId) {
+    event.preventDefault();
+    const client = clients.find(c => c.id === clientId);
+    if (client) {
+        client.name = document.getElementById('edit-client-name').value;
+        client.phone = document.getElementById('edit-client-phone').value;
+        client.address = document.getElementById('edit-client-address').value;
 function adjustStock(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
@@ -2213,7 +2425,7 @@ function adjustStock(productId) {
         alert('Stock cannot be negative');
         return;
     }
-
+}
     product.stock = newStock;
     saveToStorage('products', products);
 
@@ -2222,7 +2434,7 @@ function adjustStock(productId) {
 
     alert(`Stock adjusted for "${product.name}". New stock: ${product.stock}`);
 }
-
+    }
 function deleteProduct(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
@@ -4056,12 +4268,14 @@ function exportCategories() {
 }
 
 function updateProductCategories() {
+    // Refresh category buttons on the main POS view
+    renderCategoryButtons();
+
     // Refresh product display if on sales tab
-    if (currentView === 'sales') {
+    if (currentView === 'pos') {
         displayProducts();
     }
 
-    // Refresh inventory if on inventory tab
     if (currentView === 'inventory') {
         loadInventoryView();
     }
@@ -4323,6 +4537,25 @@ function updateMainLogo() {
 
 // ===== PRODUCT MANAGEMENT =====
 
+function renderCategoryButtons() {
+    const categoryButtonsContainer = document.querySelector('.category-buttons');
+    if (!categoryButtonsContainer) return;
+
+    // Filter for active categories
+    const activeCategories = categories.filter(cat => cat.active);
+
+    const buttonsHTML = `
+        <button class="category-btn active" data-category="all" data-translate="allItems">${t('allItems')}</button>
+        ${activeCategories.map(category => {
+            // The key for filtering products is the lowercase English name
+            const categoryKey = category.name.toLowerCase();
+            return `<button class="category-btn" data-category="${categoryKey}">${getCategoryName(category)}</button>`;
+        }).join('')}
+    `;
+
+    categoryButtonsContainer.innerHTML = buttonsHTML;
+}
+
 function displayProducts() {
     const filteredProducts = currentCategory === 'all'
         ? products.filter(p => p.active)
@@ -4549,6 +4782,13 @@ function openCheckout() {
     const modal = document.getElementById('checkout-modal');
     const checkoutItems = document.getElementById('checkout-items');
     const checkoutTotal = document.getElementById('checkout-total-amount');
+    const clientSelector = document.getElementById('client-selector');
+    const mainClientSelector = document.getElementById('main-client-selector');
+
+    // Sync client from main view to checkout modal
+    if (mainClientSelector && clientSelector) {
+        clientSelector.value = mainClientSelector.value;
+    }
 
     // Display checkout items
     const subtotal = cart.reduce((sum, item) => sum + (convertPrice(item.price) * item.quantity), 0);
@@ -4576,15 +4816,33 @@ function closeCheckout() {
     document.querySelectorAll('.payment-btn').forEach(btn => btn.classList.remove('active'));
 }
 
-function completeSale() {
-    const selectedPayment = document.querySelector('.payment-btn.active');
+function processSale(isPaid) {
+    // Stock check before proceeding
+    for (const cartItem of cart) {
+        const product = products.find(p => p.id === cartItem.id);
+        if (product && product.stock < cartItem.quantity) {
+            alert(`${t('insufficientStock')} for ${getProductName(product)}. ${t('available')}: ${product.stock}`);
+            return; // Stop the sale
+        }
+    }
 
-    if (!selectedPayment) {
-        alert('Please select a payment method');
+    const selectedPayment = document.querySelector('.payment-btn.active');
+    const clientId = document.getElementById('client-selector').value;
+
+    if (isPaid && !selectedPayment) {
+        alert(t('selectPaymentMethod'));
         return;
     }
 
-    const paymentMethod = selectedPayment.dataset.method;
+    // Walk-in customer has id 1, No Client has value "1" or "0".
+    if (!isPaid && (!clientId || parseInt(clientId) <= 1)) {
+        alert('Please select a specific client for an unpaid sale.');
+        return;
+    }
+
+    const paymentMethod = isPaid ? selectedPayment.dataset.method : 'unpaid';
+    const paymentStatus = isPaid ? 'paid' : 'unpaid';
+
     const subtotal = cart.reduce((sum, item) => sum + (convertPrice(item.price) * item.quantity), 0);
     const tax = subtotal * settings.taxRate;
     const total = subtotal + tax;
@@ -4599,15 +4857,15 @@ function completeSale() {
         tax: tax / currencies[currentCurrency].rate,
         total: total / currencies[currentCurrency].rate,
         paymentMethod: paymentMethod,
+        paymentStatus: paymentStatus,
+        clientId: clientId ? parseInt(clientId) : null,
         currency: currentCurrency
     };
 
     // Update inventory
     cart.forEach(cartItem => {
         const product = products.find(p => p.id === cartItem.id);
-        if (product) {
-            product.stock -= cartItem.quantity;
-        }
+        if (product) product.stock -= cartItem.quantity;
     });
 
     // Save sale
@@ -4616,20 +4874,21 @@ function completeSale() {
     saveToStorage('products', products);
 
     // Print receipt if enabled
-    if (settings.printAfterSale) {
+    if (settings.printAfterSale && isPaid) {
         printReceipt(sale);
     }
 
     // Show success message
-    alert(`${t('checkout')} ${t('completed')}!\n${t('total')}: ${formatCurrency(total / currencies[currentCurrency].rate)}\n${t('paymentMethod')}: ${paymentMethod}`);
+    alert(t('saleCompleted'));
 
-    // Clear cart and close modal
+    // Clear cart, update displays, and close modal
     cart = [];
     updateCartDisplay();
     displayProducts(); // Refresh to show updated stock
     closeCheckout();
     saveCart();
 }
+
 
 // ===== PRINTING SYSTEM =====
 
@@ -4801,30 +5060,40 @@ function updateTime() {
 }
 
 function setupEventListeners() {
-    // Category buttons
-    document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentCategory = this.dataset.category;
-            displayProducts();
+    // Category buttons - using event delegation for dynamic buttons
+    const categoryButtonsContainer = document.querySelector('.category-buttons');
+    if (categoryButtonsContainer) {
+        categoryButtonsContainer.addEventListener('click', function(e) {
+            if (e.target.classList.contains('category-btn')) {
+                // Remove active class from all buttons in the container
+                this.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to the clicked button
+                e.target.classList.add('active');
+                // Update current category and display products
+                currentCategory = e.target.dataset.category;
+                displayProducts();
+            }
         });
-    });
+    }
 
     // Cart actions
     const clearCartBtn = document.getElementById('clear-cart');
     const checkoutBtn = document.getElementById('checkout');
     const printReceiptBtn = document.getElementById('print-receipt');
     const printInvoiceBtn = document.getElementById('print-invoice');
+
+    // Checkout modal buttons
     const cancelCheckoutBtn = document.getElementById('cancel-checkout');
-    const completeSaleBtn = document.getElementById('complete-sale');
+    const completeUnpaidSaleBtn = document.getElementById('complete-unpaid-sale');
+    const completePaidSaleBtn = document.getElementById('complete-paid-sale');
 
     if (clearCartBtn) clearCartBtn.addEventListener('click', clearCart);
     if (checkoutBtn) checkoutBtn.addEventListener('click', openCheckout);
     if (printReceiptBtn) printReceiptBtn.addEventListener('click', () => printReceipt());
     if (printInvoiceBtn) printInvoiceBtn.addEventListener('click', () => printInvoice());
     if (cancelCheckoutBtn) cancelCheckoutBtn.addEventListener('click', closeCheckout);
-    if (completeSaleBtn) completeSaleBtn.addEventListener('click', completeSale);
+    if (completeUnpaidSaleBtn) completeUnpaidSaleBtn.addEventListener('click', () => processSale(false));
+    if (completePaidSaleBtn) completePaidSaleBtn.addEventListener('click', () => processSale(true));
 
     // Payment method buttons
     document.querySelectorAll('.payment-btn').forEach(btn => {
@@ -4958,7 +5227,7 @@ window.updateQuantity = updateQuantity;
 window.clearCart = clearCart;
 window.openCheckout = openCheckout;
 window.closeCheckout = closeCheckout;
-window.completeSale = completeSale;
+window.processSale = processSale;
 window.printReceipt = printReceipt;
 window.scanBarcode = scanBarcode;
 
