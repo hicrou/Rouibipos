@@ -6,7 +6,7 @@
 // Multi-language support (English, Arabic, French, Spanish)
 const languages = {
     en: {
-        welcome: 'Welcome to MyPOS',
+    //    welcome: 'Welcome to MyPOS',
         categories: 'Categories',
         products: 'Products',
         currentOrder: 'Current Order',
@@ -1755,12 +1755,12 @@ function createMainInterface() {
                                 </div>
                             </div>
                             <div class="cart-actions">
-                                <button class="btn btn-secondary" id="clear-cart" data-translate="clearCart">${t('clearCart')}</button>
+                                <button class="btn btn-danger" id="clear-cart" data-translate="clearCart">${t('clearCart')}</button>
                                 <button class="btn btn-success" id="print-receipt" data-translate="printReceipt">${t('printReceipt')}</button>
                                 <button class="btn btn-info" id="print-invoice" data-translate="printInvoice">${t('printInvoice')}</button>
                                 <button class="btn btn-primary" id="checkout" data-translate="checkout">${t('checkout')}</button>
                             </div>
-                            <div class="management-actions" style="margin-top: 15px;">
+                            <div class="management-actions">
                                 <button class="btn btn-warning btn-small" onclick="printLowStockReport()" data-translate="printLowStock">${t('printLowStock')}</button>
                                 <button class="btn btn-danger btn-small" onclick="printExpiredItemsReport()" data-translate="printExpired">${t('printExpired')}</button>
                             </div>
