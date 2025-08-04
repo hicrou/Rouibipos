@@ -1098,7 +1098,7 @@ const languages = {
 const currencies = {
     USD: {
         symbol: '$',
-        rate: 1.0,
+        rate: 0.0076,
         names: {
             en: 'US Dollar',
             ar: 'دولار أمريكي',
@@ -1108,7 +1108,7 @@ const currencies = {
     },
     EUR: {
         symbol: '€',
-        rate: 0.85,
+        rate: 0.0066,
         names: {
             en: 'Euro',
             ar: 'يورو',
@@ -1118,7 +1118,7 @@ const currencies = {
     },
     AED: {
         symbol: 'د.إ',
-        rate: 3.67,
+        rate: 0.028,
         names: {
             en: 'UAE Dirham',
             ar: 'درهم إماراتي',
@@ -1128,7 +1128,7 @@ const currencies = {
     },
     SAR: {
         symbol: 'ر.س',
-        rate: 3.75,
+        rate: 0.029,
         names: {
             en: 'Saudi Riyal',
             ar: 'ريال سعودي',
@@ -1138,7 +1138,7 @@ const currencies = {
     },
     DZD: {
         symbol: { en: 'د.ج', ar: 'د.ج', fr: 'DA', es: 'DA' },
-        rate: 134.5,
+        rate: 1,
         names: {
             en: 'Algerian Dinar',
             ar: 'دينار جزائري',
@@ -1148,7 +1148,7 @@ const currencies = {
     },
     GBP: {
         symbol: '£',
-        rate: 0.73,
+        rate: 0.0057,
         names: {
             en: 'British Pound',
             ar: 'جنيه إسترليني',
@@ -1156,19 +1156,11 @@ const currencies = {
             es: 'Libra Esterlina'
         }
     },
-    MAD: {
-        symbol: 'د.م',
-        rate: 10.2,
-        names: {
-            en: 'Moroccan Dirham',
-            ar: 'درهم مغربي',
-            fr: 'Dirham Marocain',
-            es: 'Dirham Marroquí'
-        }
-    },
+   
+   
     TND: {
         symbol: 'د.ت',
-        rate: 3.1,
+        rate: 0.022,
         names: {
             en: 'Tunisian Dinar',
             ar: 'دينار تونسي',
@@ -1392,14 +1384,14 @@ let cart = [];
 let currentCategory = 'all';
 let currentUser = null;
 let currentLanguage = localStorage.getItem('posLanguage') || 'en';
-let currentCurrency = localStorage.getItem('posCurrency') || 'USD';
+let currentCurrency = localStorage.getItem('posCurrency') || 'DZD';
 let salesHistory = JSON.parse(localStorage.getItem('salesHistory')) || [];
 let isLoggedIn = false;
 let currentView = 'pos'; // pos, inventory, reports, settings, users
 
 // System settings
 const settings = {
-    taxRate: parseFloat(localStorage.getItem('taxRate')) || 0.19, // 19% VAT (Algeria standard)
+    taxRate: parseFloat(localStorage.getItem('taxRate')) || 0.0, // 19% VAT (Algeria standard)
     companyName: localStorage.getItem('companyName') || 'My POS System',
     companyAddress: localStorage.getItem('companyAddress') || 'Algiers, Algeria',
     companyPhone: localStorage.getItem('companyPhone') || '+213 21 123 456',
@@ -4172,6 +4164,45 @@ function deleteUser(userId) {
 
 // ===== SETTINGS MANAGEMENT =====
 
+function handleLogoUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    // Validate file type
+    const validTypes = ['image/png', 'image/jpeg', 'image/gif'];
+    if (!validTypes.includes(file.type)) {
+        alert(t('invalidFileType'));
+        return;
+    }
+
+    // Validate file size (e.g., 2MB)
+    if (file.size > 2 * 1024 * 1024) {
+        alert(t('fileTooLarge'));
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        settings.printableLogo = dataUrl;
+        localStorage.setItem('printableLogo', dataUrl);
+
+        // Refresh settings view to show new logo
+        loadSettingsView();
+        alert(t('logoUpdated'));
+    };
+    reader.readAsDataURL(file);
+}
+
+function removeLogo() {
+    if (confirm(t('confirmRemoveLogo'))) {
+        settings.printableLogo = '';
+        localStorage.removeItem('printableLogo');
+        loadSettingsView();
+        alert(t('logoRemoved'));
+    }
+}
+
 function loadSettingsView() {
     if (!hasPermission('settings')) {
         document.getElementById('settings-view').innerHTML = `
@@ -4220,8 +4251,8 @@ function loadSettingsView() {
                 <h3 data-translate="logoSettings">${t('logoSettings')}</h3>
                 <div class="logo-upload-section">
                     <div class="current-logo">
-                        ${settings.companyLogo ? `
-                            <img src="${settings.companyLogo}" alt="Company Logo" id="current-logo-preview" style="max-width: 200px; max-height: 100px; border: 1px solid #ddd; border-radius: 8px;">
+                        ${settings.printableLogo ? `
+                            <img src="${settings.printableLogo}" alt="Company Logo" id="current-logo-preview" style="max-width: 200px; max-height: 100px; border: 1px solid #ddd; border-radius: 8px;">
                             <button type="button" class="btn btn-danger btn-small" onclick="removeLogo()" data-translate="removeLogo">${t('removeLogo')}</button>
                         ` : `
                             <div class="no-logo" style="width: 200px; height: 100px; border: 2px dashed #ddd; display: flex; align-items: center; justify-content: center; color: #666; border-radius: 8px;">
@@ -4230,7 +4261,7 @@ function loadSettingsView() {
                         `}
                     </div>
                     <div class="logo-upload-controls">
-                        <input type="file" id="logo-upload" accept="image/*" style="display: none;" onchange="handleLogoUpload(event)">
+                        <input type="file" id="logo-upload" accept="image/*" style="display: none;" onchange="window.handleLogoUpload(event)">
                         <button type="button" class="btn btn-primary" onclick="document.getElementById('logo-upload').click()" data-translate="uploadLogo">${t('uploadLogo')}</button>
                         <p style="font-size: 12px; color: #666; margin-top: 10px;">
                             ${t('recommendedSize')}: 200x100px, PNG/JPG
@@ -5459,7 +5490,10 @@ function generateReceiptHTML(sale) {
         </head>
         <body>
             <div class="header">
-                <div class="company-name">${settings.companyName}</div>
+                ${settings.printableLogo ?
+                    `<img src="${settings.printableLogo}" alt="${settings.companyName}" style="max-height: 60px; max-width: 150px; margin-bottom: 10px;">` :
+                    `<div class="company-name">${settings.companyName}</div>`
+                }
                 <div>${settings.companyAddress}</div>
                 <div>${settings.companyPhone}</div>
             </div>
@@ -5754,6 +5788,8 @@ window.deleteUser = deleteUser;
 // Settings functions
 window.saveSettings = saveSettings;
 window.createBackup = createBackup;
+window.handleLogoUpload = handleLogoUpload;
+window.removeLogo = removeLogo;
 
 // Printing functions
 window.printInvoice = printInvoice;
