@@ -6,73 +6,79 @@
 // Multi-language support (English, Arabic, French, Spanish)
 const languages = {
     en: {
-    //    welcome: 'Welcome to MyPOS',
-        categories: 'Categories',
-        products: 'Products',
-        currentOrder: 'Current Order',
-        subtotal: 'Subtotal',
-        tax: 'Tax',
-        total: 'Total',
-        clearCart: 'Clear Cart',
-        checkout: 'Checkout',
-        emptyCart: 'No items in cart',
-        allItems: 'All Items',
-        food: 'Food',
-        drinks: 'Drinks',
-        snacks: 'Snacks',
-        cashier: 'Cashier',
-        admin: 'Admin',
-        manager: 'Manager',
+        // Login & Basic UI
+        loginWelcome: 'Welcome to MyPOS',
         login: 'Login',
         logout: 'Logout',
         username: 'Username',
         password: 'Password',
-        lowStock: 'Low Stock Alert',
-        printReceipt: 'Print Receipt',
-        reports: 'Reports',
-        inventory: 'Inventory',
-        settings: 'Settings',
-        currency: 'Currency',
-        language: 'Language',
         sales: 'Sales',
-        dashboard: 'Dashboard',
+        inventory: 'Inventory',
+        reports: 'Reports',
         users: 'Users',
-        addProduct: 'Add Product',
-        editProduct: 'Edit Product',
-        deleteProduct: 'Delete Product',
-        stock: 'Stock',
-        price: 'Price',
-        barcode: 'Barcode',
-        category: 'Category',
+        settings: 'Settings',
+        dashboard: 'Dashboard',
+        
+        // Roles
+        cashier: 'Cashier',
+        admin: 'Admin',
+        manager: 'Manager',
+
+        // Common Actions
+        add: 'Add',
+        edit: 'Edit',
+        delete: 'Delete',
         save: 'Save',
         cancel: 'Cancel',
-        delete: 'Delete',
-        edit: 'Edit',
-        add: 'Add',
         search: 'Search',
         filter: 'Filter',
         export: 'Export',
         import: 'Import',
         backup: 'Backup',
         restore: 'Restore',
-        invoice: 'Invoice',
-        receipt: 'Receipt',
+        print: 'Print',
+        activate: 'Activate',
+        deactivate: 'Deactivate',
+
+        // POS Interface
+        products: 'Products',
+        product: 'Product',
+        categories: 'Categories',
+        currentOrder: 'Current Order',
+        subtotal: 'Subtotal',
+        tax: 'Tax',
+        total: 'Total',
+        clearCart: 'Clear Cart',
+        checkout: 'Checkout',
+        emptyCart: 'Cart is empty',
+        allItems: 'All Items',
+        scanBarcode: 'Scan Barcode',
+        printReceipt: 'Print Receipt',
         printInvoice: 'Print Invoice',
-        lowStockReport: 'Low Stock Report',
-        expiredItems: 'Expired Items',
-        printLowStock: 'Print Low Stock',
-        printExpired: 'Print Expired',
+        
+        // Product & Inventory
+        addProduct: 'Add Product',
+        editProduct: 'Edit Product',
+        deleteProduct: 'Delete Product',
+        productName: 'Product Name',
         productImage: 'Product Image',
-        uploadImage: 'Upload Image',
-        changeImage: 'Change Image',
-        removeImage: 'Remove Image',
+        stock: 'Stock',
+        price: 'Price',
+        cost: 'Cost',
+        barcode: 'Barcode',
+        category: 'Category',
+        supplier: 'Supplier',
         expiryDate: 'Expiry Date',
+        minStock: 'Min Stock',
+        adjustStock: 'Adjust Stock',
+        lowStock: 'Low Stock',
+        outOfStock: 'Out of Stock',
+        inStock: 'In Stock',
+        goodStock: 'Good Stock',
         expired: 'Expired',
         nearExpiry: 'Near Expiry',
-        supplier: 'Supplier',
-        cost: 'Cost',
-        profit: 'Profit',
-        margin: 'Margin',
+        
+        // Reports & Dashboard
         todaysSales: 'Today\'s Sales',
         thisWeek: 'This Week',
         thisMonth: 'This Month',
@@ -89,27 +95,84 @@ const languages = {
         inventoryReport: 'Inventory Report',
         profitReport: 'Profit Report',
         taxReport: 'Tax Report',
+        lowStockReport: 'Low Stock Report',
+        expiredItems: 'Expired Items',
+        printLowStock: 'Print Low Stock',
+        printExpired: 'Print Expired',
+        
+        // Settings & Data
+        companySettings: 'Company Settings',
+        companyName: 'Company Name',
+        companyLogo: 'Company Logo',
+        uploadLogo: 'Upload Logo',
+        removeLogo: 'Remove Logo',
+        logoSettings: 'Logo Settings',
+        address: 'Address',
+        phone: 'Phone',
+        receiptFooter: 'Receipt Footer',
+        saveSettings: 'Save Settings',
+        resetSettings: 'Reset to Defaults',
+        exportData: 'Export Data',
+        importData: 'Import Data',
+        createBackup: 'Create Backup',
+        clearAllData: 'Clear All Data',
+
+        // Clients
+        clients: 'Clients',
+        addClient: 'Add Client',
+        editClient: 'Edit Client',
+        clientName: 'Client Name',
+        clientPhone: 'Client Phone',
+        clientAddress: 'Client Address',
+        selectClient: 'Select Client (Optional)',
+        noClient: 'No Client',
+        clientDebt: 'Client Debt',
+        viewDebts: 'View Debts',
+
+        // Payment
+        paymentMethod: 'Payment Method',
+        paymentStatus: 'Payment Status',
+        payLater: 'Pay Later (Unpaid)',
+        completePaidSale: 'Complete (Paid)',
+        unpaid: 'Unpaid',
+        paid: 'Paid',
+        markAsPaid: 'Mark as Paid',
+
+        // Suppliers
+        suppliers: 'Suppliers',
+        addSupplier: 'Add Supplier',
+        editSupplier: 'Edit Supplier',
+        contactPerson: 'Contact Person',
+        purchases: 'Purchases',
+        recordPurchase: 'Record Purchase',
+        viewPurchases: 'View Purchases',
+        unpaidPurchases: 'Unpaid Purchases',
+        
+        
+        // Statements
+        statementOfAccount: 'Statement of Account',
+        outstandingBalance: 'Outstanding Balance',
+        clientStatement: 'Client Statement',
+        supplierStatement: 'Supplier Statement',
+        
+        // Language & Currency
+        currency: 'Currency',
+        language: 'Language',
+
+        // Misc
+        invoice: 'Invoice',
+        receipt: 'Receipt',
+        uploadImage: 'Upload Image',
+        changeImage: 'Change Image',
+        removeImage: 'Remove Image',
+        profit: 'Profit',
+        margin: 'Margin',
         customerReceipt: 'Customer Receipt',
         businessInvoice: 'Business Invoice',
         companyInfo: 'Company Information',
         customerInfo: 'Customer Information',
         itemsNeedRestocking: 'items need restocking',
         activeProducts: 'active products',
-        outOfStock: 'Out of Stock',
-        inStock: 'In Stock',
-        lowStock: 'Low Stock',
-        goodStock: 'Good Stock',
-        description: 'Description',
-        quantity: 'Quantity',
-        time: 'Time',
-        date: 'Date',
-        summary: 'Summary',
-        urgentAction: 'Urgent Action Required',
-        restockImmediately: 'Restock these items immediately',
-        productName: 'Product Name',
-        currentStock: 'Current Stock',
-        minimumStock: 'Minimum Stock',
-        generatedBy: 'Generated by',
         printedOn: 'Printed on',
         noLowStockItems: 'No low stock items found',
         noExpiredItems: 'No expired or near-expiry items found',
@@ -127,21 +190,6 @@ const languages = {
         scannerConnected: 'Scanner Connected',
         scannerDisconnected: 'Scanner Disconnected',
         cameraAccessError: 'Camera access denied or not available',
-        totalSales: 'Total Sales',
-        totalTransactions: 'Total Transactions',
-        paymentMethod: 'Payment Method',
-        companyLogo: 'Company Logo',
-        uploadLogo: 'Upload Logo',
-        removeLogo: 'Remove Logo',
-        companySettings: 'Company Settings',
-        logoSettings: 'Logo Settings',
-        addProduct: 'Add Product',
-        editProduct: 'Edit Product',
-        allItems: 'All Items',
-        emptyCart: 'Cart is empty',
-        address: 'Address',
-        phone: 'Phone',
-        receiptFooter: 'Receipt Footer',
         recommendedSize: 'Recommended size',
         invalidFileType: 'Please select a valid image file (PNG, JPG, GIF)',
         fileTooLarge: 'File size must be less than 2MB',
@@ -149,35 +197,26 @@ const languages = {
         confirmRemoveLogo: 'Are you sure you want to remove the company logo?',
         logoRemoved: 'Logo removed successfully!',
         addUser: 'Add User',
+        editUser: 'Edit User',
         exportUsers: 'Export Users',
-        saveSettings: 'Save Settings',
-        resetSettings: 'Reset to Defaults',
-        exportData: 'Export Data',
-        importData: 'Import Data',
-        createBackup: 'Create Backup',
-        clearAllData: 'Clear All Data',
-        lowStockReport: 'Low Stock Report',
         inventoryExported: 'Inventory exported successfully!',
         reportsExported: 'Reports exported successfully!',
         usersExported: 'Users exported successfully!',
-        accessDenied: 'Access denied',
-        confirmResetSettings: 'Are you sure you want to reset all settings to defaults?',
-        settingsReset: 'Settings reset to defaults successfully!',
-        dataExported: 'Data exported successfully!',
         confirmImportData: 'This will replace current data. Are you sure?',
         dataImported: 'Data imported successfully!',
         importError: 'Import error',
         confirmClearAllData: 'WARNING: This will delete all products and sales data!',
         confirmClearAllDataFinal: 'FINAL WARNING: This action cannot be undone!',
         allDataCleared: 'All data cleared successfully!',
-        username: 'Username',
         active: 'Active',
         inactive: 'Inactive',
         status: 'Status',
         allStockLevels: 'All Stock Levels',
         lowStockOnly: 'Low Stock Only',
         outOfStockOnly: 'Out of Stock Only',
-        search: 'Search',
+        confirmResetSettings: 'Are you sure you want to reset all settings to defaults?',
+        settingsReset: 'Settings reset to defaults successfully!',
+        dataExported: 'Data exported successfully!',
         selectPaymentMethod: 'Please select a payment method',
         insufficientStock: 'Insufficient stock',
         available: 'Available',
@@ -186,7 +225,6 @@ const languages = {
         cardAccess: 'Card Access',
         categories: 'Categories',
         categoryManagement: 'Category Management',
-        addCategory: 'Add Category',
         editCategory: 'Edit Category',
         categoryName: 'Category Name',
         charts: 'Charts',
@@ -242,77 +280,91 @@ const languages = {
         paymentStatus: 'Payment Status',
         clientDebt: 'Client Debt',
         viewDebts: 'View Debts',
-        markAsPaid: 'Mark as Paid'
+        markAsPaid: 'Mark as Paid',
+        suppliers: 'Suppliers',
+        addSupplier: 'Add Supplier',
+        editSupplier: 'Edit Supplier',
+        contactPerson: 'Contact Person',
+        email: 'Email',
+        purchases: 'Purchases',
+        recordPurchase: 'Record Purchase',
+        viewPurchases: 'View Purchases',
+        unpaidPurchases: 'Unpaid Purchases'
     },
     ar: {
-        welcome: 'مرحباً بـ MyPOS',
-        categories: 'الفئات',
-        products: 'المنتجات',
-        currentOrder: 'الطلب الحالي',
-        subtotal: 'المجموع الفرعي',
-        tax: 'الضريبة',
-        total: 'المجموع',
-        clearCart: 'مسح السلة',
-        checkout: 'الدفع',
-        emptyCart: 'لا توجد عناصر في السلة',
-        allItems: 'جميع العناصر',
-        food: 'طعام',
-        drinks: 'مشروبات',
-        snacks: 'وجبات خفيفة',
-        cashier: 'أمين الصندوق',
-        admin: 'مدير',
-        manager: 'مدير',
+        // Login & Basic UI
+        loginWelcome: 'مرحباً بـ MyPOS',
         login: 'تسجيل الدخول',
         logout: 'تسجيل الخروج',
         username: 'اسم المستخدم',
         password: 'كلمة المرور',
-        lowStock: 'تنبيه مخزون منخفض',
-        printReceipt: 'طباعة الإيصال',
-        reports: 'التقارير',
-        inventory: 'المخزون',
-        settings: 'الإعدادات',
-        currency: 'العملة',
-        language: 'اللغة',
         sales: 'المبيعات',
-        dashboard: 'لوحة التحكم',
+        inventory: 'المخزون',
+        reports: 'التقارير',
         users: 'المستخدمون',
-        addProduct: 'إضافة منتج',
-        editProduct: 'تعديل منتج',
-        deleteProduct: 'حذف منتج',
-        stock: 'المخزون',
-        price: 'السعر',
-        barcode: 'الباركود',
-        category: 'الفئة',
+        settings: 'الإعدادات',
+        dashboard: 'لوحة التحكم',
+
+        // Roles
+        cashier: 'أمين الصندوق',
+        admin: 'مدير النظام',
+        manager: 'مدير',
+
+        // Common Actions
+        add: 'إضافة',
+        edit: 'تعديل',
+        delete: 'حذف',
         save: 'حفظ',
         cancel: 'إلغاء',
-        delete: 'حذف',
-        edit: 'تعديل',
-        add: 'إضافة',
         search: 'بحث',
         filter: 'تصفية',
         export: 'تصدير',
         import: 'استيراد',
         backup: 'نسخ احتياطي',
         restore: 'استعادة',
-        dinar: 'دينار جزائري',
-        invoice: 'فاتورة',
-        receipt: 'إيصال',
+        print: 'طباعة',
+        activate: 'تفعيل',
+        deactivate: 'إلغاء التفعيل',
+
+        // POS Interface
+        products: 'المنتجات',
+        product: 'المنتج',
+        categories: 'الفئات',
+        currentOrder: 'الطلب الحالي',
+        subtotal: 'المجموع الفرعي',
+        tax: 'الضريبة',
+        total: 'المجموع',
+        clearCart: 'مسح السلة',
+        checkout: 'الدفع',
+        emptyCart: 'السلة فارغة',
+        allItems: 'جميع العناصر',
+        scanBarcode: 'مسح الباركود',
+        printReceipt: 'طباعة الإيصال',
         printInvoice: 'طباعة فاتورة',
-        lowStockReport: 'تقرير المخزون المنخفض',
-        expiredItems: 'المواد المنتهية الصلاحية',
-        printLowStock: 'طباعة المخزون المنخفض',
-        printExpired: 'طباعة المنتهية الصلاحية',
+
+        // Product & Inventory
+        addProduct: 'إضافة منتج',
+        editProduct: 'تعديل منتج',
+        deleteProduct: 'حذف منتج',
+        productName: 'اسم المنتج',
         productImage: 'صورة المنتج',
-        uploadImage: 'رفع صورة',
-        changeImage: 'تغيير الصورة',
-        removeImage: 'إزالة الصورة',
+        stock: 'المخزون',
+        price: 'السعر',
+        cost: 'التكلفة',
+        barcode: 'الباركود',
+        category: 'الفئة',
+        supplier: 'المورد',
         expiryDate: 'تاريخ انتهاء الصلاحية',
+        minStock: 'الحد الأدنى للمخزون',
+        adjustStock: 'تعديل المخزون',
+        lowStock: 'تنبيه مخزون منخفض',
+        outOfStock: 'نفد من المخزون',
+        inStock: 'متوفر في المخزون',
+        goodStock: 'مخزون جيد',
         expired: 'منتهي الصلاحية',
         nearExpiry: 'قريب من انتهاء الصلاحية',
-        supplier: 'المورد',
-        cost: 'التكلفة',
-        profit: 'الربح',
-        margin: 'هامش الربح',
+
+        // Reports & Dashboard
         todaysSales: 'مبيعات اليوم',
         thisWeek: 'هذا الأسبوع',
         thisMonth: 'هذا الشهر',
@@ -329,34 +381,89 @@ const languages = {
         inventoryReport: 'تقرير المخزون',
         profitReport: 'تقرير الأرباح',
         taxReport: 'تقرير الضرائب',
+        lowStockReport: 'تقرير المخزون المنخفض',
+        expiredItems: 'المواد المنتهية الصلاحية',
+        printLowStock: 'طباعة المخزون المنخفض',
+        printExpired: 'طباعة المنتهية الصلاحية',
+
+        // Settings & Data
+        companySettings: 'إعدادات الشركة',
+        companyName: 'اسم الشركة',
+        companyLogo: 'شعار الشركة',
+        uploadLogo: 'رفع شعار',
+        removeLogo: 'إزالة الشعار',
+        logoSettings: 'إعدادات الشعار',
+        address: 'العنوان',
+        phone: 'الهاتف',
+        receiptFooter: 'تذييل الإيصال',
+        saveSettings: 'حفظ الإعدادات',
+        resetSettings: 'إعادة تعيين للافتراضي',
+        exportData: 'تصدير البيانات',
+        importData: 'استيراد البيانات',
+        createBackup: 'إنشاء نسخة احتياطية',
+        clearAllData: 'مسح جميع البيانات',
+
+        // Clients
+        clients: 'العملاء',
+        addClient: 'إضافة عميل',
+        editClient: 'تعديل عميل',
+        clientName: 'اسم العميل',
+        clientPhone: 'هاتف العميل',
+        clientAddress: 'عنوان العميل',
+        selectClient: 'اختر عميل (اختياري)',
+        noClient: 'بدون عميل',
+        clientDebt: 'ديون العميل',
+        viewDebts: 'عرض الديون',
+
+        // Payment
+        paymentMethod: 'طريقة الدفع',
+        paymentStatus: 'حالة الدفع',
+        payLater: 'الدفع لاحقاً (غير مدفوع)',
+        completePaidSale: 'إتمام (مدفوع)',
+        unpaid: 'غير مدفوع',
+        paid: 'مدفوع',
+        markAsPaid: 'تحديد كمدفوع',
+
+        // Suppliers
+        suppliers: 'الموردون',
+        addSupplier: 'إضافة مورد',
+        editSupplier: 'تعديل مورد',
+        contactPerson: 'مسؤول الاتصال',
+        purchases: 'المشتريات',
+        recordPurchase: 'تسجيل شراء',
+        viewPurchases: 'عرض المشتريات',
+        unpaidPurchases: 'مشتريات غير مدفوعة',
+
+        // Statements
+        statementOfAccount: 'كشف حساب',
+        outstandingBalance: 'الرصيد المستحق',
+        clientStatement: 'كشف حساب العميل',
+        supplierStatement: 'كشف حساب المورد',
+
+        // Language & Currency
+        currency: 'العملة',
+        language: 'اللغة',
+
+        // Misc
+        invoice: 'فاتورة',
+        receipt: 'إيصال',
+        uploadImage: 'رفع صورة',
+        changeImage: 'تغيير الصورة',
+        removeImage: 'إزالة الصورة',
+        profit: 'الربح',
+        margin: 'هامش الربح',
         customerReceipt: 'إيصال العميل',
         businessInvoice: 'فاتورة تجارية',
         companyInfo: 'معلومات الشركة',
         customerInfo: 'معلومات العميل',
         itemsNeedRestocking: 'عناصر تحتاج إعادة تخزين',
         activeProducts: 'منتجات نشطة',
-        outOfStock: 'نفد من المخزون',
-        inStock: 'متوفر في المخزون',
-        lowStock: 'مخزون منخفض',
-        goodStock: 'مخزون جيد',
-        description: 'الوصف',
-        quantity: 'الكمية',
-        time: 'الوقت',
-        date: 'التاريخ',
-        summary: 'الملخص',
-        urgentAction: 'إجراء عاجل مطلوب',
-        restockImmediately: 'أعد تخزين هذه العناصر فوراً',
-        productName: 'اسم المنتج',
-        currentStock: 'المخزون الحالي',
-        minimumStock: 'الحد الأدنى للمخزون',
-        generatedBy: 'تم إنشاؤه بواسطة',
         printedOn: 'طُبع في',
         noLowStockItems: 'لا توجد عناصر مخزون منخفض',
         noExpiredItems: 'لا توجد عناصر منتهية الصلاحية أو قريبة من انتهاء الصلاحية',
         expiryStatus: 'حالة انتهاء الصلاحية',
         daysUntilExpiry: 'أيام حتى انتهاء الصلاحية',
         daysOverdue: 'أيام متأخرة',
-        scanBarcode: 'مسح الباركود',
         enterBarcode: 'أدخل الباركود',
         useCamera: 'استخدم الكاميرا',
         manualEntry: 'إدخال يدوي',
@@ -482,7 +589,22 @@ const languages = {
         paymentStatus: 'حالة الدفع',
         clientDebt: 'ديون العميل',
         viewDebts: 'عرض الديون',
-        markAsPaid: 'تحديد كمدفوع'
+        markAsPaid: 'تحديد كمدفوع',
+        suppliers: 'الموردون',
+        addSupplier: 'إضافة مورد',
+        editSupplier: 'تعديل مورد',
+        contactPerson: 'مسؤول الاتصال',
+        email: 'البريد الإلكتروني',
+        purchases: 'المشتريات',
+        recordPurchase: 'تسجيل شراء',
+        viewPurchases: 'عرض المشتريات',
+        unpaidPurchases: 'مشتريات غير مدفوعة',
+
+        // Statements
+        statementOfAccount: 'كشف حساب',
+        outstandingBalance: 'الرصيد المستحق',
+        clientStatement: 'كشف حساب العميل',
+        supplierStatement: 'كشف حساب المورد',
     },
     fr: {
         welcome: 'Bienvenue à MyPOS',
@@ -710,7 +832,22 @@ const languages = {
         paymentStatus: 'Statut de Paiement',
         clientDebt: 'Dette Client',
         viewDebts: 'Voir Dettes',
-        markAsPaid: 'Marquer comme Payé'
+        markAsPaid: 'Marquer comme Payé',
+        suppliers: 'Fournisseurs',
+        addSupplier: 'Ajouter Fournisseur',
+        editSupplier: 'Modifier Fournisseur',
+        contactPerson: 'Personne de Contact',
+        email: 'Email',
+        purchases: 'Achats',
+        recordPurchase: 'Enregistrer Achat',
+        viewPurchases: 'Voir Achats',
+        unpaidPurchases: 'Achats Impayés',
+
+        // Statements
+        statementOfAccount: 'Relevé de Compte',
+        outstandingBalance: 'Solde Impayé',
+        clientStatement: 'Relevé Client',
+        supplierStatement: 'Relevé Fournisseur',
     },
     es: {
         welcome: 'Bienvenido a MyPOS',
@@ -938,7 +1075,22 @@ const languages = {
         paymentStatus: 'Estado de Pago',
         clientDebt: 'Deuda del Cliente',
         viewDebts: 'Ver Deudas',
-        markAsPaid: 'Marcar como Pagado'
+        markAsPaid: 'Marcar como Pagado',
+        suppliers: 'Proveedores',
+        addSupplier: 'Agregar Proveedor',
+        editSupplier: 'Editar Proveedor',
+        contactPerson: 'Persona de Contacto',
+        email: 'Email',
+        purchases: 'Compras',
+        recordPurchase: 'Registrar Compra',
+        viewPurchases: 'Ver Compras',
+        unpaidPurchases: 'Compras No Pagadas',
+
+        // Statements
+        statementOfAccount: 'Estado de Cuenta',
+        outstandingBalance: 'Saldo Pendiente',
+        clientStatement: 'Estado de Cuenta del Cliente',
+        supplierStatement: 'Estado de Cuenta del Proveedor',
     }
 };
 
@@ -1057,6 +1209,21 @@ let clients = loadFromStorage('clients', [
     { id: 2, name: 'John Doe', phone: '555-1234', address: '123 Main St' }
 ]);
 
+// Supplier and Purchase data
+let suppliers = loadFromStorage('suppliers', [
+    { id: 1, name: 'Algeria Tools Co', contactPerson: 'Yacine Bouzid', phone: '021-555-001', email: 'contact@algeriatools.dz', address: 'Algiers Industrial Zone' },
+    { id: 2, name: 'Algerian Hardware Supply', contactPerson: 'Amina Khelifi', phone: '041-555-002', email: 'sales@ahsupply.dz', address: 'Oran Commercial District' },
+    { id: 3, name: 'Algeria Construction Materials', contactPerson: 'Karim Belkacem', phone: '031-555-003', email: 'info@acm.dz', address: 'Constantine Materials Hub' },
+    { id: 4, name: 'Algeria Steel Co', contactPerson: 'Nadia Mansouri', phone: '038-555-004', email: 'orders@algeriasteel.dz', address: 'Annaba Steel Complex' },
+    { id: 5, name: 'Algeria Electric Supply', contactPerson: 'Samir Haddad', phone: '025-555-005', email: 'support@aesupply.dz', address: 'Blida Electronics Zone' },
+    { id: 6, name: 'Algeria Plumbing Co', contactPerson: 'Leila Ziani', phone: '036-555-006', email: 'contact@apc.dz', address: 'Setif Industrial Park' }
+]);
+
+let purchases = loadFromStorage('purchases', [
+    { id: 'P202401', supplierId: 1, date: '2024-05-10T10:00:00Z', items: [{ productId: 1, quantity: 10, cost: 850 }], total: 8500, paymentStatus: 'paid' },
+    { id: 'P202402', supplierId: 2, date: '2024-05-15T14:30:00Z', items: [{ productId: 6, quantity: 50, cost: 180 }], total: 9000, paymentStatus: 'unpaid' }
+]);
+
 // Categories management - Enhanced for hardware store
 let categories = JSON.parse(localStorage.getItem('categories')) || [
     { id: 1, name: 'Food', nameAr: 'طعام', nameFr: 'Nourriture', nameEs: 'Comida', active: true },
@@ -1075,35 +1242,35 @@ let products = [
         id: 1, name: 'Hammer', nameAr: 'مطرقة', nameFr: 'Marteau', nameEs: 'Martillo',
         price: 1250, category: 'tools', stock: 25, minStock: 5, maxStock: 100,
         barcode: '2001001001', supplier: 'Algeria Tools Co', cost: 850, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjOEI0NTEzIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🔨</dGV4dD4KPC9zdmc+',
+        image: 'https://placehold.co/100x100/8B4513/FFF?text=🔨',
         expiryDate: null
     },
     {
         id: 2, name: 'Screwdriver Set', nameAr: 'مجموعة مفكات', nameFr: 'Jeu de Tournevis', nameEs: 'Juego de Destornilladores',
         price: 850, category: 'tools', stock: 40, minStock: 10, maxStock: 150,
         barcode: '2001001002', supplier: 'Algeria Tools Co', cost: 580, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjNDY5MEU3Ii8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🪛</dGV4dD4KPC9zdmc+',
+        image: 'https://placehold.co/100x100/4690E7/FFF?text=🪛',
         expiryDate: null
     },
     {
         id: 3, name: 'Wrench Set', nameAr: 'مجموعة مفاتيح ربط', nameFr: 'Jeu de Clés', nameEs: 'Juego de Llaves',
         price: 1450, category: 'tools', stock: 30, minStock: 8, maxStock: 120,
         barcode: '2001001003', supplier: 'Algeria Tools Co', cost: 980, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjNkM3NTdEIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🔧</dGV4dD4KPC9zdmc+',
+        image: 'https://placehold.co/100x100/6C757D/FFF?text=🔧',
         expiryDate: null
     },
     {
         id: 4, name: 'Drill Bits Set', nameAr: 'مجموعة لقم الحفر', nameFr: 'Jeu de Forets', nameEs: 'Juego de Brocas',
         price: 750, category: 'tools', stock: 50, minStock: 15, maxStock: 200,
         barcode: '2001001004', supplier: 'Algeria Tools Co', cost: 480, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMzQ0OTVFIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🪚</dGV4dD4KPC9zdmc+',
+        image: 'https://placehold.co/100x100/34495E/FFF?text=🪚',
         expiryDate: null
     },
     {
         id: 5, name: 'Measuring Tape', nameAr: 'شريط قياس', nameFr: 'Mètre Ruban', nameEs: 'Cinta Métrica',
         price: 450, category: 'tools', stock: 60, minStock: 20, maxStock: 250,
         barcode: '2001001005', supplier: 'Algeria Tools Co', cost: 280, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRkZENzAwIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+📏</dGV4dD4KPC9zdmc+',
+        image: 'https://placehold.co/100x100/FFD700/000?text=📏',
         expiryDate: null
     },
 
@@ -1112,7 +1279,6 @@ let products = [
         id: 6, name: 'Wood Screws 4x50mm (100pcs)', nameAr: 'براغي خشب 4×50مم (100 قطعة)', nameFr: 'Vis à Bois 4x50mm (100pcs)', nameEs: 'Tornillos para Madera 4x50mm (100pcs)',
         price: 320, category: 'hardware', stock: 200, minStock: 50, maxStock: 1000,
         barcode: '2002001001', supplier: 'Algerian Hardware Supply', cost: 180, active: true,
-        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjNkM3NTdEIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+🔩</dGV4dD4KPC9zdmc+',
         expiryDate: null
     },
     {
@@ -1238,7 +1404,8 @@ const settings = {
     companyAddress: localStorage.getItem('companyAddress') || 'Algiers, Algeria',
     companyPhone: localStorage.getItem('companyPhone') || '+213 21 123 456',
     receiptFooter: localStorage.getItem('receiptFooter') || 'شكراً لزيارتكم - Thank you for your visit!',
-    companyLogo: localStorage.getItem('companyLogo') || '',
+    companyLogo: 'logo.png', // Permanent logo for UI
+    printableLogo: localStorage.getItem('printableLogo') || '', // For receipts and invoices
     lowStockThreshold: parseInt(localStorage.getItem('lowStockThreshold')) || 10,
     autoBackup: localStorage.getItem('autoBackup') === 'true',
     printAfterSale: localStorage.getItem('printAfterSale') === 'true',
@@ -1250,6 +1417,16 @@ const settings = {
 // Get translated text
 function t(key) {
     return languages[currentLanguage][key] || key;
+}
+
+// Get locale for date formatting
+function getLocaleForDate() {
+    switch (currentLanguage) {
+        case 'ar': return 'ar-DZ';
+        case 'fr': return 'fr-FR';
+        case 'es': return 'es-ES';
+        default: return 'en-US';
+    }
 }
 
 // Get product name in current language
@@ -1664,6 +1841,7 @@ function createMainInterface() {
                     <div class="nav-tabs">
                         <button class="nav-tab active" onclick="switchView('pos')" data-translate="sales">${t('sales')}</button>
                         ${hasPermission('inventory') ? `<button class="nav-tab" onclick="switchView('inventory')" data-translate="inventory">${t('inventory')}</button>` : ''}
+                        ${hasPermission('inventory') ? `<button class="nav-tab" onclick="switchView('suppliers')" data-translate="suppliers">${t('suppliers')}</button>` : ''}
                         ${hasPermission('inventory') ? `<button class="nav-tab" onclick="switchView('categories')" data-translate="categories">${t('categories')}</button>` : ''}
                         ${hasPermission('reports') ? `<button class="nav-tab" onclick="switchView('reports')" data-translate="reports">${t('reports')}</button>` : ''}
                         ${hasPermission('users') ? `<button class="nav-tab" onclick="switchView('clients')" data-translate="clients">${t('clients')}</button>` : ''}
@@ -1783,6 +1961,11 @@ function createMainInterface() {
                     </div>
                 </div>
 
+                <div id="suppliers-view" class="view" style="display: none;">
+                    <h2 data-translate="suppliers">${t('suppliers')}</h2>
+                    <div class="suppliers-content"></div>
+                </div>
+
                 <div id="categories-view" class="view" style="display: none;">
                     <h2 data-translate="categoryManagement">${t('categoryManagement')}</h2>
                     <div class="categories-content">
@@ -1886,6 +2069,9 @@ function switchView(viewName) {
     switch(viewName) {
         case 'inventory':
             loadInventoryView();
+            break;
+        case 'suppliers':
+            loadSuppliersView();
             break;
         case 'clients':
             loadClientsView();
@@ -2236,6 +2422,159 @@ function markSaleAsPaid(saleId) {
     }
 }
 
+function printSupplierCreditReport(supplierId) {
+    const supplier = suppliers.find(s => s.id === supplierId);
+    if (!supplier) return;
+
+    const unpaidPurchases = purchases.filter(p => p.supplierId === supplierId && p.paymentStatus === 'unpaid');
+    const totalDebt = unpaidPurchases.reduce((sum, purchase) => sum + purchase.total, 0);
+    const locale = getLocaleForDate();
+
+    const reportWindow = window.open('', '_blank');
+    const reportHTML = `
+        <!DOCTYPE html>
+        <html dir="${currentLanguage === 'ar' ? 'rtl' : 'ltr'}" lang="${currentLanguage}">
+        <head>
+            <meta charset="UTF-8">
+            <title>${t('supplierStatement')} - ${supplier.name}</title>
+            <style>
+                body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; font-size: 14px; }
+                .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; border-bottom: 2px solid #333; padding-bottom: 20px; }
+                .company-info h1 { margin: 0 0 10px 0; }
+                .report-details { text-align: right; }
+                .report-title { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+                .supplier-info { margin-bottom: 30px; background: #f8f9fa; padding: 15px; border-radius: 8px; }
+                table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+                th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+                th { background: #f2f2f2; }
+                .total-row { font-weight: bold; background: #e9ecef; }
+                .footer { text-align: center; margin-top: 40px; font-size: 12px; color: #666; }
+                [dir="rtl"] .report-details, [dir="rtl"] th, [dir="rtl"] td { text-align: right; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <div class="company-info">
+                    ${settings.printableLogo ?
+                        `<img src="${settings.printableLogo}" alt="${settings.companyName}" style="max-height: 80px; margin-bottom: 10px;">` :
+                        `<h1>${settings.companyName}</h1>`
+                    }
+                </div>
+                <div class="report-details"><div class="report-title">${t('statementOfAccount')}</div><div><strong>${t('date')}:</strong> ${new Date().toLocaleDateString(locale)}</div></div>
+            </div>
+            <div class="supplier-info">
+                <h3>${t('supplier')}</h3>
+                <p><strong>${t('name')}:</strong> ${supplier.name}</p>
+                <p><strong>${t('contactPerson')}:</strong> ${supplier.contactPerson}</p>
+                <p><strong>${t('phone')}:</strong> ${supplier.phone}</p>
+            </div>
+            <h3>${t('unpaidPurchases')}</h3>
+            <table>
+                <thead><tr><th>${t('date')}</th><th>${t('purchases')} #</th><th>${t('total')}</th></tr></thead>
+                <tbody>
+                    ${unpaidPurchases.map(p => `<tr><td>${new Date(p.date).toLocaleDateString(locale)}</td><td>${p.id}</td><td>${formatCurrency(p.total)}</td></tr>`).join('')}
+                    <tr class="total-row"><td colspan="2"><strong>${t('outstandingBalance')}</strong></td><td><strong>${formatCurrency(totalDebt)}</strong></td></tr>
+                </tbody>
+            </table>
+            <div class="footer"><p>${settings.receiptFooter}</p></div>
+        </body></html>
+    `;
+    reportWindow.document.write(reportHTML);
+    reportWindow.document.close();
+    reportWindow.focus();
+    reportWindow.print();
+}
+
+function printClientCreditReport(clientId) {
+    const client = clients.find(c => c.id === clientId);
+    if (!client) return;
+
+    const unpaidSales = salesHistory.filter(s => s.clientId === clientId && s.paymentStatus === 'unpaid');
+    const totalDebt = unpaidSales.reduce((sum, sale) => sum + sale.total, 0);
+    const locale = getLocaleForDate();
+
+    const reportWindow = window.open('', '_blank');
+    const reportHTML = `
+        <!DOCTYPE html>
+        <html dir="${currentLanguage === 'ar' ? 'rtl' : 'ltr'}" lang="${currentLanguage}">
+        <head>
+            <meta charset="UTF-8">
+            <title>${t('clientStatement')} - ${client.name}</title>
+            <style>
+                body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; font-size: 14px; }
+                .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; border-bottom: 2px solid #333; padding-bottom: 20px; }
+                .company-info h1 { margin: 0 0 10px 0; }
+                .report-details { text-align: right; }
+                .report-title { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+                .client-info { margin-bottom: 30px; background: #f8f9fa; padding: 15px; border-radius: 8px; }
+                table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+                th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+                th { background: #f2f2f2; }
+                .total-row { font-weight: bold; background: #e9ecef; }
+                .footer { text-align: center; margin-top: 40px; font-size: 12px; color: #666; }
+                [dir="rtl"] .report-details, [dir="rtl"] th, [dir="rtl"] td { text-align: right; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <div class="company-info">
+                    ${settings.printableLogo ?
+                        `<img src="${settings.printableLogo}" alt="${settings.companyName}" style="max-height: 80px; margin-bottom: 10px;">` :
+                        `<h1>${settings.companyName}</h1>`
+                    }
+                    <div>${settings.companyAddress}</div>
+                    <div>${settings.companyPhone}</div>
+                </div>
+                <div class="report-details">
+                    <div class="report-title">${t('statementOfAccount')}</div>
+                    <div><strong>${t('date')}:</strong> ${new Date().toLocaleDateString(locale)}</div>
+                </div>
+            </div>
+
+            <div class="client-info">
+                <h3>${t('clientInfo')}</h3>
+                <p><strong>${t('clientName')}:</strong> ${client.name}</p>
+                <p><strong>${t('clientPhone')}:</strong> ${client.phone}</p>
+                <p><strong>${t('clientAddress')}:</strong> ${client.address}</p>
+            </div>
+
+            <h3>${t('unpaidPurchases')}</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>${t('date')}</th>
+                        <th>${t('receipt')} #</th>
+                        <th>${t('total')}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${unpaidSales.map(sale => `
+                        <tr>
+                            <td>${new Date(sale.date).toLocaleDateString(locale)}</td>
+                            <td>${sale.id}</td>
+                            <td>${formatCurrency(sale.total)}</td>
+                        </tr>
+                    `).join('')}
+                    <tr class="total-row">
+                        <td colspan="2"><strong>${t('outstandingBalance')}</strong></td>
+                        <td><strong>${formatCurrency(totalDebt)}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="footer">
+                <p>${settings.receiptFooter}</p>
+            </div>
+        </body>
+        </html>
+    `;
+
+    reportWindow.document.write(reportHTML);
+    reportWindow.document.close();
+    reportWindow.focus();
+    reportWindow.print();
+}
+
 function showClientDebts(clientId) {
     const client = clients.find(c => c.id === clientId);
     const unpaidSales = salesHistory.filter(s => s.clientId === clientId && s.paymentStatus === 'unpaid');
@@ -2244,8 +2583,11 @@ function showClientDebts(clientId) {
     modal.className = 'modal';
     modal.style.display = 'block';
     modal.innerHTML = `
-        <div class="modal-content">
-            <h2>${t('unpaid')} ${t('sales')} for ${client.name}</h2>
+        <div class="modal-content" style="min-width: 700px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>${t('unpaid')} ${t('sales')} for ${client.name}</h2>
+                <button class="btn btn-info" onclick="printClientCreditReport(${clientId})">${t('print')}</button>
+            </div>
             <div class="sales-table">
                 <table>
                     <thead>
@@ -2315,7 +2657,8 @@ function generateClientsRows() {
                 <td>${formatCurrency(debt)}</td>
                 <td class="actions">
                     <button class="btn-small btn-primary" onclick="editClient(${client.id})">${t('edit')}</button>
-                    ${debt > 0 ? `<button class="btn-small btn-warning" onclick="showClientDebts(${client.id})">${t('viewDebts')}</button>` : ''}
+                    <button class="btn-small btn-info" onclick="showClientDebts(${client.id})">${t('viewDebts')}</button>
+                    ${debt > 0 ? `<button class="btn-small btn-warning" onclick="printClientCreditReport(${client.id})">${t('print')}</button>` : ''}
                 </td>
             </tr>
         `;
@@ -2328,7 +2671,6 @@ function showAddClientModal() {
     modal.style.display = 'block';
     modal.innerHTML = `
         <div class="modal-content">
-            <h2>${t('addClient')}</h2>
             <form onsubmit="addNewClient(event)">
                 <div class="form-group">
                     <label>${t('clientName')}:</label>
@@ -2407,6 +2749,13 @@ function updateClient(event, clientId) {
         client.name = document.getElementById('edit-client-name').value;
         client.phone = document.getElementById('edit-client-phone').value;
         client.address = document.getElementById('edit-client-address').value;
+        saveToStorage('clients', clients);
+        closeModal();
+        loadClientsView();
+        alert(`Client "${client.name}" updated.`);
+    }
+}
+
 function adjustStock(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
@@ -2425,7 +2774,7 @@ function adjustStock(productId) {
         alert('Stock cannot be negative');
         return;
     }
-}
+
     product.stock = newStock;
     saveToStorage('products', products);
 
@@ -2434,7 +2783,206 @@ function adjustStock(productId) {
 
     alert(`Stock adjusted for "${product.name}". New stock: ${product.stock}`);
 }
+
+// ===== SUPPLIER & PURCHASE MANAGEMENT =====
+
+function loadSuppliersView() {
+    const suppliersView = document.getElementById('suppliers-view');
+    suppliersView.innerHTML = `
+        <div class="users-header">
+            <h2 data-translate="suppliers">${t('suppliers')}</h2>
+            <div class="users-actions">
+                <button class="btn btn-primary" onclick="showAddSupplierModal()" data-translate="addSupplier">${t('addSupplier')}</button>
+            </div>
+        </div>
+        <div class="users-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>${t('name')}</th>
+                        <th>${t('contactPerson')}</th>
+                        <th>${t('phone')}</th>
+                        <th>${t('email')}</th>
+                        <th>${t('unpaidPurchases')}</th>
+                        <th>${t('actions')}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${generateSuppliersRows()}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function generateSuppliersRows() {
+    return suppliers.map(supplier => {
+        const debt = purchases
+            .filter(p => p.supplierId === supplier.id && p.paymentStatus === 'unpaid')
+            .reduce((sum, p) => sum + p.total, 0);
+
+        return `
+            <tr>
+                <td>${supplier.name}</td>
+                <td>${supplier.contactPerson}</td>
+                <td>${supplier.phone}</td>
+                <td>${supplier.email}</td>
+                <td>${formatCurrency(debt)}</td>
+                <td class="actions">
+                    <button class="btn-small btn-primary" onclick="editSupplier(${supplier.id})">${t('edit')}</button>
+                    <button class="btn-small btn-success" onclick="showRecordPurchaseModal(${supplier.id})">${t('recordPurchase')}</button>
+                    <button class="btn-small btn-info" onclick="showSupplierPurchases(${supplier.id})">${t('viewPurchases')}</button>
+                    ${debt > 0 ? `<button class="btn-small btn-warning" onclick="printSupplierCreditReport(${supplier.id})">${t('print')}</button>` : ''}
+                </td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function showAddSupplierModal() {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.display = 'block';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <h2>${t('addSupplier')}</h2>
+            <form onsubmit="addNewSupplier(event)">
+                <div class="form-group"><label>${t('name')}:</label><input type="text" id="supplier-name" required></div>
+                <div class="form-group"><label>${t('contactPerson')}:</label><input type="text" id="supplier-contact"></div>
+                <div class="form-group"><label>${t('phone')}:</label><input type="text" id="supplier-phone"></div>
+                <div class="form-group"><label>${t('email')}:</label><input type="email" id="supplier-email"></div>
+                <div class="form-group"><label>${t('address')}:</label><input type="text" id="supplier-address"></div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">${t('cancel')}</button>
+                    <button type="submit" class="btn btn-primary">${t('save')}</button>
+                </div>
+            </form>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function addNewSupplier(event) {
+    event.preventDefault();
+    const newSupplier = {
+        id: generateId(),
+        name: document.getElementById('supplier-name').value,
+        contactPerson: document.getElementById('supplier-contact').value,
+        phone: document.getElementById('supplier-phone').value,
+        email: document.getElementById('supplier-email').value,
+        address: document.getElementById('supplier-address').value,
+    };
+    suppliers.push(newSupplier);
+    saveToStorage('suppliers', suppliers);
+    closeModal();
+    loadSuppliersView();
+    alert(`Supplier "${newSupplier.name}" added.`);
+}
+
+function editSupplier(supplierId) {
+    const supplier = suppliers.find(s => s.id === supplierId);
+    if (!supplier) return;
+
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.display = 'block';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <h2>${t('editSupplier')}</h2>
+            <form onsubmit="updateSupplier(event, ${supplierId})">
+                <div class="form-group"><label>${t('name')}:</label><input type="text" id="edit-supplier-name" value="${supplier.name}" required></div>
+                <div class="form-group"><label>${t('contactPerson')}:</label><input type="text" id="edit-supplier-contact" value="${supplier.contactPerson || ''}"></div>
+                <div class="form-group"><label>${t('phone')}:</label><input type="text" id="edit-supplier-phone" value="${supplier.phone || ''}"></div>
+                <div class="form-group"><label>${t('email')}:</label><input type="email" id="edit-supplier-email" value="${supplier.email || ''}"></div>
+                <div class="form-group"><label>${t('address')}:</label><input type="text" id="edit-supplier-address" value="${supplier.address || ''}"></div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">${t('cancel')}</button>
+                    <button type="submit" class="btn btn-primary">${t('save')}</button>
+                </div>
+            </form>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function updateSupplier(event, supplierId) {
+    event.preventDefault();
+    const supplier = suppliers.find(s => s.id === supplierId);
+    if (supplier) {
+        supplier.name = document.getElementById('edit-supplier-name').value;
+        supplier.contactPerson = document.getElementById('edit-supplier-contact').value;
+        supplier.phone = document.getElementById('edit-supplier-phone').value;
+        supplier.email = document.getElementById('edit-supplier-email').value;
+        supplier.address = document.getElementById('edit-supplier-address').value;
+        saveToStorage('suppliers', suppliers);
+        closeModal();
+        loadSuppliersView();
+        alert(`Supplier "${supplier.name}" updated.`);
     }
+}
+
+function showSupplierPurchases(supplierId) {
+    const supplier = suppliers.find(s => s.id === supplierId);
+    const supplierPurchases = purchases.filter(p => p.supplierId === supplierId).reverse();
+
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.display = 'block';
+    modal.innerHTML = `
+        <div class="modal-content" style="min-width: 700px;">
+            <h2>${t('purchases')} from ${supplier.name}</h2>
+            <div class="sales-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>${t('date')}</th>
+                            <th>${t('total')}</th>
+                            <th>${t('paymentStatus')}</th>
+                            <th>${t('actions')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${supplierPurchases.length > 0 ? supplierPurchases.map(p => `
+                            <tr>
+                                <td>${new Date(p.date).toLocaleDateString()}</td>
+                                <td>${formatCurrency(p.total)}</td>
+                                <td><span class="status-badge ${p.paymentStatus === 'paid' ? 'active' : 'inactive'}">${t(p.paymentStatus)}</span></td>
+                                <td>
+                                    ${p.paymentStatus === 'unpaid' ? `<button class="btn btn-success btn-small" onclick="markPurchaseAsPaid('${p.id}')">${t('markAsPaid')}</button>` : ''}
+                                </td>
+                            </tr>
+                        `).join('') : `<tr><td colspan="4">No purchases recorded.</td></tr>`}
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeModal()">${t('cancel')}</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function markPurchaseAsPaid(purchaseId) {
+    const purchase = purchases.find(p => p.id === purchaseId);
+    if (purchase) {
+        purchase.paymentStatus = 'paid';
+        saveToStorage('purchases', purchases);
+        alert(`Purchase #${purchase.id} marked as paid.`);
+        closeModal();
+        loadSuppliersView();
+    }
+}
+
+function showRecordPurchaseModal(supplierId) {
+    // Implementation for recording a new purchase would go here.
+    // This is a complex modal involving adding multiple items.
+    // For now, we'll add a placeholder alert.
+    alert(`Functionality to record a new purchase for supplier ID ${supplierId} is under development.`);
+    // In a full implementation, this would open a modal to add products, quantities, and costs,
+    // which would then update inventory upon saving.
+}
+
 function deleteProduct(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
@@ -2671,7 +3219,10 @@ function generateDailyReport() {
         </head>
         <body>
             <div class="header">
-                <h1>${settings.companyName}</h1>
+                ${settings.printableLogo ?
+                    `<img src="${settings.printableLogo}" alt="${settings.companyName}" style="max-height: 80px; margin-bottom: 10px;">` :
+                    `<h1>${settings.companyName}</h1>`
+                }
                 <h2>${t('dailyReport')}</h2>
                 <p>${t('date')}: ${today}</p>
             </div>
@@ -2746,7 +3297,10 @@ function generateWeeklyReport() {
         </head>
         <body>
             <div class="header">
-                <h1>${settings.companyName}</h1>
+                ${settings.printableLogo ?
+                    `<img src="${settings.printableLogo}" alt="${settings.companyName}" style="max-height: 80px; margin-bottom: 10px;">` :
+                    `<h1>${settings.companyName}</h1>`
+                }
                 <h2>${t('weeklyReport')}</h2>
                 <p>${t('date')}: ${weekAgo.toLocaleDateString()} - ${new Date().toLocaleDateString()}</p>
             </div>
@@ -2947,7 +3501,10 @@ function generateInvoiceHTML(sale) {
         <body>
             <div class="invoice-header">
                 <div class="company-info">
-                    <h1>${settings.companyName}</h1>
+                    ${settings.printableLogo ?
+                        `<img src="${settings.printableLogo}" alt="${settings.companyName}" style="max-height: 80px; margin-bottom: 10px;">` :
+                        `<h1>${settings.companyName}</h1>`
+                    }
                     <div>${settings.companyAddress}</div>
                     <div>${settings.companyPhone}</div>
                 </div>
@@ -3134,7 +3691,10 @@ function generateLowStockReportHTML(lowStockProducts) {
         </head>
         <body>
             <div class="header">
-                <h1>${settings.companyName}</h1>
+                ${settings.printableLogo ?
+                    `<img src="${settings.printableLogo}" alt="${settings.companyName}" style="max-height: 80px; margin-bottom: 10px;">` :
+                    `<h1>${settings.companyName}</h1>`
+                }
                 <h2>${t('lowStockReport')}</h2>
                 <p>${t('date')}: ${currentDate}</p>
             </div>
@@ -3263,7 +3823,10 @@ function generateExpiredItemsReportHTML(expiredProducts, nearExpiryProducts) {
         </head>
         <body>
             <div class="header">
-                <h1>${settings.companyName}</h1>
+                ${settings.printableLogo ?
+                    `<img src="${settings.printableLogo}" alt="${settings.companyName}" style="max-height: 80px; margin-bottom: 10px;">` :
+                    `<h1>${settings.companyName}</h1>`
+                }
                 <h2>${t('expiredItems')} ${t('report')}</h2>
                 <p>${t('date')}: ${currentDate}</p>
             </div>
@@ -3888,7 +4451,6 @@ function resetSettings() {
             companyAddress: 'Algiers, Algeria',
             companyPhone: '+213 21 123 456',
             receiptFooter: 'شكراً لزيارتكم - Thank you for your visit!',
-            companyLogo: '',
             lowStockThreshold: 10,
             autoBackup: false,
             printAfterSale: false,
@@ -3897,6 +4459,9 @@ function resetSettings() {
 
         // Update settings object
         Object.assign(settings, defaultSettings);
+
+        // Also clear the printable logo
+        localStorage.removeItem('printableLogo');
 
         // Clear localStorage
         Object.keys(defaultSettings).forEach(key => {
@@ -4450,74 +5015,6 @@ function initializeProductChart() {
             }
         }
     });
-}
-
-// ===== LOGO MANAGEMENT =====
-
-function handleLogoUpload(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    // Validate file type
-    if (!file.type.startsWith('image/')) {
-        alert(t('invalidFileType'));
-        return;
-    }
-
-    // Validate file size (max 2MB)
-    if (file.size > 2 * 1024 * 1024) {
-        alert(t('fileTooLarge'));
-        return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        const logoData = e.target.result;
-
-        // Update settings
-        settings.companyLogo = logoData;
-        localStorage.setItem('companyLogo', logoData);
-
-        // Update preview
-        updateLogoPreview(logoData);
-
-        // Update main interface logo
-        updateMainLogo();
-
-        alert(t('logoUpdated'));
-    };
-
-    reader.readAsDataURL(file);
-}
-
-function removeLogo() {
-    if (confirm(t('confirmRemoveLogo'))) {
-        settings.companyLogo = '';
-        localStorage.removeItem('companyLogo');
-
-        // Update preview
-        updateLogoPreview('');
-
-        // Update main interface
-        updateMainLogo();
-
-        // Refresh settings view
-        loadSettingsView();
-
-        alert(t('logoRemoved'));
-    }
-}
-
-function updateLogoPreview(logoData) {
-    const preview = document.getElementById('current-logo-preview');
-    if (preview) {
-        if (logoData) {
-            preview.src = logoData;
-            preview.style.display = 'block';
-        } else {
-            preview.style.display = 'none';
-        }
-    }
 }
 
 function updateMainLogo() {
@@ -5239,6 +5736,7 @@ window.editProduct = editProduct;
 window.updateProduct = updateProduct;
 window.adjustStock = adjustStock;
 window.deleteProduct = deleteProduct;
+window.updateImagePreview = updateImagePreview;
 window.closeModal = closeModal;
 
 // Reports functions
@@ -5261,10 +5759,8 @@ window.createBackup = createBackup;
 window.printInvoice = printInvoice;
 window.printLowStockReport = printLowStockReport;
 window.printExpiredItemsReport = printExpiredItemsReport;
-
-// Logo functions
-window.handleLogoUpload = handleLogoUpload;
-window.removeLogo = removeLogo;
+window.printClientCreditReport = printClientCreditReport;
+window.printSupplierCreditReport = printSupplierCreditReport;
 
 // Export/Import functions
 window.exportInventory = exportInventory;
@@ -5291,3 +5787,13 @@ window.exportCategories = exportCategories;
 
 // Charts functions
 window.toggleCharts = toggleCharts;
+
+// Supplier functions
+window.loadSuppliersView = loadSuppliersView;
+window.showAddSupplierModal = showAddSupplierModal;
+window.addNewSupplier = addNewSupplier;
+window.editSupplier = editSupplier;
+window.updateSupplier = updateSupplier;
+window.showRecordPurchaseModal = showRecordPurchaseModal;
+window.showSupplierPurchases = showSupplierPurchases;
+window.markPurchaseAsPaid = markPurchaseAsPaid;
