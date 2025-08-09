@@ -501,26 +501,6 @@ body {
     overflow: hidden;
 }
 
-/* ===== PRODUCT IMAGES ===== */
-.product-image {
-    width: 100%;
-    height: 80px;
-    margin-bottom: 10px;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    background: var(--light-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: var(--border-radius);
-}
-
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));

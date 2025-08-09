@@ -57,6 +57,23 @@ const languages = {
         printInvoice: 'Print Invoice',
         
         // Product & Inventory
+        zakat: 'Zakat', // From previous diff
+        zakatCalculator: 'Zakat Calculator', // From previous diff
+        zakatDescription: 'This tool helps you calculate the Zakat due on your business assets for one lunar year.',
+        nisabHeader: 'Nisab (Threshold)',
+        goldPriceLabel: 'Current Gold Price (per gram)',
+        fetchPriceBtn: 'Fetch Latest Price',
+        nisabLabel: 'Nisab Threshold (based on 85g of gold)',
+        nisabHelper: 'This is calculated from the gold price but can be overridden.',
+        assetsHeader: 'Assets (Zakat-able)',
+        inventoryLabel: 'Inventory Value (at cost)',
+        inventoryHelper: 'Auto-calculated from product costs. You can adjust this value.',
+        cashLabel: 'Cash & Bank Balance',
+        cashPlaceholder: 'Enter total cash and bank balance',
+        receivablesLabel: 'Accounts Receivable (Good-faith credits owed to you)',
+        receivablesHelper: 'Auto-calculated from unpaid client sales. Adjust for any bad debts.',
+        liabilitiesHeader: 'Liabilities (Deductible)',
+        payablesLabel: 'Accounts Payable (Debits you)',
         addProduct: 'Add Product',
         editProduct: 'Edit Product',
         deleteProduct: 'Delete Product',
@@ -116,6 +133,7 @@ const languages = {
         importData: 'Import Data',
         createBackup: 'Create Backup',
         clearAllData: 'Clear All Data',
+        openZakatCalculator: 'Open Zakat Calculator',
 
         // Clients
         clients: 'Clients',
@@ -402,6 +420,7 @@ const languages = {
         importData: 'استيراد البيانات',
         createBackup: 'إنشاء نسخة احتياطية',
         clearAllData: 'مسح جميع البيانات',
+        openZakatCalculator: 'فتح حاسبة الزكاة',
 
         // Clients
         clients: 'العملاء',
@@ -607,7 +626,6 @@ const languages = {
         supplierStatement: 'كشف حساب المورد',
     },
     fr: {
-        welcome: 'Bienvenue à MyPOS',
         categories: 'Catégories',
         products: 'Produits',
         currentOrder: 'Commande Actuelle',
@@ -746,6 +764,7 @@ const languages = {
         importData: 'Importer Données',
         createBackup: 'Créer Sauvegarde',
         clearAllData: 'Effacer Toutes Données',
+        openZakatCalculator: 'Ouvrir Calculateur de Zakat',
         lowStockReport: 'Rapport Stock Faible',
         inventoryExported: 'Inventaire exporté avec succès!',
         reportsExported: 'Rapports exportés avec succès!',
@@ -850,7 +869,6 @@ const languages = {
         supplierStatement: 'Relevé Fournisseur',
     },
     es: {
-        welcome: 'Bienvenido a MyPOS',
         categories: 'Categorías',
         products: 'Productos',
         currentOrder: 'Pedido Actual',
@@ -989,6 +1007,7 @@ const languages = {
         importData: 'Importar Datos',
         createBackup: 'Crear Respaldo',
         clearAllData: 'Limpiar Todos los Datos',
+        openZakatCalculator: 'Abrir Calculadora de Zakat',
         lowStockReport: 'Reporte Stock Bajo',
         inventoryExported: '¡Inventario exportado exitosamente!',
         reportsExported: '¡Reportes exportados exitosamente!',
@@ -1829,7 +1848,7 @@ function createMainInterface() {
                             `<span style="font-weight: bold; color: var(--primary-color); margin-right: 15px;">${settings.companyName}</span>`
                         }
                     </div>
-                    <h1 data-translate="welcome">${t('welcome')}</h1>
+                    <h1>ROUIBIPOS</h1>
                     <div class="nav-tabs">
                         <button class="nav-tab active" onclick="switchView('pos')" data-translate="sales">${t('sales')}</button>
                         ${hasPermission('inventory') ? `<button class="nav-tab" onclick="switchView('inventory')" data-translate="inventory">${t('inventory')}</button>` : ''}
@@ -2087,6 +2106,13 @@ function switchView(viewName) {
 
 function loadInventoryView() {
     const inventoryView = document.getElementById('inventory-view');
+    const categoryOptions = categories
+        .filter(cat => cat.active)
+        .map(category => {
+            const categoryKey = category.name.toLowerCase();
+            return `<option value="${categoryKey}">${getCategoryName(category)}</option>`;
+        }).join('');
+
     inventoryView.innerHTML = `
         <div class="inventory-header">
             <h2 data-translate="inventory">${t('inventory')}</h2>
@@ -2101,14 +2127,7 @@ function loadInventoryView() {
             <input type="text" id="inventory-search" placeholder="${t('search')}..." onkeyup="filterInventory()">
             <select id="category-filter" onchange="filterInventory()">
                 <option value="all">${t('allItems')}</option>
-                <option value="food">${t('food')}</option>
-                <option value="drinks">${t('drinks')}</option>
-                <option value="snacks">${t('snacks')}</option>
-                <option value="tools">${t('tools')}</option>
-                <option value="hardware">${t('hardware')}</option>
-                <option value="construction">${t('construction')}</option>
-                <option value="electrical">${t('electrical')}</option>
-                <option value="plumbing">${t('plumbing')}</option>
+                ${categoryOptions}
             </select>
             <select id="stock-filter" onchange="filterInventory()">
                 <option value="all" data-translate="allStockLevels">${t('allStockLevels')}</option>
@@ -4331,6 +4350,7 @@ function loadSettingsView() {
                 </div>
                 <div class="data-actions">
                     <button class="btn btn-info" onclick="createBackup()" data-translate="createBackup">${t('createBackup')}</button>
+                    <button class="btn btn-success" onclick="window.open('zakat.html', '_blank')" data-translate="openZakatCalculator">${t('openZakatCalculator')}</button>
                     <button class="btn btn-warning" onclick="clearAllData()" data-translate="clearAllData">${t('clearAllData')}</button>
                 </div>
             </div>
@@ -5117,7 +5137,7 @@ function displayProducts() {
         const productCard = document.createElement('div');
         productCard.className = `product-card ${statusClass}`;
         productCard.innerHTML = `
-            ${product.image ? `<div class="product-image"><img src="${product.image}" alt="${productName}" /></div>` : ''}
+            
             <div class="product-info">
                 <h3>${productName}</h3>
                 <div class="price">${formatCurrency(product.price)}</div>

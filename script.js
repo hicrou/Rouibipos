@@ -229,9 +229,40 @@ function initializeSystem() {
     console.log('POS System initialized successfully');
 }
 
+function generateCategoryButtons() {
+    const categoryContainer = document.getElementById('category-buttons');
+    if (!categoryContainer) {
+        console.error('Category button container not found! Please add a <div id="category-buttons"></div> to your HTML.');
+        return;
+    }
+
+    const categories = ['all', ...new Set(products.map(p => p.category))];
+    
+    categoryContainer.innerHTML = '';
+
+    categories.forEach(category => {
+        const button = document.createElement('button');
+        button.className = 'category-btn';
+        const langKey = category === 'all' ? 'allItems' : category;
+        button.textContent = languages[currentLanguage][langKey] || category;
+        button.dataset.category = category;
+
+        if (category === currentCategory) {
+            button.classList.add('active');
+        }
+
+        button.addEventListener('click', () => {
+            currentCategory = category;
+            document.querySelectorAll('#category-buttons .category-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            displayProducts();
+        });
+
+        categoryContainer.appendChild(button);
+    });
+}
+
 function setupEventListeners() {
-    // Category buttons
-     
     // Cart actions
     document.getElementById('clear-cart').addEventListener('click', clearCart);
     document.getElementById('checkout').addEventListener('click', openCheckout);
@@ -254,6 +285,12 @@ function setupEventListeners() {
     });
 }
 
+function formatCurrency(amount) {
+    const currency = currencies[currentCurrency];
+    const convertedAmount = amount * currency.rate;
+    return `${currency.symbol}${convertedAmount.toFixed(2)}`;
+}
+
 function displayProducts() {
     const filteredProducts = currentCategory === 'all'
         ? products
@@ -266,7 +303,7 @@ function displayProducts() {
         productCard.className = 'product-card';
         productCard.innerHTML = `
             <h3>${product.name}</h3>
-            <div class="price">$${product.price.toFixed(2)}</div>
+            <div class="price">${formatCurrency(product.price)}</div>
         `;
 
         productCard.addEventListener('click', () => addToCart(product));
@@ -314,7 +351,7 @@ function updateCartDisplay() {
             <div class="cart-item">
                 <div class="item-info">
                     <div class="item-name">${item.name}</div>
-                    <div class="item-price">$${item.price.toFixed(2)} each</div>
+                    <div class="item-price">${formatCurrency(item.price)} each</div>
                 </div>
                 <div class="quantity-controls">
                     <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
@@ -330,12 +367,12 @@ function updateCartDisplay() {
 
 function updateTotals() {
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const tax = subtotal * 0.08; // 8% tax
+    const tax = subtotal * settings.taxRate;
     const total = subtotal + tax;
 
-    subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-    taxEl.textContent = `$${tax.toFixed(2)}`;
-    totalEl.textContent = `$${total.toFixed(2)}`;
+    subtotalEl.textContent = formatCurrency(subtotal);
+    taxEl.textContent = formatCurrency(tax);
+    totalEl.textContent = formatCurrency(total);
 }
 
 function clearCart() {
@@ -367,10 +404,10 @@ function completeSale() {
     }
 
     const paymentMethod = selectedPayment.dataset.method;
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) * 1.08;
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const total = subtotal * (1 + settings.taxRate);
 
     // Simulate sale completion
-    alert(`Sale completed!\nPayment Method: ${paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)}\nTotal: $${total.toFixed(2)}\nThank you for your purchase!`);
 
     // Clear cart and close modal
     cart = [];
