@@ -265,60 +265,153 @@ body {
 /* ===== TOP NAVIGATION ===== */
 .top-nav {
     background: var(--dark-beige-color);
-    padding: 10px 30px;
-    box-shadow: var(--shadow);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 15px;
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
-.nav-left {
+.top-nav-row1 {
     display: flex;
-    align-items: center;
-    gap: 30px;
     justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.35);
 }
 
-.nav-left h1 {
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-brand h1 {
     color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.nav-select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #ffffff;
+    font-size: 0.88rem;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.user-badge {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    white-space: nowrap;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.time-badge {
+    font-size: 0.85rem;
+    white-space: nowrap;
+    color: #444;
+    font-weight: 500;
+}
+
+.btn-upgrade {
+    background: #f59e0b;
+    border: none;
+    color: white !important;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 6px 14px;
+    border-radius: 6px;
     font-weight: 600;
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+}
+
+.btn-upgrade:hover {
+    background: #d97706;
+}
+
+.btn-logout {
+    white-space: nowrap;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+}
+
+.top-nav-row2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 24px;
+    background: var(--dark-beige-color);
 }
 
 .nav-tabs {
     display: flex;
-    gap: 5px;
+    gap: 6px;
+    flex-wrap: wrap;
 }
 
 .nav-tab {
-    padding: 10px 20px;
+    padding: 8px 16px;
     border: none;
     background: transparent;
     color: var(--dark-color);
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: var(--transition);
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 0.92rem;
 }
 
 .nav-tab:hover {
-    background: #c9bfb1; /* Slightly darker beige for hover */
+    background: rgba(0, 0, 0, 0.08);
 }
 
 .nav-tab.active {
     background: var(--primary-color);
     color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.nav-right {
+.nav-quick-actions {
     display: flex;
     align-items: center;
-    gap: 20px;
-    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn-fullscreen-toggle {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.88rem;
+    transition: background 0.2s ease;
+}
+
+.btn-fullscreen-toggle:hover {
+    background: var(--secondary-color);
 }
 
 .controls {
@@ -1741,4 +1834,195 @@ body {
         box-shadow: none;
         border: 1px solid #000;
     }
+}
+
+/* ===== FULL SCREEN POS MODE ===== */
+body.fullscreen-pos .top-nav {
+    display: none !important;
+}
+
+body.fullscreen-pos .pos-container {
+    height: 100vh;
+    overflow: hidden;
+}
+
+body.fullscreen-pos .main-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+body.fullscreen-pos #pos-view {
+    height: 100vh;
+}
+
+body.fullscreen-pos .pos-layout {
+    height: 100vh;
+    padding-top: 82px; /* Start page content cleanly after quickbar */
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "categories cart"
+        "products cart";
+    gap: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body.fullscreen-pos .categories-section {
+    grid-area: categories;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    overflow: visible;
+}
+
+/* Hide Category Header & Category Buttons list from main tab in Fullscreen Mode - Keep only in topbar */
+body.fullscreen-pos .categories-section > h2[data-translate="categories"],
+body.fullscreen-pos .categories-section > .category-buttons,
+body.fullscreen-pos .category-buttons {
+    display: none !important;
+}
+
+body.fullscreen-pos .categories-section .search-bar {
+    margin-bottom: 0;
+}
+
+body.fullscreen-pos .products-section {
+    grid-area: products;
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+    overflow-y: auto;
+}
+
+body.fullscreen-pos .cart-section {
+    grid-area: cart;
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Fullscreen floating quick-access bar */
+#fullscreen-quickbar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    height: 70px;
+    background: rgba(25, 25, 25, 0.96);
+    backdrop-filter: blur(10px);
+    padding: 6px 20px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+body.fullscreen-pos #fullscreen-quickbar {
+    display: flex;
+}
+
+#fullscreen-quickbar .qb-brand {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+#fullscreen-quickbar .qb-cat-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 10px;
+    padding: 6px 14px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: background 0.2s;
+    min-width: 60px;
+}
+
+#fullscreen-quickbar .qb-cat-btn:hover,
+#fullscreen-quickbar .qb-cat-btn.active {
+    background: var(--primary-color);
+}
+
+#fullscreen-quickbar .qb-cat-btn .qb-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+#fullscreen-quickbar .qb-spacer {
+    flex: 1;
+}
+
+#fullscreen-quickbar .qb-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#fullscreen-quickbar .qb-exit-btn {
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* Bigger product cards in fullscreen */
+body.fullscreen-pos .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 14px;
+}
+
+body.fullscreen-pos .product-card {
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform 0.15s;
+}
+
+body.fullscreen-pos .product-card:hover {
+    transform: scale(1.04);
+}
+
+body.fullscreen-pos .product-image {
+    height: 140px !important;
+}
+
+body.fullscreen-pos .product-info h3 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+body.fullscreen-pos .product-info .price {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary-color);
 }

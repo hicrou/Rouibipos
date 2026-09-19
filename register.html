@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - RouibiPOS</title>
+    <link rel="stylesheet" href="enhanced-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .register-container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: var(--surface);
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+        .register-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+        .btn-register {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-register:hover {
+            background: var(--primary-dark);
+        }
+        .alert {
+            padding: 15px;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            display: none;
+        }
+        .alert.error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #f87171;
+            display: block;
+        }
+        .alert.success {
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #4ade80;
+            display: block;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .success-box {
+            display: none;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-top: 20px;
+            text-align: center;
+        }
+        .success-box.show {
+            display: block;
+        }
+        .slug-display {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            padding: 10px;
+            background: white;
+            border-radius: var(--radius);
+            margin: 10px 0;
+            display: inline-block;
+            border: 2px dashed var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Start your 30-Day Free Trial</h2>
+        <div id="register-alert" class="alert"></div>
+        
+        <form id="register-form">
+            <div class="form-group">
+                <label for="businessName">Store / Business Name *</label>
+                <input type="text" id="businessName" required placeholder="e.g. My Awesome Store">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Optional">
+            </div>
+            <div class="form-group">
+                <label for="adminUsername">Admin Username *</label>
+                <input type="text" id="adminUsername" required placeholder="e.g. admin">
+            </div>
+            <div class="form-group">
+                <label for="adminPassword">Admin Password *</label>
+                <input type="password" id="adminPassword" required minlength="8" placeholder="At least 8 characters">
+            </div>
+            
+            <button type="submit" class="btn-register" id="btn-submit">Create Account</button>
+        </form>
+
+        <div id="success-container" class="success-box">
+            <h3>🎉 Registration Successful!</h3>
+            <p>Your 30-day trial has started.</p>
+            <p>Your unique store ID (Tenant Slug) is:</p>
+            <div class="slug-display" id="display-slug"></div>
+            <p><strong>Please save this ID. You will need it to log in.</strong></p>
+            <button class="btn-register" style="margin-top: 15px;" onclick="window.location.href='index.html'">Go to Login</button>
+        </div>
+        
+        <div class="login-link">
+            <p>Already have an account? <a href="index.html">Login here</a></p>
+        </div>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+</html>

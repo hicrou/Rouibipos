@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade to Pro - RouibiPOS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+    <style>
+        body { background: #f8fafc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .upgrade-container { max-width: 600px; margin: 50px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        .plan-header { text-align: center; margin-bottom: 30px; }
+        .plan-header h2 { color: #0f172a; font-weight: 700; }
+        .plan-header p { color: #64748b; font-size: 1.1rem; }
+        .price { font-size: 2.5rem; font-weight: 800; color: #2563eb; text-align: center; margin: 20px 0; }
+        .price span { font-size: 1rem; color: #64748b; font-weight: normal; }
+        .features-list { list-style: none; padding: 0; margin-bottom: 30px; }
+        .features-list li { margin-bottom: 10px; color: #334155; }
+        .features-list li::before { content: '✓'; color: #16a34a; font-weight: bold; margin-right: 10px; }
+        
+        .payment-methods { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+        .payment-method { border: 2px solid #e2e8f0; border-radius: 8px; padding: 15px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: all 0.2s; }
+        .payment-method:hover { border-color: #cbd5e1; }
+        .payment-method.active { border-color: #2563eb; background-color: #eff6ff; }
+        .payment-method.disabled { opacity: 0.5; cursor: not-allowed; }
+        .payment-method input[type="radio"] { margin-right: 15px; }
+        .payment-method-label { display: flex; align-items: center; width: 100%; cursor: pointer; margin: 0; font-weight: 600; color: #334155; }
+        .badge-soon { background: #cbd5e1; color: #475569; font-size: 0.75rem; padding: 3px 8px; border-radius: 12px; }
+
+        .payment-details { background: #f1f5f9; padding: 20px; border-radius: 8px; margin-bottom: 20px; display: none; }
+        .payment-details.active { display: block; }
+        
+        .btn-upgrade { width: 100%; padding: 12px; font-weight: 600; font-size: 1.1rem; background-color: #2563eb; border: none; color: white; border-radius: 6px; cursor: pointer;}
+        .btn-upgrade:hover { background-color: #1d4ed8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="upgrade-container">
+            <div class="plan-header">
+                <h2>Upgrade to Pro Plan</h2>
+                <p>Unlock the full power of RouibiPOS for your growing business.</p>
+            </div>
+            
+            <div class="price">10,000 DZD <span>/ year</span> <br><small style="font-size: 1rem; color: #64748b;">(Approx. $75 USD)</small></div>
+            
+            <ul class="features-list">
+                <li>Up to 50 Staff Users</li>
+                <li>Manage up to 10,000 Products</li>
+                <li>Priority Customer Support</li>
+                <li>Advanced Analytics & Reports</li>
+                <li>No feature restrictions</li>
+            </ul>
+
+            <h5 class="mb-3">Select Payment Method</h5>
+            <div class="payment-methods">
+                <label class="payment-method active" id="method-cib">
+                    <div class="payment-method-label">
+                        <input type="radio" name="payment_method" value="cib" checked>
+                        CIB / Edahabia (Chargily ePay)
+                    </div>
+                    <img src="https://chargily.com/business/assets/img/logo-cib.svg" height="24" alt="CIB">
+                </label>
+                
+                <label class="payment-method" id="method-paypal">
+                    <div class="payment-method-label">
+                        <input type="radio" name="payment_method" value="paypal">
+                        PayPal
+                    </div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" height="20" alt="PayPal">
+                </label>
+
+                <label class="payment-method" id="method-payoneer">
+                    <div class="payment-method-label">
+                        <input type="radio" name="payment_method" value="payoneer">
+                        Payoneer
+                    </div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Payoneer_logo.svg" height="20" alt="Payoneer">
+                </label>
+
+                <label class="payment-method disabled">
+                    <div class="payment-method-label">
+                        <input type="radio" name="payment_method" value="stripe" disabled>
+                        Stripe (Credit Card)
+                    </div>
+                    <span class="badge-soon">Coming Soon</span>
+                </label>
+            </div>
+
+            <!-- Chargily Details -->
+            <div id="details-cib" class="payment-details active">
+                <p class="mb-3">You will be redirected to the secure Chargily ePay checkout to complete your payment with CIB or Edahabia.</p>
+                <button type="button" class="btn-upgrade" id="btn-chargily">Proceed to Chargily</button>
+            </div>
+
+            <!-- PayPal Details -->
+            <div id="details-paypal" class="payment-details">
+                <p class="mb-3">Pay securely using your PayPal account or a credit card through PayPal.</p>
+                <div id="paypal-button-container"></div>
+            </div>
+
+            <!-- Payoneer Details -->
+            <div id="details-payoneer" class="payment-details">
+                <p class="mb-3">To pay via Payoneer, please send <strong>$75 USD</strong> to our official Payoneer account email:</p>
+                <div class="alert alert-info">
+                    <strong>admin@rouibipos.com</strong>
+                </div>
+                <p class="small text-muted">After sending the payment, click the button below to notify us. We will activate your account manually within 2-4 hours after verifying the transfer.</p>
+                <button type="button" class="btn-upgrade" id="btn-payoneer">I have sent the payment</button>
+            </div>
+
+            <div id="payment-alert" class="alert mt-3 hidden" style="display: none;"></div>
+            
+            <div class="text-center mt-3">
+                <a href="index.html" class="text-decoration-none">← Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check Auth
+        const token = localStorage.getItem('rpos_token') || localStorage.getItem('jwtToken');
+        if (!token) {
+            alert('You must be logged in to upgrade.');
+            window.location.href = 'index.html';
+        }
+
+        // Method Selector Logic
+        const methods = document.querySelectorAll('input[name="payment_method"]');
+        const methodContainers = document.querySelectorAll('.payment-method');
+        const detailsContainers = document.querySelectorAll('.payment-details');
+
+        methods.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                // Remove active classes
+                methodContainers.forEach(c => c.classList.remove('active'));
+                detailsContainers.forEach(d => d.classList.remove('active'));
+                
+                if(!e.target.disabled) {
+                    // Add active class to selected
+                    document.getElementById(`method-${e.target.value}`).classList.add('active');
+                    document.getElementById(`details-${e.target.value}`).classList.add('active');
+                }
+            });
+        });
+
+        const alertBox = document.getElementById('payment-alert');
+
+        function showAlert(message, isSuccess = false) {
+            alertBox.className = `alert ${isSuccess ? 'alert-success' : 'alert-danger'} mt-3`;
+            alertBox.textContent = message;
+            alertBox.style.display = 'block';
+        }
+
+        // CHARGILY EPAY
+        document.getElementById('btn-chargily').addEventListener('click', async () => {
+            const btn = document.getElementById('btn-chargily');
+            btn.disabled = true;
+            btn.innerText = 'Redirecting...';
+            
+            try {
+                const response = await fetch('/api/payment/chargily/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.checkout_url) {
+                    // Redirect to Chargily Checkout URL
+                    window.location.href = data.checkout_url;
+                } else {
+                    showAlert(data.error || 'Failed to initialize Chargily checkout.');
+                    btn.disabled = false;
+                    btn.innerText = 'Proceed to Chargily';
+                }
+            } catch (err) {
+                showAlert('Network error connecting to payment gateway.');
+                btn.disabled = false;
+                btn.innerText = 'Proceed to Chargily';
+            }
+        });
+
+        // PAYONEER
+        document.getElementById('btn-payoneer').addEventListener('click', async () => {
+            const btn = document.getElementById('btn-payoneer');
+            btn.disabled = true;
+            btn.innerText = 'Notifying...';
+            
+            try {
+                const response = await fetch('/api/payment/payoneer/notify', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showAlert(data.message, true);
+                    btn.innerText = 'Notification Sent';
+                } else {
+                    showAlert(data.error || 'Failed to send notification.');
+                    btn.disabled = false;
+                    btn.innerText = 'I have sent the payment';
+                }
+            } catch (err) {
+                showAlert('Network error connecting to server.');
+                btn.disabled = false;
+                btn.innerText = 'I have sent the payment';
+            }
+        });
+
+        // PAYPAL SDK
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '75.00'
+                        },
+                        description: 'RouibiPOS Pro Upgrade (1 Year)'
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(async function(details) {
+                    // Call your server to save the transaction and upgrade the license
+                    try {
+                        const response = await fetch('/api/payment/paypal/capture', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: JSON.stringify({
+                                orderID: data.orderID,
+                                details: details
+                            })
+                        });
+
+                        const serverData = await response.json();
+
+                        if (response.ok) {
+                            showAlert(serverData.message, true);
+                            setTimeout(() => {
+                                window.location.href = 'index.html';
+                            }, 2000);
+                        } else {
+                            showAlert(serverData.error || 'Failed to verify PayPal payment.');
+                        }
+                    } catch (err) {
+                        showAlert('Network error while verifying PayPal payment.');
+                    }
+                });
+            },
+            onError: function (err) {
+                showAlert('PayPal encountered an error during checkout.');
+                console.error(err);
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>

@@ -187,6 +187,7 @@ const languages = {
         margin: 'Margin',
         customerReceipt: 'Customer Receipt',
         businessInvoice: 'Business Invoice',
+        transactionDetails: 'Transaction Details',
         companyInfo: 'Company Information',
         customerInfo: 'Customer Information',
         itemsNeedRestocking: 'items need restocking',
@@ -208,6 +209,11 @@ const languages = {
         scannerConnected: 'Scanner Connected',
         scannerDisconnected: 'Scanner Disconnected',
         cameraAccessError: 'Camera access denied or not available',
+        productImage: 'Product Image',
+        searchImage: 'Search Image',
+        fetchDetails: 'Fetch Details',
+        fullScreenPOS: 'Full Screen POS',
+        exitFullScreen: 'Exit Full Screen',
         recommendedSize: 'Recommended size',
         invalidFileType: 'Please select a valid image file (PNG, JPG, GIF)',
         fileTooLarge: 'File size must be less than 2MB',
@@ -307,7 +313,95 @@ const languages = {
         purchases: 'Purchases',
         recordPurchase: 'Record Purchase',
         viewPurchases: 'View Purchases',
-        unpaidPurchases: 'Unpaid Purchases'
+        unpaidPurchases: 'Unpaid Purchases',
+        quantity: 'Quantity',
+        description: 'Description',
+        upgradeToPro: 'Upgrade to Pro',
+        unitPrice: 'Unit Price',
+        itemNo: 'Item No.',
+        totalItems: 'Total Items',
+        paymentMethod: 'Payment Method',
+        cashier: 'Cashier',
+        name: 'Name',
+        statementOfAccount: 'Statement of Account',
+        outstandingBalance: 'Outstanding Balance',
+        clientStatement: 'Client Statement',
+        supplierStatement: 'Supplier Statement',
+        cash: 'Cash',
+        card: 'Card',
+        digital: 'Digital',
+        cibEdahabia: 'CIB / Edahabia',
+        paypal: 'PayPal',
+        payoneer: 'Payoneer',
+        stripe: 'Stripe (Soon)',
+        scan: 'Scan',
+        actions: 'Actions',
+        fullScreenPOS: 'Full Screen POS',
+        exitFullScreen: 'Exit Full Screen',
+        walkInCustomer: 'Walk-in Customer',
+        previousSale: 'Previous Sale',
+        nextSale: 'Next Sale',
+        lastSale: 'Last Sale',
+        saleDetails: 'Sale Details',
+        noSalesHistory: 'No completed sales history found',
+        close: 'Close',
+        deleteSale: 'Delete Sale',
+        updateSale: 'Update Sale',
+        editingSale: 'Editing Sale',
+        saleUpdated: 'Sale updated successfully!',
+        saleDeleted: 'Sale deleted successfully.',
+        enterSupervisorPassword: 'Please enter a Supervisor or Manager password to continue:',
+        invalidSupervisorCredentials: 'Invalid credentials or insufficient permissions.',
+        alreadyAtFirstSale: 'Already at the first sale',
+        alreadyAtLatestSale: 'Already at the latest sale',
+        noSalesToNavigate: 'No completed sales to navigate',
+        time: 'Time',
+        date: 'Date',
+        modifiedBy: 'Modified By',
+        originalSale: 'Original Sale',
+        networkError: 'Network error connecting to backend.',
+        validNumberRequired: 'Please enter a valid number',
+        stockNotNegative: 'Stock cannot be negative',
+        usernameExists: 'Username already exists!',
+        settingsSaved: 'Settings saved successfully!',
+        backupCreated: 'Backup created successfully!',
+        selectClientForUnpaid: 'Please select a specific client for an unpaid sale.',
+        saleNotFound: 'Sale not found.',
+        noItemsToPrint: 'No items to print',
+        productAdded2: 'added successfully!',
+        productUpdated: 'updated successfully!',
+        saleMarkedPaid: 'marked as paid.',
+        clientAdded: 'added.',
+        clientUpdated: 'updated.',
+        stockAdjusted: 'Stock adjusted. New stock:',
+        supplierAdded: 'added.',
+        supplierUpdated: 'updated.',
+        purchaseMarkedPaid: 'marked as paid.',
+        productDeleted: 'deleted successfully!',
+        userAdded: 'added successfully!',
+        userUpdated: 'updated successfully!',
+        userDeleted: 'deleted successfully!',
+        outOfStock: 'is out of stock!',
+        cannotAddMore: 'Cannot add more',
+        onlyInStock: 'Only',
+        inStock: 'in stock.',
+        originalSaleNotFound: 'Error: Could not find the original sale.',
+        systemSettings: 'System Settings',
+        taxRate: 'Tax Rate (%)',
+        lowStockThreshold: 'Low Stock Threshold',
+        enableAutoBackup: 'Enable Auto Backup',
+        autoPrintReceipt: 'Auto Print Receipt After Sale',
+        showBarcodes: 'Show Barcodes on Products',
+        currencyLangSettings: 'Currency & Language Settings',
+        systemCurrency: 'System Operating Currency',
+        systemLanguage: 'System Language',
+        saveSettings: 'Save Settings',
+        backupData: 'Backup Data',
+        maxCurrenciesSupported: 'Max Currencies Supported',
+        defaultInterfaceLanguage: 'Default Interface Language',
+        paymentSettings: 'Payment Integration',
+        paypalEmail: 'PayPal.Me Link or Email',
+        payoneerEmail: 'Payoneer Email'
     },
     ar: {
         // Login & Basic UI
@@ -473,6 +567,7 @@ const languages = {
         margin: 'هامش الربح',
         customerReceipt: 'إيصال العميل',
         businessInvoice: 'فاتورة تجارية',
+        transactionDetails: 'تفاصيل المعاملة',
         companyInfo: 'معلومات الشركة',
         customerInfo: 'معلومات العميل',
         itemsNeedRestocking: 'عناصر تحتاج إعادة تخزين',
@@ -485,6 +580,11 @@ const languages = {
         daysOverdue: 'أيام متأخرة',
         enterBarcode: 'أدخل الباركود',
         useCamera: 'استخدم الكاميرا',
+        productImage: 'صورة المنتج',
+        searchImage: 'بحث عن صورة',
+        fetchDetails: 'جلب التفاصيل',
+        fullScreenPOS: 'وضع الشاشة الكاملة',
+        exitFullScreen: 'إغلاق الشاشة الكاملة',
         manualEntry: 'إدخال يدوي',
         connectScanner: 'ربط الماسح',
         pointCameraAtBarcode: 'وجه الكاميرا نحو الباركود',
@@ -618,12 +718,104 @@ const languages = {
         recordPurchase: 'تسجيل شراء',
         viewPurchases: 'عرض المشتريات',
         unpaidPurchases: 'مشتريات غير مدفوعة',
+        quantity: 'الكمية',
+        description: 'الوصف',
+        upgradeToPro: 'ترقية إلى المحترف',
+        unitPrice: 'سعر الوحدة',
+        itemNo: 'رقم العنصر',
+        totalItems: 'إجمالي العناصر',
+        cashier: 'أمين الصندوق',
+        name: 'الاسم',
+        date: 'التاريخ',
+        time: 'الوقت',
+        thankYou: 'شكراً لتسوقكم معنا!',
+        receiptNo: 'رقم الإيصال',
+        invoiceNo: 'رقم الفاتورة',
+        billTo: 'فاتورة إلى',
+        notes: 'ملاحظات',
+        generalCategory: 'عام',
+        noImageLabel: 'لا توجد صورة',
 
         // Statements
         statementOfAccount: 'كشف حساب',
         outstandingBalance: 'الرصيد المستحق',
         clientStatement: 'كشف حساب العميل',
         supplierStatement: 'كشف حساب المورد',
+        cash: 'نقداً',
+        card: 'بطاقة',
+        digital: 'رقمي',
+        cibEdahabia: 'CIB / الذهبية',
+        paypal: 'بايبال',
+        payoneer: 'باايونير',
+        stripe: 'سترايب (قريباً)',
+        scan: 'مسح',
+        actions: 'إجراءات',
+        fullScreenPOS: 'وضع الشاشة الكاملة',
+        exitFullScreen: 'إغلاق الشاشة الكاملة',
+        walkInCustomer: 'عميل عادي (مباشر)',
+        previousSale: 'البيع السابق',
+        nextSale: 'البيع التالي',
+        lastSale: 'آخر عملية بيع',
+        saleDetails: 'تفاصيل عملية البيع',
+        noSalesHistory: 'لا توجد عمليات بيع مسجلة',
+        close: 'إغلاق',
+        deleteSale: 'حذف البيع',
+        updateSale: 'تحديث البيع',
+        editingSale: 'تعديل البيع',
+        saleUpdated: 'تم تحديث البيع بنجاح!',
+        saleDeleted: 'تم حذف البيع بنجاح.',
+        enterSupervisorPassword: 'يرجى إدخال كلمة مرور المشرف أو المدير للمتابعة:',
+        invalidSupervisorCredentials: 'بيانات اعتماد غير صالحة أو صلاحيات غير كافية.',
+        alreadyAtFirstSale: 'أنت بالفعل عند أول عملية بيع',
+        alreadyAtLatestSale: 'أنت بالفعل عند أحدث عملية بيع',
+        noSalesToNavigate: 'لا توجد مبيعات مكتملة للتنقل بينها',
+        time: 'الوقت',
+        date: 'التاريخ',
+        modifiedBy: 'تم التعديل بواسطة',
+        originalSale: 'البيع الأصلي',
+        networkError: 'خطأ في الشبكة عند الاتصال بالخادم.',
+        validNumberRequired: 'يرجى إدخال رقم صحيح',
+        stockNotNegative: 'لا يمكن أن يكون المخزون سالباً',
+        usernameExists: 'اسم المستخدم موجود بالفعل!',
+        settingsSaved: 'تم حفظ الإعدادات بنجاح!',
+        backupCreated: 'تم إنشاء النسخة الاحتياطية بنجاح!',
+        selectClientForUnpaid: 'يرجى تحديد عميل محدد لعملية بيع غير مدفوعة.',
+        saleNotFound: 'لم يتم العثور على عملية البيع.',
+        noItemsToPrint: 'لا توجد عناصر للطباعة',
+        productAdded2: 'تمت الإضافة بنجاح!',
+        productUpdated: 'تم التحديث بنجاح!',
+        saleMarkedPaid: 'تم تسجيلها كمدفوعة.',
+        clientAdded: 'تمت الإضافة.',
+        clientUpdated: 'تم التحديث.',
+        stockAdjusted: 'تم تعديل المخزون. المخزون الجديد:',
+        supplierAdded: 'تمت الإضافة.',
+        supplierUpdated: 'تم التحديث.',
+        purchaseMarkedPaid: 'تم تسجيلها كمدفوعة.',
+        productDeleted: 'تم الحذف بنجاح!',
+        userAdded: 'تمت الإضافة بنجاح!',
+        userUpdated: 'تم التحديث بنجاح!',
+        userDeleted: 'تم الحذف بنجاح!',
+        outOfStock: 'نفد من المخزون!',
+        cannotAddMore: 'لا يمكن إضافة المزيد من',
+        onlyInStock: 'متوفر فقط',
+        inStock: 'في المخزون.',
+        originalSaleNotFound: 'خطأ: تعذر العثور على عملية البيع الأصلية.',
+        systemSettings: 'إعدادات النظام',
+        taxRate: 'نسبة الضريبة (%)',
+        lowStockThreshold: 'حد المخزون المنخفض',
+        enableAutoBackup: 'تفعيل النسخ الاحتياطي التلقائي',
+        autoPrintReceipt: 'طباعة الإيصال تلقائياً بعد البيع',
+        showBarcodes: 'إظهار الباركود على المنتجات',
+        currencyLangSettings: 'إعدادات العملة واللغة',
+        systemCurrency: 'عملة تشغيل النظام',
+        systemLanguage: 'لغة النظام',
+        saveSettings: 'حفظ الإعدادات',
+        backupData: 'نسخ احتياطي للبيانات',
+        maxCurrenciesSupported: 'الحد الأقصى للعملات المدعومة',
+        defaultInterfaceLanguage: 'لغة الواجهة الافتراضية',
+        paymentSettings: 'تكامل الدفع',
+        paypalEmail: 'رابط PayPal.Me أو البريد الإلكتروني',
+        payoneerEmail: 'البريد الإلكتروني Payoneer'
     },
     fr: {
         categories: 'Catégories',
@@ -710,6 +902,7 @@ const languages = {
         taxReport: 'Rapport de Taxes',
         customerReceipt: 'Reçu Client',
         businessInvoice: 'Facture Commerciale',
+        transactionDetails: 'Détails de la Transaction',
         companyInfo: 'Informations Société',
         customerInfo: 'Informations Client',
         itemsNeedRestocking: 'articles nécessitent réapprovisionnement',
@@ -750,6 +943,11 @@ const languages = {
         address: 'Adresse',
         phone: 'Téléphone',
         receiptFooter: 'Pied de Page Reçu',
+        productImage: 'Image du Produit',
+        searchImage: 'Rechercher une Image',
+        fetchDetails: 'Récupérer les Détails',
+        fullScreenPOS: 'PDV Plein écran',
+        exitFullScreen: 'Quitter le Plein écran',
         recommendedSize: 'Taille recommandée',
         invalidFileType: 'Veuillez sélectionner un fichier image valide (PNG, JPG, GIF)',
         fileTooLarge: 'La taille du fichier doit être inférieure à 2 Mo',
@@ -861,12 +1059,104 @@ const languages = {
         recordPurchase: 'Enregistrer Achat',
         viewPurchases: 'Voir Achats',
         unpaidPurchases: 'Achats Impayés',
+        quantity: 'Quantité',
+        description: 'Description',
+        upgradeToPro: 'Passer en Pro',
+        unitPrice: 'Prix Unitaire',
+        itemNo: 'N° Article',
+        totalItems: 'Total Articles',
+        cashier: 'Caissier',
+        name: 'Nom',
+        date: 'Date',
+        time: 'Heure',
+        thankYou: 'Merci pour votre achat!',
+        receiptNo: 'N° Reçu',
+        invoiceNo: 'N° Facture',
+        billTo: 'Facturer à',
+        notes: 'Notes',
+        generalCategory: 'Général',
+        noImageLabel: 'Aucune Image',
 
         // Statements
         statementOfAccount: 'Relevé de Compte',
         outstandingBalance: 'Solde Impayé',
         clientStatement: 'Relevé Client',
         supplierStatement: 'Relevé Fournisseur',
+        cash: 'Espèces',
+        card: 'Carte',
+        digital: 'Numérique',
+        cibEdahabia: 'CIB / Edahabia',
+        paypal: 'PayPal',
+        payoneer: 'Payoneer',
+        stripe: 'Stripe (Bientôt)',
+        scan: 'Scanner',
+        actions: 'Actions',
+        fullScreenPOS: 'PDV Plein écran',
+        exitFullScreen: 'Quitter le plein écran',
+        walkInCustomer: 'Client de Passage',
+        previousSale: 'Vente Précédente',
+        nextSale: 'Vente Suivante',
+        lastSale: 'Dernière Vente',
+        saleDetails: 'Détails de la Vente',
+        noSalesHistory: 'Aucun historique de vente trouvé',
+        close: 'Fermer',
+        deleteSale: 'Supprimer la Vente',
+        updateSale: 'Mettre à Jour la Vente',
+        editingSale: 'Modification de la Vente',
+        saleUpdated: 'Vente mise à jour avec succès!',
+        saleDeleted: 'Vente supprimée avec succès.',
+        enterSupervisorPassword: 'Veuillez entrer le mot de passe du superviseur ou du responsable pour continuer:',
+        invalidSupervisorCredentials: 'Identifiants invalides ou permissions insuffisantes.',
+        alreadyAtFirstSale: 'Déjà à la première vente',
+        alreadyAtLatestSale: 'Déjà à la dernière vente',
+        noSalesToNavigate: 'Aucune vente complétée à naviguer',
+        time: 'Heure',
+        date: 'Date',
+        modifiedBy: 'Modifié par',
+        originalSale: 'Vente Originale',
+        networkError: 'Erreur réseau lors de la connexion au serveur.',
+        validNumberRequired: 'Veuillez entrer un nombre valide',
+        stockNotNegative: 'Le stock ne peut pas être négatif',
+        usernameExists: 'Ce nom d\'utilisateur existe déjà!',
+        settingsSaved: 'Paramètres enregistrés avec succès!',
+        backupCreated: 'Sauvegarde créée avec succès!',
+        selectClientForUnpaid: 'Veuillez sélectionner un client spécifique pour une vente non payée.',
+        saleNotFound: 'Vente introuvable.',
+        noItemsToPrint: 'Aucun article à imprimer',
+        productAdded2: 'ajouté avec succès!',
+        productUpdated: 'mis à jour avec succès!',
+        saleMarkedPaid: 'marquée comme payée.',
+        clientAdded: 'ajouté.',
+        clientUpdated: 'mis à jour.',
+        stockAdjusted: 'Stock ajusté. Nouveau stock:',
+        supplierAdded: 'ajouté.',
+        supplierUpdated: 'mis à jour.',
+        purchaseMarkedPaid: 'marqué comme payé.',
+        productDeleted: 'supprimé avec succès!',
+        userAdded: 'ajouté avec succès!',
+        userUpdated: 'mis à jour avec succès!',
+        userDeleted: 'supprimé avec succès!',
+        outOfStock: 'est en rupture de stock!',
+        cannotAddMore: 'Impossible d\'ajouter plus de',
+        onlyInStock: 'Seulement',
+        inStock: 'en stock.',
+        originalSaleNotFound: 'Erreur: Impossible de trouver la vente originale.',
+        systemSettings: 'Paramètres du Système',
+        taxRate: 'Taux de Taxe (%)',
+        lowStockThreshold: 'Seuil de Stock Faible',
+        enableAutoBackup: 'Activer la Sauvegarde Auto',
+        autoPrintReceipt: 'Imprimer Reçu Auto Après Vente',
+        showBarcodes: 'Afficher Code-barres des Produits',
+        currencyLangSettings: 'Paramètres de Devise & Langue',
+        systemCurrency: 'Devise du Système',
+        systemLanguage: 'Langue du Système',
+        saveSettings: 'Enregistrer',
+        backupData: 'Sauvegarder Données',
+        maxCurrenciesSupported: 'Max Devises Supportées',
+        defaultInterfaceLanguage: 'Langue de l\'Interface Par Défaut',
+        paymentSettings: 'Intégration de Paiement',
+        paypalEmail: 'Lien PayPal.Me ou Email',
+        payoneerEmail: 'Email Payoneer'
     },
     es: {
         categories: 'Categorías',
@@ -953,6 +1243,7 @@ const languages = {
         taxReport: 'Reporte de Impuestos',
         customerReceipt: 'Recibo Cliente',
         businessInvoice: 'Factura Comercial',
+        transactionDetails: 'Detalles de la Transacción',
         companyInfo: 'Información Empresa',
         customerInfo: 'Información Cliente',
         itemsNeedRestocking: 'artículos necesitan reabastecimiento',
@@ -993,6 +1284,11 @@ const languages = {
         address: 'Dirección',
         phone: 'Teléfono',
         receiptFooter: 'Pie de Página Recibo',
+        productImage: 'Imagen del Producto',
+        searchImage: 'Buscar Imagen',
+        fetchDetails: 'Obtener Detalles',
+        fullScreenPOS: 'TPV Pantalla Completa',
+        exitFullScreen: 'Salir de Pantalla Completa',
         recommendedSize: 'Tamaño recomendado',
         invalidFileType: 'Por favor seleccione un archivo de imagen válido (PNG, JPG, GIF)',
         fileTooLarge: 'El tamaño del archivo debe ser menor a 2MB',
@@ -1104,88 +1400,315 @@ const languages = {
         recordPurchase: 'Registrar Compra',
         viewPurchases: 'Ver Compras',
         unpaidPurchases: 'Compras No Pagadas',
+        quantity: 'Cantidad',
+        description: 'Descripción',
+        upgradeToPro: 'Mejorar a Pro',
+        unitPrice: 'Precio Unitario',
+        itemNo: 'N° Artículo',
+        totalItems: 'Total Artículos',
+        cashier: 'Cajero',
+        name: 'Nombre',
+        date: 'Fecha',
+        time: 'Hora',
+        thankYou: '¡Gracias por su compra!',
+        receiptNo: 'N° Recibo',
+        invoiceNo: 'N° Factura',
+        billTo: 'Facturar a',
+        notes: 'Notas',
+        generalCategory: 'General',
+        noImageLabel: 'Sin Imagen',
 
         // Statements
         statementOfAccount: 'Estado de Cuenta',
         outstandingBalance: 'Saldo Pendiente',
         clientStatement: 'Estado de Cuenta del Cliente',
         supplierStatement: 'Estado de Cuenta del Proveedor',
+        cash: 'Efectivo',
+        card: 'Tarjeta',
+        digital: 'Digital',
+        cibEdahabia: 'CIB / Edahabia',
+        paypal: 'PayPal',
+        payoneer: 'Payoneer',
+        stripe: 'Stripe (Próximamente)',
+        scan: 'Escanear',
+        actions: 'Acciones',
+        fullScreenPOS: 'PDV Pantalla Completa',
+        exitFullScreen: 'Salir de pantalla completa',
+        walkInCustomer: 'Cliente Ocasional',
+        previousSale: 'Venta Anterior',
+        nextSale: 'Venta Siguiente',
+        lastSale: 'Última Venta',
+        saleDetails: 'Detalles de la Venta',
+        noSalesHistory: 'No se encontró historial de ventas',
+        close: 'Cerrar',
+        deleteSale: 'Eliminar Venta',
+        updateSale: 'Actualizar Venta',
+        editingSale: 'Editando Venta',
+        saleUpdated: '¡Venta actualizada con éxito!',
+        saleDeleted: 'Venta eliminada con éxito.',
+        enterSupervisorPassword: 'Por favor, ingrese la contraseña del supervisor o gerente para continuar:',
+        invalidSupervisorCredentials: 'Credenciales inválidas o permisos insuficientes.',
+        alreadyAtFirstSale: 'Ya está en la primera venta',
+        alreadyAtLatestSale: 'Ya está en la última venta',
+        noSalesToNavigate: 'No hay ventas completadas para navegar',
+        time: 'Hora',
+        date: 'Fecha',
+        modifiedBy: 'Modificado por',
+        originalSale: 'Venta Original',
+        networkError: 'Error de red al conectar con el servidor.',
+        validNumberRequired: 'Por favor ingrese un número válido',
+        stockNotNegative: 'El stock no puede ser negativo',
+        usernameExists: '¡El nombre de usuario ya existe!',
+        settingsSaved: '¡Configuración guardada con éxito!',
+        backupCreated: '¡Copia de seguridad creada con éxito!',
+        selectClientForUnpaid: 'Por favor seleccione un cliente específico para una venta no pagada.',
+        saleNotFound: 'Venta no encontrada.',
+        noItemsToPrint: 'No hay artículos para imprimir',
+        productAdded2: 'agregado con éxito!',
+        productUpdated: 'actualizado con éxito!',
+        saleMarkedPaid: 'marcada como pagada.',
+        clientAdded: 'agregado.',
+        clientUpdated: 'actualizado.',
+        stockAdjusted: 'Stock ajustado. Nuevo stock:',
+        supplierAdded: 'agregado.',
+        supplierUpdated: 'actualizado.',
+        purchaseMarkedPaid: 'marcado como pagado.',
+        productDeleted: '¡eliminado con éxito!',
+        userAdded: '¡agregado con éxito!',
+        userUpdated: '¡actualizado con éxito!',
+        userDeleted: '¡eliminado con éxito!',
+        outOfStock: '¡está agotado!',
+        cannotAddMore: 'No se puede agregar más de',
+        onlyInStock: 'Solo',
+        inStock: 'en existencia.',
+        originalSaleNotFound: 'Error: No se pudo encontrar la venta original.',
+        systemSettings: 'Configuración del Sistema',
+        taxRate: 'Tasa de Impuesto (%)',
+        lowStockThreshold: 'Umbral de Stock Bajo',
+        enableAutoBackup: 'Habilitar Copia de Seguridad Auto',
+        autoPrintReceipt: 'Imprimir Recibo Auto Después Venta',
+        showBarcodes: 'Mostrar Códigos de Barras en Productos',
+        currencyLangSettings: 'Configuración de Moneda e Idioma',
+        systemCurrency: 'Moneda del Sistema',
+        systemLanguage: 'Idioma del Sistema',
+        saveSettings: 'Guardar Configuración',
+        backupData: 'Hacer Copia de Seguridad',
+        maxCurrenciesSupported: 'Máx Monedas Soportadas',
+        defaultInterfaceLanguage: 'Idioma de Interfaz Predeterminado',
+        paymentSettings: 'Integración de Pagos',
+        paypalEmail: 'Enlace PayPal.Me o Correo',
+        payoneerEmail: 'Correo Payoneer'
     }
 };
 
-// Multi-currency support including Algerian Dinar with language-specific names
+// Multi-currency support including All Arabic, European, and American currencies with language-specific names
 const currencies = {
-    USD: {
-        symbol: '$',
-        rate: 0.0076,
-        names: {
-            en: 'US Dollar',
-            ar: 'دولار أمريكي',
-            fr: 'Dollar Américain',
-            es: 'Dólar Estadounidense'
-        }
-    },
-    EUR: {
-        symbol: '€',
-        rate: 0.0066,
-        names: {
-            en: 'Euro',
-            ar: 'يورو',
-            fr: 'Euro',
-            es: 'Euro'
-        }
-    },
-    AED: {
-        symbol: 'د.إ',
-        rate: 0.028,
-        names: {
-            en: 'UAE Dirham',
-            ar: 'درهم إماراتي',
-            fr: 'Dirham des EAU',
-            es: 'Dirham de EAU'
-        }
-    },
-    SAR: {
-        symbol: 'ر.س',
-        rate: 0.029,
-        names: {
-            en: 'Saudi Riyal',
-            ar: 'ريال سعودي',
-            fr: 'Riyal Saoudien',
-            es: 'Riyal Saudí'
-        }
-    },
+    // ===== ALGERIA (BASE) =====
     DZD: {
         symbol: { en: 'د.ج', ar: 'د.ج', fr: 'DA', es: 'DA' },
         rate: 1,
-        names: {
-            en: 'Algerian Dinar',
-            ar: 'دينار جزائري',
-            fr: 'Dinar Algérien',
-            es: 'Dinar Argelino'
-        }
+        names: { en: 'Algerian Dinar', ar: 'دينار جزائري', fr: 'Dinar Algérien', es: 'Dinar Argelino' }
+    },
+
+    // ===== ARAB WORLD CURRENCIES =====
+    SAR: {
+        symbol: 'ر.س',
+        rate: 0.028,
+        names: { en: 'Saudi Riyal', ar: 'ريال سعودي', fr: 'Riyal Saoudien', es: 'Riyal Saudí' }
+    },
+    AED: {
+        symbol: 'د.إ',
+        rate: 0.0275,
+        names: { en: 'UAE Dirham', ar: 'درهم إماراتي', fr: 'Dirham des EAU', es: 'Dirham de EAU' }
+    },
+    QAR: {
+        symbol: 'ر.ق',
+        rate: 0.0273,
+        names: { en: 'Qatari Riyal', ar: 'ريال قطري', fr: 'Riyal Qatari', es: 'Riyal Qatarí' }
+    },
+    KWD: {
+        symbol: 'د.ك',
+        rate: 0.0023,
+        names: { en: 'Kuwaiti Dinar', ar: 'دينار كويتي', fr: 'Dinar Koweïtien', es: 'Dinar Kuwaití' }
+    },
+    BHD: {
+        symbol: 'د.ب',
+        rate: 0.0028,
+        names: { en: 'Bahraini Dinar', ar: 'دينار بحريني', fr: 'Dinar Bahreïni', es: 'Dinar Bahrreiní' }
+    },
+    OMR: {
+        symbol: 'ر.ع',
+        rate: 0.0029,
+        names: { en: 'Omani Rial', ar: 'ريال عماني', fr: 'Rial Omani', es: 'Rial Omaní' }
+    },
+    EGP: {
+        symbol: 'ج.م',
+        rate: 0.36,
+        names: { en: 'Egyptian Pound', ar: 'جنيه مصري', fr: 'Livre Égyptienne', es: 'Libra Egipcia' }
+    },
+    JOD: {
+        symbol: 'د.أ',
+        rate: 0.0053,
+        names: { en: 'Jordanian Dinar', ar: 'دينار أردني', fr: 'Dinar Jordanien', es: 'Dinar Jordano' }
+    },
+    LBP: {
+        symbol: 'ل.ل',
+        rate: 670,
+        names: { en: 'Lebanese Pound', ar: 'ليرة لبنانية', fr: 'Livre Libanaise', es: 'Libra Libanesa' }
+    },
+    TND: {
+        symbol: 'د.ت',
+        rate: 0.023,
+        names: { en: 'Tunisian Dinar', ar: 'دينار تونسي', fr: 'Dinar Tunisien', es: 'Dinar Tunecino' }
+    },
+    MAD: {
+        symbol: 'د.م.',
+        rate: 0.074,
+        names: { en: 'Moroccan Dirham', ar: 'درهم مغربي', fr: 'Dirham Marocain', es: 'Dirham Marroquí' }
+    },
+    LYD: {
+        symbol: 'د.ل',
+        rate: 0.036,
+        names: { en: 'Libyan Dinar', ar: 'دينار ليبي', fr: 'Dinar Libyen', es: 'Dinar Libio' }
+    },
+    IQD: {
+        symbol: 'د.ع',
+        rate: 9.8,
+        names: { en: 'Iraqi Dinar', ar: 'دينار عراقي', fr: 'Dinar Irakien', es: 'Dinar Iraquí' }
+    },
+    SDG: {
+        symbol: 'ج.س',
+        rate: 4.5,
+        names: { en: 'Sudanese Pound', ar: 'جنيه سوداني', fr: 'Livre Soudanaise', es: 'Libra Sudanesa' }
+    },
+    SYP: {
+        symbol: 'ل.س',
+        rate: 97,
+        names: { en: 'Syrian Pound', ar: 'ليرة سورية', fr: 'Livre Syrienne', es: 'Libra Siria' }
+    },
+    YER: {
+        symbol: 'ر.ي',
+        rate: 1.87,
+        names: { en: 'Yemeni Rial', ar: 'ريال يمني', fr: 'Rial Yéménite', es: 'Rial Yemení' }
+    },
+    MRU: {
+        symbol: 'أ.م',
+        rate: 0.30,
+        names: { en: 'Mauritanian Ouguiya', ar: 'أوقية موريتانية', fr: 'Ouguiya Mauritanien', es: 'Ouguiya Mauritano' }
+    },
+
+    // ===== EUROPEAN CURRENCIES =====
+    EUR: {
+        symbol: '€',
+        rate: 0.0067,
+        names: { en: 'Euro', ar: 'يورو', fr: 'Euro', es: 'Euro' }
     },
     GBP: {
         symbol: '£',
-        rate: 0.0057,
-        names: {
-            en: 'British Pound',
-            ar: 'جنيه إسترليني',
-            fr: 'Livre Sterling',
-            es: 'Libra Esterlina'
-        }
+        rate: 0.0056,
+        names: { en: 'British Pound', ar: 'جنيه إسترليني', fr: 'Livre Sterling', es: 'Libra Esterlina' }
     },
-   
-   
-    TND: {
-        symbol: 'د.ت',
-        rate: 0.022,
-        names: {
-            en: 'Tunisian Dinar',
-            ar: 'دينار تونسي',
-            fr: 'Dinar Tunisien',
-            es: 'Dinar Tunecino'
-        }
+    CHF: {
+        symbol: 'CHF',
+        rate: 0.0064,
+        names: { en: 'Swiss Franc', ar: 'فرنك سويسري', fr: 'Franc Suisse', es: 'Franco Suizo' }
+    },
+    NOK: {
+        symbol: 'kr',
+        rate: 0.078,
+        names: { en: 'Norwegian Krone', ar: 'كرونة نرويجية', fr: 'Couronne Norvégienne', es: 'Corona Noruega' }
+    },
+    SEK: {
+        symbol: 'kr',
+        rate: 0.076,
+        names: { en: 'Swedish Krona', ar: 'كرونة سويدية', fr: 'Couronne Suédoise', es: 'Corona Sueca' }
+    },
+    DKK: {
+        symbol: 'kr.',
+        rate: 0.050,
+        names: { en: 'Danish Krone', ar: 'كرونة دانمركية', fr: 'Couronne Danoise', es: 'Corona Danesa' }
+    },
+    PLN: {
+        symbol: 'zł',
+        rate: 0.029,
+        names: { en: 'Polish Zloty', ar: 'زلوتي بولندي', fr: 'Zloty Polonais', es: 'Zloty Polaco' }
+    },
+    CZK: {
+        symbol: 'Kč',
+        rate: 0.17,
+        names: { en: 'Czech Koruna', ar: 'كرونة تشيكية', fr: 'Couronne Tchèque', es: 'Corona Checa' }
+    },
+    HUF: {
+        symbol: 'Ft',
+        rate: 2.65,
+        names: { en: 'Hungarian Forint', ar: 'فورينت مجري', fr: 'Forint Hongrois', es: 'Forinto Húngaro' }
+    },
+    RON: {
+        symbol: 'lei',
+        rate: 0.033,
+        names: { en: 'Romanian Leu', ar: 'ليو روماني', fr: 'Leu Roumain', es: 'Leu Rumano' }
+    },
+    BGN: {
+        symbol: 'лв',
+        rate: 0.013,
+        names: { en: 'Bulgarian Lev', ar: 'ليف بلغاري', fr: 'Lev Bulgare', es: 'Lev Búlgaro' }
+    },
+    RUB: {
+        symbol: '₽',
+        rate: 0.68,
+        names: { en: 'Russian Ruble', ar: 'روبل روسي', fr: 'Rouble Russe', es: 'Rublo Ruso' }
+    },
+    TRY: {
+        symbol: '₺',
+        rate: 0.25,
+        names: { en: 'Turkish Lira', ar: 'ليرة تركية', fr: 'Livre Turque', es: 'Lira Turca' }
+    },
+
+    // ===== AMERICAN CURRENCIES =====
+    USD: {
+        symbol: '$',
+        rate: 0.0075,
+        names: { en: 'US Dollar', ar: 'دولار أمريكي', fr: 'Dollar Américain', es: 'Dólar Estadounidense' }
+    },
+    CAD: {
+        symbol: 'CA$',
+        rate: 0.0102,
+        names: { en: 'Canadian Dollar', ar: 'دولار كندي', fr: 'Dollar Canadien', es: 'Dólar Canadiense' }
+    },
+    MXN: {
+        symbol: 'Mex$',
+        rate: 0.14,
+        names: { en: 'Mexican Peso', ar: 'بيزو مكسيكي', fr: 'Peso Mexicain', es: 'Peso Mexicano' }
+    },
+    BRL: {
+        symbol: 'R$',
+        rate: 0.041,
+        names: { en: 'Brazilian Real', ar: 'ريال برازيلي', fr: 'Réal Brésilien', es: 'Real Brasileño' }
+    },
+    ARS: {
+        symbol: '$',
+        rate: 7.2,
+        names: { en: 'Argentine Peso', ar: 'بيزو أرجنتيني', fr: 'Peso Argentin', es: 'Peso Argentino' }
+    },
+    CLP: {
+        symbol: '$',
+        rate: 7.0,
+        names: { en: 'Chilean Peso', ar: 'بيزو شيلي', fr: 'Peso Chilien', es: 'Peso Chileno' }
+    },
+    COP: {
+        symbol: '$',
+        rate: 31.0,
+        names: { en: 'Colombian Peso', ar: 'بيزو كولومبي', fr: 'Peso Colombien', es: 'Peso Colombiano' }
+    },
+    PEN: {
+        symbol: 'S/',
+        rate: 0.028,
+        names: { en: 'Peruvian Sol', ar: 'سول بيروفي', fr: 'Sol Péruvien', es: 'Sol Peruano' }
+    },
+    UYU: {
+        symbol: '$U',
+        rate: 0.30,
+        names: { en: 'Uruguayan Peso', ar: 'بيزو أوروغواي', fr: 'Peso Uruguayen', es: 'Peso Uruguayo' }
     }
 };
 
@@ -1405,6 +1928,7 @@ let currentUser = null;
 let currentLanguage = localStorage.getItem('posLanguage') || 'en';
 let currentCurrency = localStorage.getItem('posCurrency') || 'DZD';
 let salesHistory = JSON.parse(localStorage.getItem('salesHistory')) || [];
+let editingSaleId = null;
 let isLoggedIn = false;
 let currentView = 'pos'; // pos, inventory, reports, settings, users
 
@@ -1418,6 +1942,7 @@ const settings = {
     companyLogo: 'logo.png', // Permanent logo for UI
     printableLogo: localStorage.getItem('printableLogo') || '', // For receipts and invoices
     lowStockThreshold: parseInt(localStorage.getItem('lowStockThreshold')) || 10,
+    maxCurrencies: parseInt(localStorage.getItem('maxCurrencies')) || 10,
     autoBackup: localStorage.getItem('autoBackup') === 'true',
     printAfterSale: localStorage.getItem('printAfterSale') === 'true',
     showBarcode: localStorage.getItem('showBarcode') === 'true'
@@ -1527,6 +2052,10 @@ function showLoginScreen() {
                 </div>
                 <form class="login-form" onsubmit="handleLogin(event)">
                     <div class="form-group">
+                        <label for="tenantSlug">Store ID (Tenant Slug):</label>
+                        <input type="text" id="tenantSlug" name="tenantSlug" required placeholder="e.g. my-store">
+                    </div>
+                    <div class="form-group">
                         <label for="username">${t('username')}:</label>
                         <input type="text" id="username" name="username" required>
                     </div>
@@ -1534,9 +2063,13 @@ function showLoginScreen() {
                         <label for="password">${t('password')}:</label>
                         <input type="password" id="password" name="password" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">${t('login')}</button>
+                    <button type="submit" id="loginBtn" class="btn btn-primary">${t('login')}</button>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <a href="register.html" style="color: var(--primary); text-decoration: none;">Register for a 30-day Trial</a>
+                        <br>
+                        <a href="admin-portal.html" style="color: #666; font-size: 12px; text-decoration: none; display: inline-block; margin-top: 10px;">Super Admin Portal</a>
+                    </div>
                 </form>
-               
             </div>
         </div>
     `;
@@ -1642,24 +2175,45 @@ function showLoginScreen() {
     document.head.insertAdjacentHTML('beforeend', loginStyles);
 }
 
-function handleLogin(event) {
+async function handleLogin(event) {
     event.preventDefault();
     
+    const tenantSlug = document.getElementById('tenantSlug').value;
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    
-    const user = users.find(u => u.username === username && u.password === password && u.active);
-    
-    if (user) {
-        currentUser = user;
-        isLoggedIn = true;
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        localStorage.setItem('isLoggedIn', 'true');
+    const btn = document.getElementById('loginBtn');
+    btn.disabled = true;
+    btn.innerText = 'Logging in...';
+
+    try {
+        const res = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ tenant: tenantSlug, username, password })
+        });
+        const data = await res.json();
         
-        // Reload the page to initialize the main system
-        location.reload();
-    } else {
-        alert('Invalid username or password');
+        if (res.ok) {
+            // Normalize: backend returns full_name, frontend uses .name
+            data.user.name = data.user.full_name || data.user.name || data.user.username;
+            currentUser = data.user;
+            isLoggedIn = true;
+            localStorage.setItem('currentUser', JSON.stringify(data.user));
+            localStorage.setItem('jwtToken', data.token);
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            // Reload the page to initialize the main system
+            location.reload();
+        } else {
+            alert(data.error || 'Invalid login');
+            btn.disabled = false;
+            btn.innerText = t('login');
+        }
+    } catch (err) {
+        console.error(err);
+        alert(t('networkError'));
+        btn.disabled = false;
+        btn.innerText = t('login');
     }
 }
 
@@ -1668,16 +2222,34 @@ function logout() {
     isLoggedIn = false;
     localStorage.removeItem('currentUser');
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('jwtToken');
     location.reload();
 }
 
-function checkLoginStatus() {
+async function checkLoginStatus() {
     const savedUser = localStorage.getItem('currentUser');
     const savedLoginStatus = localStorage.getItem('isLoggedIn');
+    const token = localStorage.getItem('jwtToken');
     
-    if (savedUser && savedLoginStatus === 'true') {
+    if (savedUser && savedLoginStatus === 'true' && token) {
         currentUser = JSON.parse(savedUser);
+        // Normalize: ensure .name is always set
+        currentUser.name = currentUser.name || currentUser.full_name || currentUser.username;
         isLoggedIn = true;
+        
+        // Verify license asynchronously
+        try {
+            const res = await fetch('/api/license/status', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.status === 402 || res.status === 403 || res.status === 401) {
+                const data = await res.json();
+                alert(`License Issue: ${data.error}`);
+                logout();
+            }
+        } catch(e) {
+            console.error('License check failed', e);
+        }
     }
 }
 
@@ -1751,13 +2323,28 @@ function updateLanguage() {
         // Handle different element types
         if (element.tagName === 'INPUT' && element.type === 'button') {
             element.value = translatedText;
-        } else if (element.tagName === 'INPUT' && element.placeholder) {
+        } else if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
             element.placeholder = translatedText;
         } else if (element.tagName === 'BUTTON') {
-            element.textContent = translatedText;
+            if (key === 'fullScreenPOS' || key === 'exitFullScreen') {
+                element.innerText = '🔲 ' + (isFullScreenPOS ? t('exitFullScreen') : t('fullScreenPOS'));
+            } else if (key === 'scan') {
+                element.innerText = '📷 ' + translatedText;
+            } else if (key === 'upgradeToPro') {
+                element.innerText = '⭐ ' + translatedText;
+            } else {
+                element.textContent = translatedText;
+            }
+        } else if (element.tagName === 'A' && key === 'upgradeToPro') {
+            element.innerText = '⭐ ' + translatedText;
         } else {
             element.textContent = translatedText;
         }
+    });
+
+    document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-translate-placeholder');
+        element.placeholder = t(key) + '...';
     });
 
     // Update document direction for Arabic
@@ -1769,6 +2356,20 @@ function updateLanguage() {
     if (languageSelector) {
         languageSelector.value = currentLanguage;
     }
+
+    // Rebuild quickbar in fullscreen mode if active
+    if (isFullScreenPOS) {
+        buildFullscreenQuickbar();
+    }
+    
+    // Update category buttons in main POS view
+    renderCategoryButtons();
+    
+    // Update client selectors to translate 'walk-in customer'
+    populateClientSelectors();
+
+    // Update client selectors with translated Walk-in Customer label
+    populateClientSelectors();
 
     // Update currency selector with translated names
     updateCurrencySelector();
@@ -1826,7 +2427,7 @@ function populateClientSelectors() {
     const mainClientSelector = document.getElementById('main-client-selector');
     const checkoutClientSelector = document.getElementById('client-selector');
 
-    const clientOptions = clients.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+    const clientOptions = clients.map(c => `<option value="${c.id}">${parseInt(c.id) === 1 ? t('walkInCustomer') : c.name}</option>`).join('');
 
     if (mainClientSelector) {
         mainClientSelector.innerHTML = clientOptions;
@@ -1839,16 +2440,33 @@ function populateClientSelectors() {
 function createMainInterface() {
     const mainHTML = `
         <div class="pos-container">
-            <!-- Top Navigation -->
+            <!-- Top Navigation (2 Lines) -->
             <nav class="top-nav">
-                <div class="nav-left">
-                    <div id="main-logo" style="display: inline-flex; align-items: center;">
+                <!-- Line 1: Brand & User/System Controls -->
+                <div class="top-nav-row1">
+                    <div class="nav-brand">
                         ${settings.companyLogo ?
-                            `<img src="${settings.companyLogo}" alt="${settings.companyName}" style="max-height: 40px; margin-right: 15px;">` :
-                            `<span style="font-weight: bold; color: var(--primary-color); margin-right: 15px;">${settings.companyName}</span>`
+                            `<img src="${settings.companyLogo}" alt="${settings.companyName}" style="max-height: 34px; object-fit: contain;">` :
+                            `<span style="font-weight:700; color:var(--primary-color); font-size:1.1rem;">${settings.companyName}</span>`
                         }
+                        <h1 style="font-size:1.35rem; font-weight:800; color:var(--primary-color); margin:0;">ROUIBIPOS</h1>
                     </div>
-                    <h1>ROUIBIPOS</h1>
+                    <div class="nav-controls">
+                        <select id="language-selector" onchange="changeLanguage(this.value)" title="${t('language')}" class="nav-select">
+                            <option value="en" ${currentLanguage === 'en' ? 'selected' : ''}>🇺🇸 English</option>
+                            <option value="ar" ${currentLanguage === 'ar' ? 'selected' : ''}>🇩🇿 العربية</option>
+                            <option value="fr" ${currentLanguage === 'fr' ? 'selected' : ''}>🇫🇷 Français</option>
+                            <option value="es" ${currentLanguage === 'es' ? 'selected' : ''}>🇪🇸 Español</option>
+                        </select>
+                        <span class="user-badge">👤 <strong>${currentUser.name}</strong></span>
+                        <span id="current-time" class="time-badge"></span>
+                        ${currentUser.role === 'admin' ? `<a href="upgrade.html" class="btn btn-upgrade" data-translate="upgradeToPro">⭐ ${t('upgradeToPro')}</a>` : ''}
+                        <button class="btn btn-secondary btn-logout" onclick="logout()" data-translate="logout">${t('logout')}</button>
+                    </div>
+                </div>
+
+                <!-- Line 2: Navigation Menu Bar -->
+                <div class="top-nav-row2">
                     <div class="nav-tabs">
                         <button class="nav-tab active" onclick="switchView('pos')" data-translate="sales">${t('sales')}</button>
                         ${hasPermission('inventory') ? `<button class="nav-tab" onclick="switchView('inventory')" data-translate="inventory">${t('inventory')}</button>` : ''}
@@ -1859,31 +2477,8 @@ function createMainInterface() {
                         ${hasPermission('users') ? `<button class="nav-tab" onclick="switchView('users')" data-translate="users">${t('users')}</button>` : ''}
                         ${hasPermission('settings') ? `<button class="nav-tab" onclick="switchView('settings')" data-translate="settings">${t('settings')}</button>` : ''}
                     </div>
-                </div>
-                <div class="nav-right">
-                    <div class="controls">
-                        <div class="control-group">
-                            <label>Language:</label>
-                            <select id="language-selector" onchange="changeLanguage(this.value)">
-                                <option value="en" ${currentLanguage === 'en' ? 'selected' : ''}>🇺🇸 English</option>
-                                <option value="ar" ${currentLanguage === 'ar' ? 'selected' : ''}>🇩🇿 العربية</option>
-                                <option value="fr" ${currentLanguage === 'fr' ? 'selected' : ''}>🇫🇷 Français</option>
-                                <option value="es" ${currentLanguage === 'es' ? 'selected' : ''}>🇪🇸 Español</option>
-                            </select>
-                        </div>
-                        <div class="control-group">
-                            <label>Currency:</label>
-                            <select id="currency-selector" onchange="changeCurrency(this.value)">
-                                ${Object.entries(currencies).map(([code, curr]) =>
-                                    `<option value="${code}" ${currentCurrency === code ? 'selected' : ''}>${curr.symbol} ${curr.name}</option>`
-                                ).join('')}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="user-info">
-                        <span class="user-name">${currentUser.name} (${t(currentUser.role)})</span>
-                        <span id="current-time"></span>
-                        <button class="btn btn-secondary" onclick="logout()" data-translate="logout">${t('logout')}</button>
+                    <div class="nav-quick-actions">
+                        <button onclick="toggleFullScreenPOS()" class="btn btn-fullscreen-toggle" id="fullscreen-btn" data-translate="fullScreenPOS">🔲 ${t('fullScreenPOS')}</button>
                     </div>
                 </div>
             </nav>
@@ -1895,9 +2490,9 @@ function createMainInterface() {
                     <div class="pos-layout">
                         <!-- Categories & Search -->
                         <section class="categories-section">
-                            <div class="search-bar">
-                                <input type="text" id="product-search" placeholder="${t('search')}..." onkeyup="searchProducts()">
-                                <button onclick="scanBarcode()" class="btn btn-secondary">📷 Scan</button>
+                            <div class="search-bar" style="display:flex; gap:10px; flex-wrap:wrap;">
+                                <input type="text" id="product-search" data-translate-placeholder="search" placeholder="${t('search')}..." onkeyup="searchProducts()" style="flex:1;">
+                                <button onclick="scanBarcode()" class="btn btn-secondary" data-translate="scan">📷 ${t('scan')}</button>
                             </div>
                             <h2 data-translate="categories">${t('categories')}</h2>
                             <div class="category-buttons">
@@ -1953,23 +2548,24 @@ function createMainInterface() {
                                 <button class="btn btn-warning btn-small" onclick="printLowStockReport()" data-translate="printLowStock">${t('printLowStock')}</button>
                                 <button class="btn btn-danger btn-small" onclick="printExpiredItemsReport()" data-translate="printExpired">${t('printExpired')}</button>
                             </div>
+                            <div class="sales-nav-actions" style="display:flex; gap:6px; margin-top:8px;">
+                                <button class="btn btn-secondary btn-small" onclick="viewPreviousSale()" data-translate="previousSale" style="flex:1;">◀ ${t('previousSale')}</button>
+                                <button class="btn btn-info btn-small" onclick="viewLastSale()" data-translate="lastSale" style="flex:1;">📋 ${t('lastSale')}</button>
+                                <button class="btn btn-secondary btn-small" onclick="viewNextSale()" data-translate="nextSale" style="flex:1;">${t('nextSale')} ▶</button>
+                            </div>
                         </section>
                     </div>
                 </div>
 
-                <!-- Other views will be added here -->
+                <!-- Other views -->
                 <div id="inventory-view" class="view" style="display: none;">
                     <h2 data-translate="inventory">${t('inventory')}</h2>
-                    <div class="inventory-content">
-                        <!-- Inventory management will be added -->
-                    </div>
+                    <div class="inventory-content"></div>
                 </div>
 
                 <div id="clients-view" class="view" style="display: none;">
                     <h2 data-translate="clients">${t('clients')}</h2>
-                    <div class="clients-content">
-                        <!-- Client management will be loaded here -->
-                    </div>
+                    <div class="clients-content"></div>
                 </div>
 
                 <div id="suppliers-view" class="view" style="display: none;">
@@ -1979,30 +2575,22 @@ function createMainInterface() {
 
                 <div id="categories-view" class="view" style="display: none;">
                     <h2 data-translate="categoryManagement">${t('categoryManagement')}</h2>
-                    <div class="categories-content">
-                        <!-- Categories management will be loaded here -->
-                    </div>
+                    <div class="categories-content"></div>
                 </div>
 
                 <div id="reports-view" class="view" style="display: none;">
                     <h2 data-translate="reports">${t('reports')}</h2>
-                    <div class="reports-content">
-                        <!-- Reports will be added -->
-                    </div>
+                    <div class="reports-content"></div>
                 </div>
 
                 <div id="users-view" class="view" style="display: none;">
                     <h2 data-translate="users">${t('users')}</h2>
-                    <div class="users-content">
-                        <!-- User management will be added -->
-                    </div>
+                    <div class="users-content"></div>
                 </div>
 
                 <div id="settings-view" class="view" style="display: none;">
                     <h2 data-translate="settings">${t('settings')}</h2>
-                    <div class="settings-content">
-                        <!-- Settings will be added -->
-                    </div>
+                    <div class="settings-content"></div>
                 </div>
             </main>
         </div>
@@ -2025,20 +2613,23 @@ function createMainInterface() {
                     </div>
                 </div>
                 <div class="payment-methods">
-                    <h3>Payment Method:</h3>
-                    <button class="payment-btn" data-method="cash">💵 Cash</button>
-                    <button class="payment-btn" data-method="card">💳 Card</button>
-                    <button class="payment-btn" data-method="digital">📱 Digital</button>
+                    <h3 data-translate="paymentMethod">${t('paymentMethod')}:</h3>
+                    <div class="payment-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin-top: 10px;">
+                        <button class="payment-btn" data-method="cash">💵 <span data-translate="cash">${t('cash')}</span></button>
+                        <button class="payment-btn" data-method="card">💳 <span data-translate="card">${t('card')}</span></button>
+                        <button class="payment-btn" data-method="cib">💳 <span data-translate="cibEdahabia">${t('cibEdahabia')}</span></button>
+                        <button class="payment-btn" data-method="transfer">🏦 <span data-translate="bankTransfer">${t('bankTransfer') || 'Bank Transfer'}</span></button>
+                        <button class="payment-btn" data-method="paypal">🅿️ <span data-translate="paypal">${t('paypal')}</span></button>
+                    </div>
                 </div>
-                <div class="payment-details" id="payment-details">
-                    <!-- Payment details will be shown here -->
-                </div>
+                <div class="payment-details" id="payment-details"></div>
                 <div class="modal-actions">
                     <button class="btn btn-secondary" id="cancel-checkout" data-translate="cancel">${t('cancel')}</button>
                     <button class="btn btn-warning" id="complete-unpaid-sale" data-translate="payLater">${t('payLater')}</button>
                     <button class="btn btn-primary" id="complete-paid-sale" data-translate="completePaidSale">${t('completePaidSale')}</button>
                 </div>
             </div>
+        </div>
         </div>
     `;
 
@@ -2051,6 +2642,102 @@ function hasPermission(permission) {
     if (!currentUser) return false;
     const userRole = userRoles[currentUser.role];
     return userRole.permissions.includes('all') || userRole.permissions.includes(permission);
+}
+
+const categoryIcons = {
+    food: '🍽️', drinks: '🥤', snacks: '🍿', tools: '🔧', hardware: '🏗️',
+    construction: '🧱', electrical: '⚡', plumbing: '🔩', general: '📦',
+    default: '📁'
+};
+
+let isFullScreenPOS = false;
+
+function buildFullscreenQuickbar() {
+    const existing = document.getElementById('fullscreen-quickbar');
+    if (existing) existing.remove();
+
+    const bar = document.createElement('div');
+    bar.id = 'fullscreen-quickbar';
+
+    // Brand
+    const brand = document.createElement('div');
+    brand.className = 'qb-brand';
+    brand.innerHTML = '🛒 ROUIBIPOS';
+    bar.appendChild(brand);
+
+    // Category buttons with icons
+    const allBtn = document.createElement('button');
+    allBtn.className = 'qb-cat-btn active';
+    allBtn.innerHTML = `<span class="qb-icon">🏪</span>${t('allItems')}`;
+    allBtn.onclick = () => { filterByCategory('all', allBtn); };
+    bar.appendChild(allBtn);
+
+    const activeCategories = categories.filter(c => c.active);
+    activeCategories.forEach(cat => {
+        const key = cat.name.toLowerCase();
+        const icon = categoryIcons[key] || categoryIcons.default;
+        const btn = document.createElement('button');
+        btn.className = 'qb-cat-btn';
+        btn.innerHTML = `<span class="qb-icon">${icon}</span>${getCategoryName(cat)}`;
+        btn.onclick = () => { filterByCategory(key, btn); };
+        bar.appendChild(btn);
+    });
+
+    // Spacer
+    const spacer = document.createElement('div');
+    spacer.className = 'qb-spacer';
+    bar.appendChild(spacer);
+
+    // Actions
+    const actions = document.createElement('div');
+    actions.className = 'qb-actions';
+    actions.innerHTML = `
+        <span style="color:#fff; font-size:0.85rem;" id="qb-time"></span>
+        <button class="qb-exit-btn" onclick="toggleFullScreenPOS()">✕ ${t('exitFullScreen')}</button>
+    `;
+    bar.appendChild(actions);
+
+    document.body.appendChild(bar);
+
+    // Keep time updated in quickbar
+    setInterval(() => {
+        const el = document.getElementById('qb-time');
+        if (el) el.textContent = new Date().toLocaleTimeString();
+    }, 1000);
+}
+
+function filterByCategory(categoryKey, clickedBtn) {
+    currentCategory = categoryKey;
+    displayProducts();
+    // Update active state on quickbar buttons
+    document.querySelectorAll('#fullscreen-quickbar .qb-cat-btn').forEach(b => b.classList.remove('active'));
+    if (clickedBtn) clickedBtn.classList.add('active');
+}
+
+function toggleFullScreenPOS() {
+    isFullScreenPOS = !isFullScreenPOS;
+    const body = document.body;
+
+    if (isFullScreenPOS) {
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen().catch(() => {});
+        }
+        body.classList.add('fullscreen-pos');
+        buildFullscreenQuickbar();
+        document.querySelectorAll('#fullscreen-btn, .btn-fullscreen-toggle').forEach(btn => {
+            btn.innerText = '🔲 ' + t('exitFullScreen');
+        });
+    } else {
+        if (document.exitFullscreen && document.fullscreenElement) {
+            document.exitFullscreen().catch(() => {});
+        }
+        body.classList.remove('fullscreen-pos');
+        const bar = document.getElementById('fullscreen-quickbar');
+        if (bar) bar.remove();
+        document.querySelectorAll('#fullscreen-btn, .btn-fullscreen-toggle').forEach(btn => {
+            btn.innerText = '🔲 ' + t('fullScreenPOS');
+        });
+    }
 }
 
 // ===== VIEW MANAGEMENT =====
@@ -2124,7 +2811,7 @@ function loadInventoryView() {
         </div>
 
         <div class="inventory-filters">
-            <input type="text" id="inventory-search" placeholder="${t('search')}..." onkeyup="filterInventory()">
+            <input type="text" id="inventory-search" data-translate-placeholder="search" placeholder="${t('search')}..." onkeyup="filterInventory()">
             <select id="category-filter" onchange="filterInventory()">
                 <option value="all">${t('allItems')}</option>
                 ${categoryOptions}
@@ -2235,12 +2922,137 @@ function filterInventory() {
     }).join('');
 }
 
+function updateImagePreview(input) {
+    const preview = document.getElementById('image-preview');
+    if (input.type === 'file' && input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            document.getElementById('product-image-url').value = e.target.result; // Store base64 in the URL field
+        };
+        reader.readAsDataURL(input.files[0]);
+    } else if (input.type === 'text') {
+        preview.src = input.value || 'https://placehold.co/100x100/eeeeee/cccccc?text=No+Image';
+    }
+}
+
+async function fetchDetailsByBarcode() {
+    const barcode = document.getElementById('product-barcode').value;
+    if (!barcode) {
+        alert("Please enter a barcode first.");
+        return;
+    }
+    
+    const btn = document.getElementById('fetch-barcode-btn');
+    btn.disabled = true;
+    btn.innerText = "Fetching...";
+    
+    try {
+        const res = await fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`);
+        const data = await res.json();
+        
+        if (data.status === 1 && data.product) {
+            const p = data.product;
+            if (p.product_name) document.getElementById('product-name').value = p.product_name;
+            if (p.image_url) {
+                document.getElementById('product-image-url').value = p.image_url;
+                updateImagePreview(document.getElementById('product-image-url'));
+            }
+            alert("Details fetched successfully!");
+        } else {
+            alert("Product not found in Open Food Facts database.");
+        }
+    } catch (e) {
+        alert("Error fetching product details.");
+    } finally {
+        btn.disabled = false;
+        btn.innerText = "Fetch Details";
+    }
+}
+
+async function searchImageByName(inputId) {
+    let name = '';
+    if (inputId === 'product-image-url') {
+        name = document.getElementById('product-name').value;
+    } else {
+        name = document.getElementById('edit-product-name').value;
+    }
+    
+    if (!name) {
+        alert("Please enter a product name first.");
+        return;
+    }
+    try {
+        const res = await fetch(`https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrnamespace=6&gsrsearch=${encodeURIComponent(name)}&gsrlimit=12&prop=imageinfo&iiprop=url&format=json&origin=*`);
+        const data = await res.json();
+        
+        if (!data.query || !data.query.pages) {
+            alert("No images found for this name.");
+            return;
+        }
+
+        const pages = data.query.pages;
+        const urls = Object.values(pages)
+            .map(p => p.imageinfo?.[0]?.url)
+            .filter(Boolean)
+            .map(url => url.split('?')[0]); // Remove tracking params
+
+        if (urls.length === 0) {
+            alert("No images found for this name.");
+            return;
+        }
+
+        showImageSuggestionsModal(urls, inputId);
+    } catch (e) {
+        alert("Error searching for image.");
+    }
+}
+
+function showImageSuggestionsModal(urls, inputId) {
+    const modal = document.createElement('div');
+    modal.className = 'modal image-suggestions-modal';
+    modal.style.display = 'block';
+    
+    let gridHTML = '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 15px; max-height: 400px; overflow-y: auto;">';
+    
+    urls.forEach(url => {
+        gridHTML += `
+            <div style="cursor: pointer; border: 2px solid transparent; border-radius: 8px; overflow: hidden; height: 120px; display: flex; align-items: center; justify-content: center; background: #f0f0f0;" 
+                 onmouseover="this.style.borderColor='#667eea'" 
+                 onmouseout="this.style.borderColor='transparent'"
+                 onclick="selectSuggestedImage('${url}', '${inputId}')">
+                <img src="${url}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            </div>
+        `;
+    });
+    
+    gridHTML += '</div>';
+
+    modal.innerHTML = `
+        <div class="modal-content" style="max-width: 600px;">
+            <h2>${t('selectImage') || 'Select Image'}</h2>
+            <p>Click an image to use it for this product:</p>
+            ${gridHTML}
+            <div class="modal-actions" style="margin-top: 20px; text-align: right;">
+                <button type="button" class="btn btn-secondary" onclick="document.querySelector('.image-suggestions-modal').remove()">${t('cancel') || 'Cancel'}</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+window.selectSuggestedImage = function(url, inputId) {
+    document.getElementById(inputId).value = url;
+    updateImagePreview(document.getElementById(inputId));
+    document.querySelector('.image-suggestions-modal').remove();
+};
+
 function showAddProductModal() {
     const modal = document.createElement('div');
     modal.className = 'modal';
     modal.style.display = 'block';
     modal.innerHTML = `
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 600px;">
             <h2>${t('addProduct')}</h2>
             <form onsubmit="addNewProduct(event)">
                 <div class="form-row">
@@ -2255,39 +3067,56 @@ function showAddProductModal() {
                 </div>
                 <div class="form-row">
                     <div class="form-group">
+                        <label data-translate="barcode">${t('barcode')}:</label>
+                        <div style="display:flex; gap:10px;">
+                            <input type="text" id="product-barcode" style="flex:1;">
+                            <button type="button" id="fetch-barcode-btn" class="btn btn-secondary" onclick="fetchDetailsByBarcode()" style="padding: 0 10px;">Fetch Details</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label>${t('category')}:</label>
                         <select id="product-category" required>
                             <option value="food">${t('food')}</option>
                             <option value="drinks">${t('drinks')}</option>
                             <option value="snacks">${t('snacks')}</option>
+                            <option value="general">General</option>
                         </select>
                     </div>
+                </div>
+                <div class="form-row">
                     <div class="form-group">
                         <label>${t('price')}:</label>
                         <input type="number" id="product-price" step="0.01" required>
                     </div>
-                </div>
-                <div class="form-row">
                     <div class="form-group">
                         <label>${t('stock')}:</label>
                         <input type="number" id="product-stock" required>
                     </div>
+                </div>
+                <div class="form-row">
                     <div class="form-group">
-                        <label data-translate="minStock">${t('minStock')}:</label>
-                        <input type="number" id="product-min-stock" required>
+                        <label>Product Image (URL or Upload):</label>
+                        <input type="text" id="product-image-url" placeholder="https://..." oninput="updateImagePreview(this)" style="margin-bottom: 5px;">
+                        <div style="display:flex; gap:8px; margin-bottom: 5px;">
+                            <input type="file" id="product-image-file" accept="image/*" onchange="updateImagePreview(this)" style="flex:1;">
+                            <button type="button" class="btn btn-secondary" onclick="searchImageByName('product-image-url')" style="padding:0 10px; white-space:nowrap;">🔍 Search Image</button>
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: flex; align-items: center; justify-content: center;">
+                        <img id="image-preview" src="https://placehold.co/100x100/eeeeee/cccccc?text=No+Image" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 1px solid #ccc;">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label data-translate="barcode">${t('barcode')}:</label>
-                        <input type="text" id="product-barcode" required>
+                        <label data-translate="minStock">${t('minStock')}:</label>
+                        <input type="number" id="product-min-stock" required>
                     </div>
                     <div class="form-group">
                         <label data-translate="supplier">${t('supplier')}:</label>
                         <input type="text" id="product-supplier">
                     </div>
                 </div>
-                <div class="modal-actions">
+                <div class="modal-actions mt-3">
                     <button type="button" class="btn btn-secondary" onclick="closeModal()">${t('cancel')}</button>
                     <button type="submit" class="btn btn-primary">${t('save')}</button>
                 </div>
@@ -2312,6 +3141,7 @@ function addNewProduct(event) {
         barcode: document.getElementById('product-barcode').value,
         supplier: document.getElementById('product-supplier').value,
         cost: parseFloat(document.getElementById('product-price').value) * 0.6,
+        image: document.getElementById('product-image-url') ? document.getElementById('product-image-url').value : '',
         active: true
     };
 
@@ -2322,7 +3152,7 @@ function addNewProduct(event) {
     loadInventoryView();
     displayProducts(); // Refresh main products view
 
-    alert(`Product "${newProduct.name}" added successfully!`);
+    alert(`${t('product')} "${newProduct.name}" ${t('productAdded2')}`);
 }
 
 function editProduct(productId) {
@@ -2333,7 +3163,7 @@ function editProduct(productId) {
     modal.className = 'modal';
     modal.style.display = 'block';
     modal.innerHTML = `
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 600px;">
             <h2>${t('editProduct')}</h2>
             <form onsubmit="updateProduct(event, ${productId})">
                 <div class="form-row">
@@ -2348,39 +3178,53 @@ function editProduct(productId) {
                 </div>
                 <div class="form-row">
                     <div class="form-group">
+                        <label data-translate="barcode">${t('barcode')}:</label>
+                        <input type="text" id="edit-product-barcode" value="${product.barcode}" required>
+                    </div>
+                    <div class="form-group">
                         <label>${t('category')}:</label>
                         <select id="edit-product-category" required>
                             <option value="food" ${product.category === 'food' ? 'selected' : ''}>${t('food')}</option>
                             <option value="drinks" ${product.category === 'drinks' ? 'selected' : ''}>${t('drinks')}</option>
                             <option value="snacks" ${product.category === 'snacks' ? 'selected' : ''}>${t('snacks')}</option>
+                            <option value="general" ${product.category === 'general' ? 'selected' : ''}>General</option>
                         </select>
                     </div>
+                </div>
+                <div class="form-row">
                     <div class="form-group">
                         <label>${t('price')}:</label>
                         <input type="number" id="edit-product-price" step="0.01" value="${product.price}" required>
                     </div>
-                </div>
-                <div class="form-row">
                     <div class="form-group">
                         <label>${t('stock')}:</label>
                         <input type="number" id="edit-product-stock" value="${product.stock}" required>
                     </div>
+                </div>
+                <div class="form-row">
                     <div class="form-group">
-                        <label data-translate="minStock">${t('minStock')}:</label>
-                        <input type="number" id="edit-product-min-stock" value="${product.minStock}" required>
+                        <label>Product Image (URL or Upload):</label>
+                        <input type="text" id="edit-product-image-url" value="${product.image || ''}" placeholder="https://..." oninput="updateImagePreview(this)" style="margin-bottom: 5px;">
+                        <div style="display:flex; gap:8px; margin-bottom: 5px;">
+                            <input type="file" id="edit-product-image-file" accept="image/*" onchange="updateImagePreview(this)" style="flex:1;">
+                            <button type="button" class="btn btn-secondary" onclick="searchImageByName('edit-product-image-url')" style="padding:0 10px; white-space:nowrap;">🔍 Search Image</button>
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: flex; align-items: center; justify-content: center;">
+                        <img id="image-preview" src="${product.image || 'https://placehold.co/100x100/eeeeee/cccccc?text=No+Image'}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 1px solid #ccc;">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label data-translate="barcode">${t('barcode')}:</label>
-                        <input type="text" id="edit-product-barcode" value="${product.barcode}" required>
+                        <label data-translate="minStock">${t('minStock')}:</label>
+                        <input type="number" id="edit-product-min-stock" value="${product.minStock}" required>
                     </div>
                     <div class="form-group">
                         <label data-translate="supplier">${t('supplier')}:</label>
                         <input type="text" id="edit-product-supplier" value="${product.supplier || ''}">
                     </div>
                 </div>
-                <div class="modal-actions">
+                <div class="modal-actions mt-3">
                     <button type="button" class="btn btn-secondary" onclick="closeModal()">${t('cancel')}</button>
                     <button type="submit" class="btn btn-primary">${t('save')}</button>
                 </div>
@@ -2404,6 +3248,9 @@ function updateProduct(event, productId) {
     product.minStock = parseInt(document.getElementById('edit-product-min-stock').value);
     product.barcode = document.getElementById('edit-product-barcode').value;
     product.supplier = document.getElementById('edit-product-supplier').value;
+    
+    const imageInput = document.getElementById('edit-product-image-url');
+    if (imageInput) product.image = imageInput.value;
 
     saveToStorage('products', products);
 
@@ -2411,7 +3258,7 @@ function updateProduct(event, productId) {
     loadInventoryView();
     displayProducts(); // Refresh main products view
 
-    alert(`Product "${product.name}" updated successfully!`);
+    alert(`${t('product')} "${product.name}" ${t('productUpdated')}`);
 }
 
 function calculateClientDebt(clientId) {
@@ -2425,7 +3272,7 @@ function markSaleAsPaid(saleId) {
     if (sale) {
         sale.paymentStatus = 'paid';
         saveToStorage('salesHistory', salesHistory);
-        alert(`Sale #${sale.id} marked as paid.`);
+        alert(`${t('receipt')} #${sale.id} ${t('saleMarkedPaid')}`);
         // Refresh the view
         loadClientsView();
         // Close any open modals
@@ -2717,7 +3564,7 @@ function addNewClient(event) {
     saveToStorage('clients', clients);
     closeModal();
     loadClientsView();
-    alert(`Client "${newClient.name}" added.`);
+    alert(`${t('clientName')} "${newClient.name}" ${t('clientAdded')}`);
 }
 
 function editClient(clientId) {
@@ -2763,7 +3610,7 @@ function updateClient(event, clientId) {
         saveToStorage('clients', clients);
         closeModal();
         loadClientsView();
-        alert(`Client "${client.name}" updated.`);
+        alert(`${t('clientName')} "${client.name}" ${t('clientUpdated')}`);
     }
 }
 
@@ -2776,13 +3623,13 @@ function adjustStock(productId) {
 
     const adjustmentValue = parseInt(adjustment);
     if (isNaN(adjustmentValue)) {
-        alert('Please enter a valid number');
+        alert(t('validNumberRequired'));
         return;
     }
 
     const newStock = product.stock + adjustmentValue;
     if (newStock < 0) {
-        alert('Stock cannot be negative');
+        alert(t('stockNotNegative'));
         return;
     }
 
@@ -2792,7 +3639,7 @@ function adjustStock(productId) {
     loadInventoryView();
     displayProducts(); // Refresh main products view
 
-    alert(`Stock adjusted for "${product.name}". New stock: ${product.stock}`);
+    alert(`${t('stockAdjusted')} ${product.stock}`);
 }
 
 // ===== SUPPLIER & PURCHASE MANAGEMENT =====
@@ -2887,7 +3734,7 @@ function addNewSupplier(event) {
     saveToStorage('suppliers', suppliers);
     closeModal();
     loadSuppliersView();
-    alert(`Supplier "${newSupplier.name}" added.`);
+    alert(`${t('supplier')} "${newSupplier.name}" ${t('supplierAdded')}`);
 }
 
 function editSupplier(supplierId) {
@@ -2928,7 +3775,7 @@ function updateSupplier(event, supplierId) {
         saveToStorage('suppliers', suppliers);
         closeModal();
         loadSuppliersView();
-        alert(`Supplier "${supplier.name}" updated.`);
+        alert(`${t('supplier')} "${supplier.name}" ${t('supplierUpdated')}`);
     }
 }
 
@@ -2979,7 +3826,7 @@ function markPurchaseAsPaid(purchaseId) {
     if (purchase) {
         purchase.paymentStatus = 'paid';
         saveToStorage('purchases', purchases);
-        alert(`Purchase #${purchase.id} marked as paid.`);
+        alert(`${t('receipt')} #${purchase.id} ${t('purchaseMarkedPaid')}`);
         closeModal();
         loadSuppliersView();
     }
@@ -3006,7 +3853,7 @@ function deleteProduct(productId) {
         loadInventoryView();
         displayProducts(); // Refresh main products view
 
-        alert(`Product "${product.name}" deleted successfully!`);
+        alert(`${t('product')} "${product.name}" ${t('productDeleted')}`);
     }
 }
 
@@ -3379,6 +4226,9 @@ function printInvoice(sale = null) {
         const tax = subtotal * settings.taxRate;
         const total = subtotal + tax;
 
+        const clientSelector = document.getElementById('main-client-selector');
+        const clientId = clientSelector ? parseInt(clientSelector.value) : 0;
+
         invoiceData = {
             id: 'INV-' + Date.now(),
             date: new Date().toISOString(),
@@ -3388,7 +4238,8 @@ function printInvoice(sale = null) {
             tax: tax / currencies[currentCurrency].rate,
             total: total / currencies[currentCurrency].rate,
             paymentMethod: 'N/A',
-            currency: currentCurrency
+            currency: currentCurrency,
+            clientId: clientId || null
         };
     }
 
@@ -3405,6 +4256,18 @@ function generateInvoiceHTML(sale) {
     const date = new Date(sale.date);
     const formattedDate = date.toLocaleDateString(currentLanguage === 'ar' ? 'ar-DZ' : currentLanguage === 'fr' ? 'fr-FR' : currentLanguage === 'es' ? 'es-ES' : 'en-US');
     const formattedTime = date.toLocaleTimeString(currentLanguage === 'ar' ? 'ar-DZ' : currentLanguage === 'fr' ? 'fr-FR' : currentLanguage === 'es' ? 'es-ES' : 'en-US');
+
+    let clientHTML = '';
+    if (sale.clientId) {
+        const client = clients.find(c => c.id === sale.clientId);
+        if (client) {
+            clientHTML = `
+                <div><strong>${client.name}</strong></div>
+                ${client.phone ? `<div>${t('phone') || 'Phone'}: ${client.phone}</div>` : ''}
+                ${client.address ? `<div>${t('address') || 'Address'}: ${client.address}</div>` : ''}
+            `;
+        }
+    }
 
     return `
         <!DOCTYPE html>
@@ -3519,19 +4382,26 @@ function generateInvoiceHTML(sale) {
                     <div>${settings.companyAddress}</div>
                     <div>${settings.companyPhone}</div>
                 </div>
-                <div class="invoice-details">
-                    <div class="invoice-title">${t('businessInvoice')}</div>
-                    <div><strong>${t('invoice')} #:</strong> ${sale.id}</div>
-                    <div><strong>${t('date')}:</strong> ${formattedDate}</div>
-                    <div><strong>${t('time')}:</strong> ${formattedTime}</div>
-                    <div><strong>${t('cashier')}:</strong> ${sale.cashier}</div>
+                <div class="invoice-title-wrapper" style="text-align: right;">
+                    <div class="invoice-title" style="font-size: 32px; color: #667eea; font-weight: bold; text-transform: uppercase; margin-bottom: 5px;">${t('businessInvoice') || 'INVOICE'}</div>
+                    <div style="font-size: 16px; color: #555;"><strong>#</strong> ${sale.id}</div>
                 </div>
             </div>
 
-            <div class="customer-section">
-                <h3>${t('customerInfo')}</h3>
-                <div><strong>${t('currency')}:</strong> ${getCurrencyName(sale.currency)}</div>
-                <div><strong>${t('paymentMethod')}:</strong> ${sale.paymentMethod}</div>
+            <div class="invoice-meta-section" style="display: flex; justify-content: space-between; margin: 30px 0; background: #f8f9fa; padding: 25px; border-radius: 8px; border-left: 4px solid #667eea;">
+                <div class="bill-to" style="flex: 1;">
+                    <h3 style="margin-top: 0; color: #444; border-bottom: 1px solid #ddd; padding-bottom: 8px; margin-bottom: 12px; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px;">${t('customerInfo') || 'Bill To'}</h3>
+                    ${clientHTML ? `<div style="font-size: 15px; color: #333; line-height: 1.5;">${clientHTML}</div>` : `<div style="color: #777; font-style: italic;">Walk-in Customer</div>`}
+                </div>
+                <div class="sale-details" style="flex: 1; text-align: ${currentLanguage === 'ar' ? 'left' : 'right'}; padding-left: 20px;">
+                    <h3 style="margin-top: 0; color: #444; border-bottom: 1px solid #ddd; padding-bottom: 8px; margin-bottom: 12px; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px;">${t('transactionDetails') || 'Transaction Details'}</h3>
+                    <div style="line-height: 1.8;">
+                        <div><strong>${t('date')}:</strong> ${formattedDate} ${formattedTime}</div>
+                        <div><strong>${t('cashier')}:</strong> ${sale.cashier}</div>
+                        <div><strong>${t('paymentMethod')}:</strong> <span style="display: inline-block; padding: 2px 8px; background: #e2e8f0; border-radius: 4px; font-size: 12px;">${sale.paymentMethod}</span></div>
+                        <div><strong>${t('currency')}:</strong> ${getCurrencyName(sale.currency)}</div>
+                    </div>
+                </div>
             </div>
 
             <table class="items-table">
@@ -4043,33 +4913,42 @@ function showAddUserModal() {
     document.body.appendChild(modal);
 }
 
-function addNewUser(event) {
+async function addNewUser(event) {
     event.preventDefault();
 
     const username = document.getElementById('user-username').value;
 
     // Check if username already exists
     if (users.find(u => u.username === username)) {
-        alert('Username already exists!');
+        alert(t('usernameExists'));
         return;
     }
 
-    const newUser = {
-        id: Math.max(...users.map(u => u.id)) + 1,
-        username: username,
-        name: document.getElementById('user-name').value,
-        password: document.getElementById('user-password').value,
-        role: document.getElementById('user-role').value,
-        active: true
-    };
+    const password = document.getElementById('user-password').value;
+    const full_name = document.getElementById('user-name').value;
+    const role = document.getElementById('user-role').value;
 
-    users.push(newUser);
-    saveToStorage('users', users);
-
-    closeModal();
-    loadUsersView();
-
-    alert(`User "${newUser.name}" added successfully!`);
+    const token = localStorage.getItem('jwtToken');
+    try {
+        const res = await fetch('/api/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+            body: JSON.stringify({ username, password, full_name, role })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+            alert(data.error || 'Failed to add user');
+            return;
+        }
+        // Add to local array too
+        users.push({ id: data.id, username: data.username, name: data.full_name, role: data.role, active: true });
+        saveToStorage('users', users);
+        closeModal();
+        loadUsersView();
+        alert(`User "${full_name}" added successfully!`);
+    } catch(e) {
+        alert('Network error adding user');
+    }
 }
 
 function editUser(userId) {
@@ -4113,35 +4992,41 @@ function editUser(userId) {
     document.body.appendChild(modal);
 }
 
-function updateUser(event, userId) {
+async function updateUser(event, userId) {
     event.preventDefault();
 
     const user = users.find(u => u.id === userId);
     if (!user) return;
 
     const newUsername = document.getElementById('edit-user-username').value;
-
-    // Check if username already exists (excluding current user)
-    if (users.find(u => u.username === newUsername && u.id !== userId)) {
-        alert('Username already exists!');
-        return;
-    }
-
-    user.username = newUsername;
-    user.name = document.getElementById('edit-user-name').value;
-    user.role = document.getElementById('edit-user-role').value;
-
+    const newName = document.getElementById('edit-user-name').value;
+    const newRole = document.getElementById('edit-user-role').value;
     const newPassword = document.getElementById('edit-user-password').value;
-    if (newPassword) {
-        user.password = newPassword;
+
+    const token = localStorage.getItem('jwtToken');
+    try {
+        const res = await fetch(`/api/users/${userId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+            body: JSON.stringify({ username: newUsername, full_name: newName, role: newRole, password: newPassword })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+            alert(data.error || 'Failed to update user');
+            return;
+        }
+        // Update local array
+        user.username = newUsername;
+        user.name = newName;
+        user.role = newRole;
+        if (newPassword) user.password = newPassword;
+        saveToStorage('users', users);
+        closeModal();
+        loadUsersView();
+        alert(`User "${newName}" updated successfully!`);
+    } catch(e) {
+        alert('Network error updating user');
     }
-
-    saveToStorage('users', users);
-
-    closeModal();
-    loadUsersView();
-
-    alert(`User "${user.name}" updated successfully!`);
 }
 
 function toggleUserStatus(userId) {
@@ -4158,7 +5043,7 @@ function toggleUserStatus(userId) {
 
     loadUsersView();
 
-    alert(`User "${user.name}" ${user.active ? 'activated' : 'deactivated'} successfully!`);
+    alert(`${t('fullName')} "${user.name}" ${user.active ? t('activated') : t('deactivated')} ${t('successfully')}!`);
 }
 
 function deleteUser(userId) {
@@ -4177,7 +5062,7 @@ function deleteUser(userId) {
 
         loadUsersView();
 
-        alert(`User "${user.name}" deleted successfully!`);
+        alert(`${t('fullName')} "${user.name}" ${t('userDeleted')}`);
     }
 }
 
@@ -4290,39 +5175,53 @@ function loadSettingsView() {
             </div>
 
             <div class="settings-section">
-                <h3>System Settings</h3>
+                <h3 data-translate="systemSettings">${t('systemSettings')}</h3>
                 <div class="form-group">
-                    <label>Tax Rate (%):</label>
+                    <label data-translate="taxRate">${t('taxRate')}:</label>
                     <input type="number" id="setting-tax-rate" step="0.01" value="${(settings.taxRate * 100).toFixed(2)}">
                 </div>
                 <div class="form-group">
-                    <label>Low Stock Threshold:</label>
+                    <label data-translate="lowStockThreshold">${t('lowStockThreshold')}:</label>
                     <input type="number" id="setting-low-stock-threshold" value="${settings.lowStockThreshold}">
                 </div>
                 <div class="form-group">
                     <label>
                         <input type="checkbox" id="setting-auto-backup" ${settings.autoBackup ? 'checked' : ''}>
-                        Enable Auto Backup
+                        <span data-translate="enableAutoBackup">${t('enableAutoBackup')}</span>
                     </label>
                 </div>
                 <div class="form-group">
                     <label>
                         <input type="checkbox" id="setting-print-after-sale" ${settings.printAfterSale ? 'checked' : ''}>
-                        Auto Print Receipt After Sale
+                        <span data-translate="autoPrintReceipt">${t('autoPrintReceipt')}</span>
                     </label>
                 </div>
                 <div class="form-group">
                     <label>
                         <input type="checkbox" id="setting-show-barcode" ${settings.showBarcode ? 'checked' : ''}>
-                        Show Barcodes on Products
+                        <span data-translate="showBarcodes">${t('showBarcodes')}</span>
                     </label>
                 </div>
             </div>
 
             <div class="settings-section">
-                <h3>Default Language & Currency</h3>
+                <h3 data-translate="currencyLangSettings">${t('currencyLangSettings')}</h3>
                 <div class="form-group">
-                    <label>Default Language:</label>
+                    <label data-translate="systemCurrency">${t('systemCurrency')}:</label>
+                    <select id="setting-default-currency">
+                        ${Object.entries(currencies).map(([code, curr]) => {
+                            const symbol = typeof curr.symbol === 'object' ? (curr.symbol[currentLanguage] || curr.symbol.en) : curr.symbol;
+                            const name = curr.names ? (curr.names[currentLanguage] || curr.names.en) : code;
+                            return `<option value="${code}" ${currentCurrency === code ? 'selected' : ''}>${code} (${symbol} - ${name})</option>`;
+                        }).join('')}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label data-translate="maxCurrenciesSupported">${t('maxCurrenciesSupported')}:</label>
+                    <input type="number" id="setting-max-currencies" min="1" max="20" value="${settings.maxCurrencies || 10}">
+                </div>
+                <div class="form-group">
+                    <label data-translate="defaultInterfaceLanguage">${t('defaultInterfaceLanguage')}:</label>
                     <select id="setting-default-language">
                         <option value="en" ${currentLanguage === 'en' ? 'selected' : ''}>🇺🇸 English</option>
                         <option value="ar" ${currentLanguage === 'ar' ? 'selected' : ''}>🇩🇿 العربية</option>
@@ -4330,14 +5229,29 @@ function loadSettingsView() {
                         <option value="es" ${currentLanguage === 'es' ? 'selected' : ''}>🇪🇸 Español</option>
                     </select>
                 </div>
+            </div>
+
+            <div class="settings-section">
+                <h3 data-translate="paymentSettings">${t('paymentSettings') || 'Customer Payment Settings'}</h3>
+                <p style="margin-bottom: 12px; color: #666; font-size: 13px;">Configure payment methods for your customers.</p>
                 <div class="form-group">
-                    <label>Default Currency:</label>
-                    <select id="setting-default-currency">
-                        ${Object.entries(currencies).map(([code, curr]) =>
-                            `<option value="${code}" ${currentCurrency === code ? 'selected' : ''}>${curr.symbol} ${curr.name}</option>`
-                        ).join('')}
-                    </select>
+                    <label data-translate="paypalEmail">${t('paypalEmail') || 'Store PayPal.Me Link'}:</label>
+                    <input type="text" id="setting-paypal-email" value="${settings.paypalEmail || ''}" placeholder="e.g. https://paypal.me/yourstore">
                 </div>
+            </div>
+
+            <div class="settings-section">
+                <h3 style="color: var(--primary-color);">💳 ${t('subscriptionRenewal') || 'Subscription Renewal'}</h3>
+                <p style="margin-bottom: 12px; color: #666;">${t('subscriptionRenewalDesc') || 'Your POS is powered by RouibiPOS. To renew your subscription or upgrade, please send the payment to the developer using one of the methods below.'}</p>
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                    <a href="https://paypal.me/RouibiDev" target="_blank" class="btn btn-primary" style="text-decoration:none;">
+                        💙 ${t('payViaPayPal') || 'Pay via PayPal'}
+                    </a>
+                    <a href="mailto:rouibidev@gmail.com?subject=Payoneer Subscription Payment&body=Store: ${settings.companyName || 'My Store'}" target="_blank" class="btn btn-secondary" style="text-decoration:none;">
+                        💳 ${t('payViaPayoneer') || 'Contact for Payoneer'}
+                    </a>
+                </div>
+                <p style="margin-top: 10px; font-size: 13px; color: #888;">${t('afterPaymentContact') || 'After payment, contact us with your store name and payment reference to activate your license.'}</p>
             </div>
 
             <div class="settings-section">
@@ -4365,9 +5279,11 @@ function saveSettings() {
     settings.receiptFooter = document.getElementById('setting-receipt-footer').value;
     settings.taxRate = parseFloat(document.getElementById('setting-tax-rate').value) / 100;
     settings.lowStockThreshold = parseInt(document.getElementById('setting-low-stock-threshold').value);
+    settings.maxCurrencies = parseInt(document.getElementById('setting-max-currencies').value) || 10;
     settings.autoBackup = document.getElementById('setting-auto-backup').checked;
     settings.printAfterSale = document.getElementById('setting-print-after-sale').checked;
     settings.showBarcode = document.getElementById('setting-show-barcode').checked;
+    settings.paypalEmail = document.getElementById('setting-paypal-email') ? document.getElementById('setting-paypal-email').value : '';
 
     // Save to localStorage
     Object.keys(settings).forEach(key => {
@@ -4386,7 +5302,7 @@ function saveSettings() {
         changeCurrency(newCurrency);
     }
 
-    alert('Settings saved successfully!');
+    alert(t('settingsSaved'));
 
     // Refresh displays
     displayProducts();
@@ -4412,7 +5328,7 @@ function createBackup() {
 
     localStorage.setItem('lastBackup', new Date().toLocaleString());
 
-    alert('Backup created successfully!');
+    alert(t('backupCreated'));
 }
 
 // ===== MISSING BUTTON FUNCTIONS =====
@@ -5136,8 +6052,14 @@ function displayProducts() {
 
         const productCard = document.createElement('div');
         productCard.className = `product-card ${statusClass}`;
+        
+        let productImageHtml = '';
+        if (product.image) {
+            productImageHtml = `<img src="${product.image}" class="product-image" alt="${productName}" style="width: 100%; height: 120px; object-fit: cover; border-top-left-radius: 8px; border-top-right-radius: 8px;">`;
+        }
+
         productCard.innerHTML = `
-            
+            ${productImageHtml}
             <div class="product-info">
                 <h3>${productName}</h3>
                 <div class="price">${formatCurrency(product.price)}</div>
@@ -5206,7 +6128,7 @@ function displayFilteredProducts(filteredProducts) {
 
 function addToCart(product) {
     if (product.stock <= 0) {
-        alert(`${product.name} is out of stock!`);
+        alert(`${product.name} ${t('outOfStock')}`);
         return;
     }
 
@@ -5214,7 +6136,7 @@ function addToCart(product) {
 
     if (existingItem) {
         if (existingItem.quantity >= product.stock) {
-            alert(`Cannot add more ${product.name}. Only ${product.stock} in stock.`);
+            alert(`${t('cannotAddMore')} ${product.name}. ${t('onlyInStock')} ${product.stock} ${t('inStock')}`);
             return;
         }
         existingItem.quantity += 1;
@@ -5245,7 +6167,7 @@ function updateQuantity(productId, change) {
         if (newQuantity <= 0) {
             removeFromCart(productId);
         } else if (newQuantity > product.stock) {
-            alert(`Cannot add more ${product.name}. Only ${product.stock} in stock.`);
+            alert(`${t('cannotAddMore')} ${product.name}. ${t('onlyInStock')} ${product.stock} ${t('inStock')}`);
         } else {
             item.quantity = newQuantity;
             updateCartDisplay();
@@ -5261,6 +6183,25 @@ function updateCartDisplay() {
     const totalEl = document.getElementById('total');
 
     if (!cartItemsEl) return;
+
+    // Show/hide editing mode banner
+    let editingBanner = document.getElementById('editing-sale-banner');
+    const checkoutBtn = document.getElementById('checkout');
+    let deleteSaleBtn = document.getElementById('delete-sale-btn');
+
+    if (editingSaleId) {
+        if (!editingBanner) {
+            editingBanner = document.createElement('div');
+            editingBanner.id = 'editing-sale-banner';
+            editingBanner.style.cssText = 'background:#fff3cd;border:1px solid #ffc107;color:#856404;padding:8px 12px;border-radius:6px;margin-bottom:8px;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:8px;';
+            cartItemsEl.parentNode.insertBefore(editingBanner, cartItemsEl);
+        }
+        editingBanner.innerHTML = `⚠️ ${t('editingSale')} #${editingSaleId.toString().slice(-6).toUpperCase()} <button id="delete-sale-btn" onclick="deleteEditingSale()" style="background:#dc3545;color:white;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:12px;">🗑 ${t('deleteSale')}</button>`;
+        if (checkoutBtn) { checkoutBtn.textContent = '✏️ ' + t('updateSale'); checkoutBtn.style.background = '#e67e22'; }
+    } else {
+        if (editingBanner) editingBanner.remove();
+        if (checkoutBtn) { checkoutBtn.textContent = t('checkout'); checkoutBtn.style.background = ''; }
+    }
 
     if (cart.length === 0) {
         cartItemsEl.innerHTML = `<p class="empty-cart" data-translate="emptyCart">${t('emptyCart')}</p>`;
@@ -5304,6 +6245,8 @@ function updateTotals() {
 function clearCart() {
     if (cart.length > 0 && confirm(`${t('clearCart')}?`)) {
         cart = [];
+        editingSaleId = null;
+        currentViewedSaleIndex = -1;
         updateCartDisplay();
         saveCart();
     }
@@ -5364,77 +6307,161 @@ function closeCheckout() {
     document.querySelectorAll('.payment-btn').forEach(btn => btn.classList.remove('active'));
 }
 
-function processSale(isPaid) {
-    // Stock check before proceeding
-    for (const cartItem of cart) {
-        const product = products.find(p => p.id === cartItem.id);
-        if (product && product.stock < cartItem.quantity) {
-            alert(`${t('insufficientStock')} for ${getProductName(product)}. ${t('available')}: ${product.stock}`);
-            return; // Stop the sale
+function processSale(isPaid, overridePaymentMethod = null) {
+    const doProcess = () => {
+        // If editing, skip stock check for reduced quantities (they were already deducted)
+        // But for new items or increased quantities, check difference
+        if (!editingSaleId) {
+            // Normal stock check
+            for (const cartItem of cart) {
+                const product = products.find(p => p.id === cartItem.id);
+                if (product && product.stock < cartItem.quantity) {
+                    alert(`${t('insufficientStock')} for ${getProductName(product)}. ${t('available')}: ${product.stock}`);
+                    return;
+                }
+            }
         }
-    }
 
-    const selectedPayment = document.querySelector('.payment-btn.active');
-    const clientId = document.getElementById('client-selector').value;
+        const selectedPayment = document.querySelector('.payment-btn.active');
+        const clientId = document.getElementById('client-selector') ? document.getElementById('client-selector').value : document.getElementById('main-client-selector').value;
 
-    if (isPaid && !selectedPayment) {
-        alert(t('selectPaymentMethod'));
-        return;
-    }
+        if (isPaid && !selectedPayment && !overridePaymentMethod) {
+            alert(t('selectPaymentMethod'));
+            return;
+        }
 
-    // Walk-in customer has id 1, No Client has value "1" or "0".
-    if (!isPaid && (!clientId || parseInt(clientId) <= 1)) {
-        alert('Please select a specific client for an unpaid sale.');
-        return;
-    }
+        if (!isPaid && (!clientId || parseInt(clientId) <= 1)) {
+            alert(t('selectClientForUnpaid'));
+            return;
+        }
 
-    const paymentMethod = isPaid ? selectedPayment.dataset.method : 'unpaid';
-    const paymentStatus = isPaid ? 'paid' : 'unpaid';
+        const paymentMethod = isPaid ? (overridePaymentMethod || selectedPayment.dataset.method) : 'unpaid';
+        const paymentStatus = isPaid ? 'paid' : 'unpaid';
 
-    const subtotal = cart.reduce((sum, item) => sum + (convertPrice(item.price) * item.quantity), 0);
-    const tax = subtotal * settings.taxRate;
-    const total = subtotal + tax;
+        const subtotal = cart.reduce((sum, item) => sum + (convertPrice(item.price) * item.quantity), 0);
+        const tax = subtotal * settings.taxRate;
+        const total = subtotal + tax;
 
-    // Create sale record
-    const sale = {
-        id: generateId(),
-        date: new Date().toISOString(),
-        cashier: currentUser.name,
-        items: [...cart],
-        subtotal: subtotal / currencies[currentCurrency].rate,
-        tax: tax / currencies[currentCurrency].rate,
-        total: total / currencies[currentCurrency].rate,
-        paymentMethod: paymentMethod,
-        paymentStatus: paymentStatus,
-        clientId: clientId ? parseInt(clientId) : null,
-        currency: currentCurrency
+        if (isPaid && paymentMethod === 'paypal' && !arguments[2]) { // arguments[2] is skipPaymentModal which we'll handle implicitly
+            if (!settings.paypalEmail) {
+                alert('Please configure your store\'s PayPal.Me link in Settings to receive customer payments.');
+                return;
+            }
+            showRealPaymentModal('paypal', settings.paypalEmail, total);
+            return;
+        }
+
+        if (editingSaleId) {
+            // --- MODIFYING EXISTING SALE ---
+            const existingSaleIdx = salesHistory.findIndex(s => s.id === editingSaleId);
+            if (existingSaleIdx === -1) {
+                alert(t('originalSaleNotFound'));
+                return;
+            }
+            const originalSale = salesHistory[existingSaleIdx];
+
+            // Revert original inventory
+            originalSale.items.forEach(origItem => {
+                const product = products.find(p => p.id === origItem.id);
+                if (product) product.stock += origItem.quantity;
+            });
+
+            // Deduct new inventory (allow negative stock as approved)
+            cart.forEach(cartItem => {
+                const product = products.find(p => p.id === cartItem.id);
+                if (product) product.stock -= cartItem.quantity;
+            });
+
+            // Update sale record in place
+            salesHistory[existingSaleIdx] = {
+                ...originalSale,
+                modifiedDate: new Date().toISOString(),
+                modifiedBy: currentUser.name,
+                items: [...cart],
+                subtotal: subtotal / currencies[currentCurrency].rate,
+                tax: tax / currencies[currentCurrency].rate,
+                total: total / currencies[currentCurrency].rate,
+                paymentMethod: paymentMethod,
+                paymentStatus: paymentStatus,
+                clientId: clientId ? parseInt(clientId) : null,
+            };
+
+            saveToStorage('salesHistory', salesHistory);
+            saveToStorage('products', products);
+            alert(t('saleUpdated'));
+
+            editingSaleId = null;
+            currentViewedSaleIndex = -1;
+        } else {
+            // --- NEW SALE ---
+            const sale = {
+                id: generateId(),
+                date: new Date().toISOString(),
+                cashier: currentUser.name,
+                items: [...cart],
+                subtotal: subtotal / currencies[currentCurrency].rate,
+                tax: tax / currencies[currentCurrency].rate,
+                total: total / currencies[currentCurrency].rate,
+                paymentMethod: paymentMethod,
+                paymentStatus: paymentStatus,
+                clientId: clientId ? parseInt(clientId) : null,
+                currency: currentCurrency
+            };
+
+            cart.forEach(cartItem => {
+                const product = products.find(p => p.id === cartItem.id);
+                if (product) product.stock -= cartItem.quantity;
+            });
+
+            salesHistory.push(sale);
+            saveToStorage('salesHistory', salesHistory);
+            saveToStorage('products', products);
+
+            if (settings.printAfterSale && isPaid) {
+                printReceipt(sale);
+            }
+
+            alert(t('saleCompleted'));
+        }
+
+        cart = [];
+        updateCartDisplay();
+        displayProducts();
+        closeCheckout();
+        saveCart();
     };
 
-    // Update inventory
-    cart.forEach(cartItem => {
-        const product = products.find(p => p.id === cartItem.id);
-        if (product) product.stock -= cartItem.quantity;
-    });
-
-    // Save sale
-    salesHistory.push(sale);
-    saveToStorage('salesHistory', salesHistory);
-    saveToStorage('products', products);
-
-    // Print receipt if enabled
-    if (settings.printAfterSale && isPaid) {
-        printReceipt(sale);
+    // If editing an existing sale, require supervisor/manager approval
+    if (editingSaleId) {
+        requireManagerPassword(doProcess);
+    } else {
+        doProcess();
     }
+}
 
-    // Show success message
-    alert(t('saleCompleted'));
+function deleteEditingSale() {
+    if (!editingSaleId) return;
+    requireManagerPassword(() => {
+        const idx = salesHistory.findIndex(s => s.id === editingSaleId);
+        if (idx === -1) { alert(t('saleNotFound')); return; }
 
-    // Clear cart, update displays, and close modal
-    cart = [];
-    updateCartDisplay();
-    displayProducts(); // Refresh to show updated stock
-    closeCheckout();
-    saveCart();
+        // Revert inventory
+        salesHistory[idx].items.forEach(origItem => {
+            const product = products.find(p => p.id === origItem.id);
+            if (product) product.stock += origItem.quantity;
+        });
+
+        salesHistory.splice(idx, 1);
+        saveToStorage('salesHistory', salesHistory);
+        saveToStorage('products', products);
+
+        cart = [];
+        editingSaleId = null;
+        currentViewedSaleIndex = -1;
+        updateCartDisplay();
+        displayProducts();
+        alert(t('saleDeleted'));
+    });
 }
 
 
@@ -5442,7 +6469,7 @@ function processSale(isPaid) {
 
 function printReceipt(sale = null) {
     if (!sale && cart.length === 0) {
-        alert('No items to print');
+        alert(t('noItemsToPrint'));
         return;
     }
 
@@ -5475,6 +6502,81 @@ function printReceipt(sale = null) {
     receiptWindow.document.close();
     receiptWindow.focus();
     receiptWindow.print();
+}
+
+let currentViewedSaleIndex = -1;
+
+function requireManagerPassword(callback) {
+    const pwd = prompt(t('enterSupervisorPassword'));
+    if (pwd === null) return; // User cancelled
+    
+    const validUser = users.find(u => u.password === pwd && (u.role === 'admin' || u.role === 'manager') && u.active);
+    if (validUser) {
+        callback();
+    } else {
+        alert(t('invalidSupervisorCredentials'));
+    }
+}
+
+function loadSaleIntoCart(sale) {
+    if (cart.length > 0) {
+        if (!confirm(t('cartWillBeCleared'))) {
+            return;
+        }
+    }
+    
+    editingSaleId = sale.id;
+    cart = JSON.parse(JSON.stringify(sale.items)); // Deep copy to avoid modifying history directly
+    
+    // Set client selector if applicable
+    const mainClientSelector = document.getElementById('main-client-selector');
+    if (mainClientSelector && sale.clientId) {
+        mainClientSelector.value = sale.clientId;
+    }
+    
+    updateCartDisplay();
+}
+
+function viewLastSale() {
+    if (salesHistory.length === 0) {
+        alert(t('noSalesToNavigate'));
+        return;
+    }
+    currentViewedSaleIndex = salesHistory.length - 1;
+    loadSaleIntoCart(salesHistory[currentViewedSaleIndex]);
+}
+
+function viewPreviousSale() {
+    if (salesHistory.length === 0) {
+        alert(t('noSalesToNavigate'));
+        return;
+    }
+    if (currentViewedSaleIndex === -1) {
+        currentViewedSaleIndex = salesHistory.length - 1;
+    } else if (currentViewedSaleIndex > 0) {
+        currentViewedSaleIndex--;
+    } else {
+        alert(t('alreadyAtFirstSale'));
+        return;
+    }
+    loadSaleIntoCart(salesHistory[currentViewedSaleIndex]);
+}
+
+function viewNextSale() {
+    if (salesHistory.length === 0) {
+        alert(t('noSalesToNavigate'));
+        return;
+    }
+    if (currentViewedSaleIndex === -1) {
+        alert(t('alreadyAtFirstSale'));
+        return;
+    }
+    if (currentViewedSaleIndex < salesHistory.length - 1) {
+        currentViewedSaleIndex++;
+        loadSaleIntoCart(salesHistory[currentViewedSaleIndex]);
+    } else {
+        alert(t('alreadyAtLatestSale'));
+    }
 }
 
 function generateReceiptHTML(sale) {
@@ -5781,6 +6883,8 @@ window.closeCheckout = closeCheckout;
 window.processSale = processSale;
 window.printReceipt = printReceipt;
 window.scanBarcode = scanBarcode;
+window.toggleFullScreenPOS = toggleFullScreenPOS;
+window.filterByCategory = filterByCategory;
 
 // Inventory functions
 window.filterInventory = filterInventory;
@@ -5791,6 +6895,8 @@ window.updateProduct = updateProduct;
 window.adjustStock = adjustStock;
 window.deleteProduct = deleteProduct;
 window.updateImagePreview = updateImagePreview;
+window.fetchDetailsByBarcode = fetchDetailsByBarcode;
+window.searchImageByName = searchImageByName;
 window.closeModal = closeModal;
 
 // Reports functions
@@ -5817,6 +6923,10 @@ window.printLowStockReport = printLowStockReport;
 window.printExpiredItemsReport = printExpiredItemsReport;
 window.printClientCreditReport = printClientCreditReport;
 window.printSupplierCreditReport = printSupplierCreditReport;
+window.viewLastSale = viewLastSale;
+window.viewPreviousSale = viewPreviousSale;
+window.viewNextSale = viewNextSale;
+window.deleteEditingSale = deleteEditingSale;
 
 // Export/Import functions
 window.exportInventory = exportInventory;
@@ -5853,3 +6963,93 @@ window.updateSupplier = updateSupplier;
 window.showRecordPurchaseModal = showRecordPurchaseModal;
 window.showSupplierPurchases = showSupplierPurchases;
 window.markPurchaseAsPaid = markPurchaseAsPaid;
+
+function showRealPaymentModal(method, paymentEmail, totalAmount) {
+    const modal = document.createElement('div');
+    modal.className = 'modal barcode-modal';
+    modal.style.display = 'block';
+    modal.id = 'real-payment-modal';
+    
+    let qrData = paymentEmail;
+    if (method === 'paypal' && !paymentEmail.startsWith('http')) {
+        qrData = `https://paypal.me/${paymentEmail.split('@')[0]}/${totalAmount}`;
+    }
+
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}`;
+
+    const instructions = `Ask the customer to scan this QR code to pay <strong>${formatCurrency(totalAmount / currencies[currentCurrency].rate)}</strong> via PayPal.`;
+
+    modal.innerHTML = `
+        <div class="modal-content barcode-scan-content" style="text-align: center;">
+            <h2>PayPal Payment</h2>
+            <div style="margin: 20px 0;">
+                <p>${instructions}</p>
+                <img src="${qrUrl}" alt="PayPal QR" style="margin-top: 15px; border-radius: 8px;" />
+            </div>
+            <div class="modal-actions" style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                <button type="button" class="btn btn-secondary" onclick="document.getElementById('real-payment-modal').remove()">${t('cancel') || 'Cancel'}</button>
+                <button type="button" class="btn btn-primary" onclick="confirmRealPayment('${method}')">Payment Received (Complete Sale)</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+window.confirmRealPayment = function(method) {
+    document.getElementById('real-payment-modal').remove();
+    // processSale(isPaid, method, skipPaymentModal)
+    processSale(true, method, true);
+};
+
+
+// Global Event Listener for Fast Checkout & Hardware Barcode Scanners
+document.addEventListener('keydown', (e) => {
+    // Ignore key events if the user is typing in an input field (except for F9)
+    const isTyping = e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable;
+    
+    // F9 key Fast Checkout (works even if focused on an input) - ONLY on POS tab
+    if (e.key === 'F9') {
+        e.preventDefault();
+        if (currentView !== 'pos') return;
+        if (cart.length === 0) {
+            alert(t('emptyCart'));
+            return;
+        }
+        if (confirm(t('confirmFastCheckout') || 'Fast Checkout: Complete sale via Cash?')) {
+            processSale(true, 'cash');
+        }
+        return;
+    }
+
+    if (isTyping) return;
+
+    // Enter key handling - ONLY on POS tab
+    if (e.key === 'Enter') {
+        if (currentView !== 'pos') return;
+        if (barcodeBuffer.length > 0) {
+            // Hardware scanner just finished scanning
+            processBarcodeInput(barcodeBuffer);
+            barcodeBuffer = '';
+            clearTimeout(barcodeTimeout);
+        } else {
+            // Empty buffer Enter = Fast Checkout
+            if (cart.length > 0) {
+                if (confirm(t('confirmFastCheckout') || 'Fast Checkout: Complete sale via Cash?')) {
+                    processSale(true, 'cash');
+                }
+            }
+        }
+    } else if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+        // Only collect barcode chars on POS tab
+        if (currentView !== 'pos') return;
+        // Collect characters from barcode scanner
+        barcodeBuffer += e.key;
+        
+        // Timeout to clear buffer if typing is too slow (human typing vs hardware scanner)
+        // Hardware scanners typically type a character every 10-30ms.
+        clearTimeout(barcodeTimeout);
+        barcodeTimeout = setTimeout(() => {
+            barcodeBuffer = '';
+        }, 100);
+    }
+});
