@@ -411,8 +411,15 @@ app.post('/api/sales', authenticateToken, async (req, res) => {
 });
 
 // ===== START SERVER =====
-app.listen(PORT, () => {
-    console.log(`✅ Server is running on http://localhost:${PORT}`);
-    console.log('📦 Backend connected to PostgreSQL.');
-    console.log('🚀 Ready to handle API requests.');
-});
+// Export for Vercel serverless AND run directly locally
+if (require.main === module) {
+    // Running locally with `node server.js` or `npm start`
+    app.listen(PORT, () => {
+        console.log(`✅ Server is running on http://localhost:${PORT}`);
+        console.log('📦 Backend connected to PostgreSQL.');
+        console.log('🚀 Ready to handle API requests.');
+    });
+}
+
+// Export for Vercel serverless functions
+module.exports = app;
