@@ -1,3 +1,6 @@
+// Auto-detect API base URL - works locally and when deployed on any server
+const API_BASE = window.location.origin;
+
 let adminKey = localStorage.getItem('rpos_super_admin_key');
 
 document.getElementById('admin-auth-form').addEventListener('submit', (e) => {
@@ -23,7 +26,7 @@ async function loadTenants() {
     if (!adminKey) return;
 
     try {
-        const response = await fetch('/api/admin/tenants', {
+        const response = await fetch(`${API_BASE}/api/admin/tenants`, {
             headers: { 'X-Admin-Key': adminKey }
         });
 
@@ -70,7 +73,7 @@ async function loadTenants() {
 
     } catch (err) {
         console.error('Failed to load tenants', err);
-        alert('Network error connecting to API');
+        alert('Network error connecting to API.\n\nMake sure you are accessing this portal from the correct server URL.');
     }
 }
 
@@ -87,7 +90,7 @@ document.getElementById('create-tenant-form').addEventListener('submit', async (
     };
 
     try {
-        const response = await fetch('/api/admin/tenants', {
+        const response = await fetch(`${API_BASE}/api/admin/tenants`, {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
@@ -99,7 +102,7 @@ document.getElementById('create-tenant-form').addEventListener('submit', async (
         const data = await response.json();
         
         if (response.ok) {
-            alert(`Success! License Key: ${data.license_key}`);
+            alert(`✅ Tenant Created!\n\nStore Slug: ${payload.slug}\nAdmin Username: ${payload.adminUsername}\nAdmin Password: ${payload.adminPassword}\n\nShare these credentials with the store owner.`);
             toggleAddTenant();
             document.getElementById('create-tenant-form').reset();
             loadTenants();
@@ -116,7 +119,7 @@ async function suspendTenant(id) {
     if (!confirm('Are you sure you want to suspend this tenant? They will immediately lose access.')) return;
     
     try {
-        await fetch(`/api/admin/tenants/${id}`, {
+        await fetch(`${API_BASE}/api/admin/tenants/${id}`, {
             method: 'DELETE',
             headers: { 'X-Admin-Key': adminKey }
         });
@@ -137,7 +140,7 @@ async function updateLicense(id, status, plan) {
     }
 
     try {
-        await fetch(`/api/admin/tenants/licenses/${id}`, {
+        await fetch(`${API_BASE}/api/admin/tenants/licenses/${id}`, {
             method: 'PUT',
             headers: { 
                 'Content-Type': 'application/json',
@@ -151,7 +154,7 @@ async function updateLicense(id, status, plan) {
     }
 }
 
-// Auto-login check
+// Auto-login check if key was previously saved
 if (adminKey) {
     document.getElementById('admin-key').value = adminKey;
     loadTenants();

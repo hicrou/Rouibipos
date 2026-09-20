@@ -3,6 +3,9 @@
 
 // ===== CONFIGURATION & DATA =====
 
+// API Base URL - works locally and when deployed on any server
+const API_BASE = window.location.origin;
+
 // Multi-language support (English, Arabic, French, Spanish)
 const languages = {
     en: {
@@ -2066,8 +2069,6 @@ function showLoginScreen() {
                     <button type="submit" id="loginBtn" class="btn btn-primary">${t('login')}</button>
                     <div style="text-align: center; margin-top: 15px;">
                         <a href="register.html" style="color: var(--primary); text-decoration: none;">Register for a 30-day Trial</a>
-                        <br>
-                        <a href="admin-portal.html" style="color: #666; font-size: 12px; text-decoration: none; display: inline-block; margin-top: 10px;">Super Admin Portal</a>
                     </div>
                 </form>
             </div>
@@ -2186,7 +2187,7 @@ async function handleLogin(event) {
     btn.innerText = 'Logging in...';
 
     try {
-        const res = await fetch('/api/login', {
+        const res = await fetch(`${API_BASE}/api/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ tenant: tenantSlug, username, password })
@@ -2239,7 +2240,7 @@ async function checkLoginStatus() {
         
         // Verify license asynchronously
         try {
-            const res = await fetch('/api/license/status', {
+            const res = await fetch(`${API_BASE}/api/license/status`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (res.status === 402 || res.status === 403 || res.status === 401) {
@@ -4930,7 +4931,7 @@ async function addNewUser(event) {
 
     const token = localStorage.getItem('jwtToken');
     try {
-        const res = await fetch('/api/users', {
+        const res = await fetch(`${API_BASE}/api/users`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ username, password, full_name, role })
@@ -5005,7 +5006,7 @@ async function updateUser(event, userId) {
 
     const token = localStorage.getItem('jwtToken');
     try {
-        const res = await fetch(`/api/users/${userId}`, {
+        const res = await fetch(`${API_BASE}/api/users/${userId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ username: newUsername, full_name: newName, role: newRole, password: newPassword })
